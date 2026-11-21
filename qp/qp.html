@@ -6,6 +6,7 @@
     <title>Final Examination - Understanding Fashion Library (FDO-355)</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Same CSS as before - keeping it clean */
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
         body {
             background: linear-gradient(-45deg, #c6e7ff, #d8b4fe, #fde68a, #bbf7d0, #fbcfe8);
@@ -14,214 +15,99 @@
             min-height: 100vh;
             color: #111;
         }
-        @keyframes gradient { 0%{background-position:0%50%} 50%{background-position:100%50%} 100%{background-position:0%50%} }
-
-        .header {
-            text-align: center;
-            padding: 30px 20px 15px;
-        }
-        .header h1 { font-size: 1.8rem; font-weight: 700; }
-        .header h2 { font-size: 1.25rem; font-weight: 500; margin-top: 4px; color: #333; }
-
+        .header { text-align:center; padding:30px 20px 15px; }
+        .header h1 { font-size:1.8rem; font-weight:700; }
+        .header h2 { font-size:1.25rem; font-weight:500; margin-top:4px; color:#333; }
         .admin-btn {
-            position: fixed;
-            top: 25px;
-            right: 30px;
-            background: rgba(255,255,255,.25);
-            border: 2px solid rgba(255,255,255,.5);
-            color: #111;
-            padding: 8px 18px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            z-index: 1000;
+            position:fixed; top:25px; right:30px;
+            background:rgba(255,255,255,.25); border:2px solid rgba(255,255,255,.5);
+            color:#111; padding:8px 18px; border-radius:12px; font-weight:600; cursor:pointer; z-index:1000;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-            display: flex;
-            gap: 40px;
-        }
-
-        /* Left side - Current Question */
+        .container { max-width:1200px; margin:30px auto; padding:0 20px; display:flex; gap:40px; }
         .question-panel {
-            flex: 1;
-            background: rgba(255,255,255,.25);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(255,255,255,.4);
+            flex:1; background:rgba(255,255,255,.25); border-radius:20px; padding:30px;
+            backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,.4);
         }
-
-        .question-header {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-
+        .question-header { font-weight:600; font-size:1.1rem; margin-bottom:20px; }
         .passage-box {
-            background: rgba(255,255,255,.35);
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            display: none;
+            background:rgba(255,255,255,.35); border-radius:12px; padding:18px; margin-bottom:20px;
+            font-size:0.95rem; line-height:1.5; display:none;
         }
-
-        .question-text {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
+        .question-text { font-size:1.1rem; margin-bottom:25px; line-height:1.5; }
         .option {
-            display: block;
-            background: rgba(255,255,255,.35);
-            border: 2px solid transparent;
-            border-radius: 12px;
-            padding: 14px 20px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: .2s;
+            display:block; background:rgba(255,255,255,.35); border:2px solid transparent;
+            border-radius:12px; padding:14px 20px; margin-bottom:12px; cursor:pointer; transition:.2s;
         }
-        .option:hover { background: rgba(255,255,255,.5); }
-        .option.selected { border-color: #7c3aed; background: rgba(124,58,237,.15); }
-
-        .nav-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 25px;
-        }
+        .option:hover { background:rgba(255,255,255,.5); }
+        .option.selected { border-color:#7c3aed; background:rgba(124,58,237,.15); }
+        .nav-buttons { display:flex; gap:12px; margin-top:25px; }
         .nav-buttons button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            background: rgba(255,255,255,.35);
+            flex:1; padding:12px; border:none; border-radius:12px; font-weight:600; cursor:pointer;
+            background:rgba(255,255,255,.35);
         }
-
-        /* Right side - Question List */
         .sidebar {
-            width: 320px;
-            background: rgba(255,255,255,.25);
-            border-radius: 20px;
-            padding: 25px;
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(255,255,255,.4);
-            height: fit-content;
+            width:320px; background:rgba(255,255,255,.25); border-radius:20px; padding:25px;
+            backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,.4); height:fit-content;
         }
-
         .stats {
-            background: rgba(255,255,255,.35);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-align: center;
+            background:rgba(255,255,255,.35); border-radius:12px; padding:15px; margin-bottom:20px; text-align:center;
         }
-        .stats span { font-weight: 600; font-size: 1.4rem; }
-
+        .stats span { font-weight:600; font-size:1.4rem; }
         .question-list {
-            max-height: 520px;
-            overflow-y: auto;
-            padding-right: 8px;
+            max-height:520px; overflow-y:auto; padding-right:8px;
         }
         .q-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 12px;
-            margin-bottom: 6px;
-            background: rgba(255,255,255,.35);
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.95rem;
+            display:flex; align-items:center; gap:10px; padding:8px 12px; margin-bottom:6px;
+            background:rgba(255,255,255,.35); border-radius:10px; cursor:pointer; font-size:0.95rem;
         }
-        .q-item.attempted { background: rgba(124,58,237,.2); }
-        .q-item .num { font-weight: 600; width: 28px; }
-
+        .q-item.attempted { background:rgba(124,58,237,.2); }
+        .q-item .num { font-weight:600; width:28px; }
         .admin-panel {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,.6);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
+            position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; justify-content:center; align-items:center; z-index:2000;
         }
         .admin-content {
-            width: 95%;
-            max-width: 900px;
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            max-height: 90vh;
-            overflow-y: auto;
+            width:95%; max-width:900px; background:white; border-radius:20px; padding:30px; max-height:90vh; overflow-y:auto;
         }
-        .admin-content h3 { margin-bottom: 20px; }
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; }
+        .form-group { margin-bottom:18px; }
+        .form-group label { display:block; margin-bottom:6px; font-weight:600; }
         input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            font-size: 1rem;
+            width:100%; padding:12px; border:2px solid #ccc; border-radius:10px; font-size:1rem;
         }
-        .mcq-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .mcq-options { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
         .save-btn {
-            background: #7c3aed;
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 20px;
+            background:#7c3aed; color:white; border:none; padding:14px 30px;
+            border-radius:12px; font-weight:600; cursor:pointer; margin-top:20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <div class="header">
         <h1>Understanding Fashion Library (FDO-355)</h1>
         <h2>Final Examination Sample Questionnaire</h2>
     </div>
 
-    <!-- Admin Button -->
     <button class="admin-btn" onclick="showAdminPanel()">Admin</button>
 
     <div class="container">
-
-        <!-- LEFT: Current Question -->
+        <!-- Left Panel -->
         <div class="question-panel">
             <div class="question-header">Question <span id="currentQ">1</span> of 80</div>
-
-            <!-- Passage (only for 41-80) -->
             <div id="passageBox" class="passage-box"></div>
-
             <div id="questionText" class="question-text">Loading question...</div>
-
             <div id="optionsContainer"></div>
-
             <div class="nav-buttons">
                 <button onclick="prevQuestion()">Previous</button>
                 <button onclick="nextQuestion()">Next</button>
             </div>
         </div>
 
-        <!-- RIGHT: Question List + Stats -->
+        <!-- Right Panel -->
         <div class="sidebar">
             <div class="stats">
                 <div>Questions Attempted</div>
                 <span id="attemptedCount">0</span> / 80
             </div>
-
             <div class="question-list" id="questionList"></div>
         </div>
     </div>
@@ -230,6 +116,7 @@
     <div class="admin-panel" id="adminPanel">
         <div class="admin-content">
             <h3>Admin Panel - Add Questions</h3>
+
             <div style="margin-bottom:15px;">
                 <label><strong>Question Type</strong></label>
                 <select id="qType" onchange="togglePassageField()">
@@ -238,7 +125,6 @@
                 </select>
             </div>
 
-            <!-- Passage Box (only for 41-80) -->
             <div id="passageField" style="display:none; margin-bottom:15px;">
                 <label>Passage</label>
                 <textarea id="passageInput" rows="4" placeholder="Enter the passage here..."></textarea>
@@ -274,20 +160,33 @@
                 </select>
             </div>
 
-            <button class="save-btn" onclick="saveQuestion()">Save Question</button>
+            <button class="save-btn" onclick="saveQuestionToSheet()">Save to Google Sheets</button>
             <button onclick="closeAdminPanel()" style="margin-left:15px; padding:14px 30px; border-radius:12px; border:2px solid #ccc;">Cancel</button>
         </div>
     </div>
 
     <script>
-        // ===== DATA STORAGE (localStorage) =====
-        let questions = JSON.parse(localStorage.getItem('fashionQuestions')) || {};
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwGunsSr3kgtPcRBT-JXYu7p-QkeXONh4ytemoiQW6JHRl-6_vvvXhif5UJ7xYrAJt4mw/exec";   // ←←← Paste your Apps Script URL here
+
+        let questions = {};
         let userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || {};
 
-        // ===== RENDER QUESTION LIST =====
+        // Load questions from Google Sheets
+        async function loadQuestionsFromSheet() {
+            try {
+                const res = await fetch(GOOGLE_SCRIPT_URL);
+                const data = await res.json();
+                questions = data;
+                renderQuestionList();
+            } catch (e) {
+                console.error("Failed to load questions from Google Sheets", e);
+            }
+        }
+
         function renderQuestionList() {
             const container = document.getElementById('questionList');
             container.innerHTML = '';
+
             for (let i = 1; i <= 80; i++) {
                 const div = document.createElement('div');
                 div.className = 'q-item';
@@ -307,7 +206,6 @@
             document.getElementById('attemptedCount').innerText = Object.keys(userAnswers).length;
         }
 
-        // ===== LOAD QUESTION =====
         let currentQuestion = 1;
 
         function loadQuestion(qNum) {
@@ -321,14 +219,12 @@
 
             optionsContainer.innerHTML = '';
             passageBox.style.display = 'none';
-            passageBox.innerHTML = '';
 
             if (!q) {
-                qText.innerHTML = `<em>Question ${qNum} not yet added by admin.</em>`;
+                qText.innerHTML = `<em>Question ${qNum} not yet added.</em>`;
                 return;
             }
 
-            // Passage for 41-80
             if (qNum >= 41 && q.passage) {
                 passageBox.style.display = 'block';
                 passageBox.innerHTML = `<strong>Passage:</strong><br>${q.passage}`;
@@ -336,40 +232,32 @@
 
             qText.innerHTML = q.text;
 
-            // Options
             ['A','B','C','D'].forEach(letter => {
                 const opt = document.createElement('div');
                 opt.className = 'option';
                 if (userAnswers[qNum] === letter) opt.classList.add('selected');
-                opt.innerHTML = `${letter}. ${q[`opt${letter}`]}`;
+                opt.innerHTML = `${letter}. ${q[`opt${letter}`] || ''}`;
                 opt.onclick = () => selectAnswer(qNum, letter, opt);
                 optionsContainer.appendChild(opt);
             });
         }
 
         function selectAnswer(qNum, letter, element) {
-            // Deselect all
             document.querySelectorAll('#optionsContainer .option').forEach(el => el.classList.remove('selected'));
             element.classList.add('selected');
-
             userAnswers[qNum] = letter;
             localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
             renderQuestionList();
         }
 
         function nextQuestion() {
-            if (currentQuestion < 80) {
-                loadQuestion(currentQuestion + 1);
-            }
+            if (currentQuestion < 80) loadQuestion(currentQuestion + 1);
         }
-
         function prevQuestion() {
-            if (currentQuestion > 1) {
-                loadQuestion(currentQuestion - 1);
-            }
+            if (currentQuestion > 1) loadQuestion(currentQuestion - 1);
         }
 
-        // ===== ADMIN PANEL =====
+        // Admin functions
         function showAdminPanel() {
             const pass = prompt("Enter Admin Password:");
             if (pass === "18022005") {
@@ -390,10 +278,10 @@
             document.getElementById('passageField').style.display = (type === "passage") ? "block" : "none";
         }
 
-        function saveQuestion() {
+        async function saveQuestionToSheet() {
             const qNum = parseInt(document.getElementById('qNumber').value);
             if (!qNum || qNum < 1 || qNum > 80) {
-                alert("Please enter a valid question number (1-80)");
+                alert("Please enter a valid question number");
                 return;
             }
 
@@ -404,8 +292,10 @@
                 return;
             }
 
-            const newQ = {
+            const payload = {
+                qNum: qNum,
                 type: type,
+                passage: type === "passage" ? document.getElementById('passageInput').value.trim() : "",
                 text: text,
                 optA: document.getElementById('optA').value.trim(),
                 optB: document.getElementById('optB').value.trim(),
@@ -414,23 +304,22 @@
                 correct: document.getElementById('correctAnswer').value
             };
 
-            if (type === "passage") {
-                newQ.passage = document.getElementById('passageInput').value.trim();
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: "POST",
+                    body: JSON.stringify(payload)
+                });
+
+                alert(`Question ${qNum} saved to Google Sheets!`);
+                closeAdminPanel();
+                loadQuestionsFromSheet();
+            } catch (e) {
+                alert("Failed to save to Google Sheets. Check your URL and internet.");
             }
-
-            questions[qNum] = newQ;
-            localStorage.setItem('fashionQuestions', JSON.stringify(questions));
-
-            alert(`Question ${qNum} saved successfully!`);
-            closeAdminPanel();
-            renderQuestionList();
-            loadQuestion(qNum);
         }
 
-        // ===== INITIAL LOAD =====
         function init() {
-            renderQuestionList();
-            loadQuestion(1);
+            loadQuestionsFromSheet();
         }
 
         window.onload = init;
