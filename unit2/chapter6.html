@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6 - Skirts and Dresses | Understanding Fashion Library</title>
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+            scroll-behavior:smooth;
+        }
+        body{
+            min-height:100vh;
+            color:#333;
+            overflow-x:hidden;
+        }
+        /* Animated Gradient */
+        body{
+            background:linear-gradient(-45deg,#c6e7ff,#d8b4fe,#fde68a,#bbf7d0,#fbcfe8);
+            background-size:400% 400%;
+            animation:gradient 15s ease infinite;
+        }
+        @keyframes gradient{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+        /* Navigation */
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid rgba(255,255,255,.2);
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+        nav a{
+            color:black;
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.1rem;
+            transition:.3s;
+        }
+        nav a:hover{
+            opacity:.7;
+        }
+        .nav-buttons{
+            display:flex;
+            gap:15px;
+        }
+        .nav-btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:12px;
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,.35);
+            cursor:pointer;
+            font-weight:600;
+            transition:.3s;
+        }
+        .nav-btn:hover{
+            background:rgba(255,255,255,.28);
+            transform:scale(1.05);
+        }
+        /* Main Content */
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:60px 40px;
+        }
+        header{
+            text-align:center;
+            margin-bottom:60px;
+        }
+        header h1{
+            font-size:2.8rem;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+        header .subtitle{
+            font-size:1.2rem;
+            color:#555;
+            font-weight:400;
+        }
+        /* Sections */
+        .section{
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.35);
+            border-radius:20px;
+            padding:40px;
+            margin-bottom:40px;
+            box-shadow:0 8px 30px rgba(0,0,0,.1);
+        }
+        .section h2{
+            font-size:2rem;
+            margin-bottom:20px;
+            color:#1a1a1a;
+            border-bottom:3px solid rgba(0,0,0,.2);
+            padding-bottom:15px;
+        }
+        .section h3{
+            font-size:1.4rem;
+            margin-top:25px;
+            margin-bottom:12px;
+            color:#2a2a2a;
+        }
+        .section h4{
+            font-size:1.1rem;
+            margin-top:18px;
+            margin-bottom:10px;
+            color:#3a3a3a;
+            font-weight:600;
+        }
+        .section p{
+            font-size:1rem;
+            line-height:1.8;
+            color:#444;
+            margin-bottom:15px;
+        }
+        .content-list{
+            list-style:none;
+            margin:20px 0;
+        }
+        .content-list li{
+            padding:12px 0;
+            padding-left:30px;
+            position:relative;
+            font-size:1rem;
+            line-height:1.6;
+            color:#444;
+        }
+        .content-list li:before{
+            content:"▸";
+            position:absolute;
+            left:0;
+            color:#d8b4fe;
+            font-size:1.5rem;
+        }
+        .highlight{
+            background:rgba(216,180,254,.3);
+            padding:3px 8px;
+            border-radius:4px;
+            font-weight:500;
+        }
+        .definition-box{
+            background:rgba(107,114,128,.08);
+            border-left:4px solid #d8b4fe;
+            padding:20px;
+            margin:20px 0;
+            border-radius:8px;
+        }
+        .definition-box p{
+            margin:0;
+            font-style:italic;
+            color:#333;
+        }
+        .item-card{
+            background:rgba(255,255,255,.12);
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:15px;
+            padding:25px;
+            margin:20px 0;
+        }
+        .item-card h4{
+            margin-top:0;
+            font-size:1.2rem;
+            color:#1a1a1a;
+            margin-bottom:12px;
+        }
+        .characteristics-box{
+            background:rgba(74,222,128,.15);
+            border:1px solid rgba(74,222,128,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .characteristics-box strong{
+            color:#15803d;
+            display:block;
+            margin-bottom:8px;
+        }
+        .recommended-box{
+            background:rgba(59,130,246,.15);
+            border:1px solid rgba(59,130,246,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .recommended-box strong{
+            color:#1e40af;
+            display:block;
+            margin-bottom:8px;
+        }
+        .occasion-box{
+            background:rgba(168,85,247,.15);
+            border:1px solid rgba(168,85,247,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .occasion-box strong{
+            color:#6b21a8;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box{
+            background:rgba(239,68,68,.15);
+            border:1px solid rgba(239,68,68,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .avoid-box strong{
+            color:#991b1b;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box ul, .recommended-box ul, .occasion-box ul{
+            list-style:none;
+            margin:0;
+            padding-left:20px;
+        }
+        .avoid-box li, .recommended-box li, .occasion-box li{
+            padding:5px 0;
+            position:relative;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .avoid-box li:before{
+            content:"✗ ";
+            color:#991b1b;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .recommended-box li:before{
+            content:"✓ ";
+            color:#15803d;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .occasion-box li:before{
+            content:"◆ ";
+            color:#6b21a8;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .tip-box{
+            background:rgba(251,146,60,.15);
+            border-left:4px solid #f97316;
+            padding:15px;
+            border-radius:8px;
+            margin:15px 0;
+        }
+        .tip-box strong{
+            color:#7c2d12;
+            display:block;
+            margin-bottom:8px;
+        }
+        .tip-box p{
+            margin:0;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .category{
+            background:rgba(255,255,255,.12);
+            border:2px solid rgba(216,180,254,.4);
+            border-radius:15px;
+            padding:25px;
+            margin:25px 0;
+        }
+        .category h3{
+            margin-top:0;
+            padding-bottom:10px;
+            border-bottom:2px solid rgba(216,180,254,.3);
+        }
+        .grid-2{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+            margin:20px 0;
+        }
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-top:1px solid rgba(255,255,255,.2);
+            margin-top:60px;
+        }
+        footer p{
+            color:#555;
+            font-size:.95rem;
+        }
+        @media(max-width:700px){
+            .container{
+                padding:40px 20px;
+            }
+            header h1{
+                font-size:2rem;
+            }
+            .section{
+                padding:25px;
+            }
+            .section h2{
+                font-size:1.6rem;
+            }
+            nav{
+                flex-direction:column;
+                gap:15px;
+                padding:15px;
+            }
+            .nav-buttons{
+                width:100%;
+                justify-content:center;
+            }
+            .grid-2{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html">← Back to Units</a>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="previousChapter()">← Previous</button>
+            <button class="nav-btn" onclick="nextChapter()">Next →</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Chapter 6: Skirts and Dresses</h1>
+            <p class="subtitle">Unit - 2: Fashion Library</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <div class="section">
+            <h2>Introduction to Skirts and Dresses</h2>
+            <p>
+                <span class="highlight">Skirts and dresses</span> are fundamental pieces in women's fashion that serve as the foundation for countless outfits. These versatile garments come in endless styles, lengths, and designs, allowing for creative self-expression while flattering various body types. Understanding different skirt and dress types is essential for building a well-rounded, fashionable wardrobe.
+            </p>
+            <p>
+                Skirts and dresses are important because they:
+            </p>
+            <ul class="content-list">
+                <li>Provide versatility for professional, casual, and formal occasions</li>
+                <li>Significantly affect the overall silhouette and body proportions</li>
+                <li>Can be styled multiple ways with different tops and accessories</li>
+                <li>Allow for self-expression through color, pattern, and style</li>
+                <li>Can flatter or detract from body type depending on fit and cut</li>
+                <li>Require proper length and fit for a polished appearance</li>
+                <li>Offer comfort and freedom of movement</li>
+            </ul>
+        </div>
+
+        <!-- SKIRTS SECTION -->
+        <div class="section">
+            <h2 style="margin-top:0;">Skirts</h2>
+            <p>Skirts are separate garments that cover the lower body, offering endless styling possibilities.</p>
+        </div>
+
+        <!-- Professional & Formal Skirts -->
+        <div class="category">
+            <h3>Professional & Formal Skirts</h3>
+            <p>Well-tailored skirts designed for business and formal occasions.</p>
+
+            <!-- Pencil Skirt -->
+            <div class="item-card">
+                <h4>1. Pencil Skirt</h4>
+                <div class="definition-box">
+                    <p>A fitted, knee-length skirt that hugs the body contours. The ultimate professional and sophisticated skirt.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted through hip and thigh</li>
+                        <li>Usually knee-length</li>
+                        <li>Can have back slit for movement</li>
+                        <li>Structured fabric</li>
+                        <li>Can be high or mid-rise waist</li>
+                        <li>Various colors available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Office and professional settings</li>
+                        <li>Creating sophisticated silhouettes</li>
+                        <li>Pairing with fitted tops</li>
+                        <li>Formal events</li>
+                        <li>Emphasizing curves (hourglass shapes)</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Office wear</li>
+                        <li>Job interviews</li>
+                        <li>Business meetings</li>
+                        <li>Formal events</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- A-Line Skirt -->
+            <div class="item-card">
+                <h4>2. A-Line Skirt</h4>
+                <div class="definition-box">
+                    <p>A skirt fitted at the waist and gradually widening toward the hem, creating an A-shape. Flattering and versatile.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted at waist</li>
+                        <li>Gradual flare from hip to hem</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Comfortable and flattering</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Most body types</li>
+                        <li>Balancing fuller hip and thigh areas</li>
+                        <li>Both professional and casual wear</li>
+                        <li>Creating flattering proportions</li>
+                        <li>Apple and pear shapes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Straight/Tube Skirt -->
+            <div class="item-card">
+                <h4>3. Straight/Tube Skirt</h4>
+                <div class="definition-box">
+                    <p>A simple, straight skirt with consistent width from hip to hem. Classic and minimalist.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Straight lines from hip to hem</li>
+                        <li>Neither fitted nor loose</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Simple, clean design</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Timeless classic style</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Most body types</li>
+                        <li>Professional settings</li>
+                        <li>Creating balanced proportions</li>
+                        <li>Pairing with various tops</li>
+                        <li>Timeless, classic styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Maxi Skirt -->
+            <div class="item-card">
+                <h4>4. Maxi Skirt</h4>
+                <div class="definition-box">
+                    <p>A long skirt extending to the floor or ankles. Elegant, sophisticated, and versatile.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Floor-length or ankle-length</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Can have slit for movement</li>
+                        <li>Various materials available</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Elegant appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal and evening events</li>
+                        <li>Creating elegant silhouettes</li>
+                        <li>Pairing with fitted tops</li>
+                        <li>Longer torsos</li>
+                        <li>Both casual and formal styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Midi Skirt -->
+            <div class="item-card">
+                <h4>5. Midi Skirt</h4>
+                <div class="definition-box">
+                    <p>A skirt reaching mid-calf, between knee and ankle. Sophisticated and contemporary.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Ends at mid-calf</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Various cuts available</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Contemporary look</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Both professional and casual occasions</li>
+                        <li>Contemporary styling</li>
+                        <li>Most body types</li>
+                        <li>Various styling options</li>
+                        <li>Smart casual to formal wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pleat Skirt -->
+            <div class="item-card">
+                <h4>6. Pleat Skirt</h4>
+                <div class="definition-box">
+                    <p>A skirt with structured pleats running front to back or side to side. Adds movement and visual interest.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Structured pleats throughout</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Adds volume and movement</li>
+                        <li>Can be fitted or loose waist</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Various pleat patterns</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Adding movement and texture</li>
+                        <li>Both professional and casual wear</li>
+                        <li>Creating visual interest</li>
+                        <li>Various styling options</li>
+                        <li>School and prep aesthetic</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casual Skirts -->
+        <div class="category">
+            <h3>Casual Skirts</h3>
+            <p>Relaxed, comfortable skirts for everyday wear and casual occasions.</p>
+
+            <!-- Jean Skirt -->
+            <div class="item-card">
+                <h4>7. Jean Skirt</h4>
+                <div class="definition-box">
+                    <p>A casual skirt made from durable denim fabric. Versatile and easy to style.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Denim fabric</li>
+                        <li>Can be various lengths</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Various washes available</li>
+                        <li>Can have distressing</li>
+                        <li>Casual appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Smart casual occasions</li>
+                        <li>Year-round versatility</li>
+                        <li>Most body types with proper fit</li>
+                        <li>Easy styling options</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Flared Skirt -->
+            <div class="item-card">
+                <h4>8. Flared Skirt</h4>
+                <div class="definition-box">
+                    <p>A skirt fitted at hip and widening from knee downward. Comfortable and flattering.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted at hip</li>
+                        <li>Flares from knee down</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Comfortable and relaxed</li>
+                        <li>Can be subtle or dramatic flare</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Balancing fuller hip and thigh areas</li>
+                        <li>Casual and smart casual occasions</li>
+                        <li>Creating feminine silhouettes</li>
+                        <li>Comfortable, relaxed styling</li>
+                        <li>Pear and apple shapes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Wrap Skirt -->
+            <div class="item-card">
+                <h4>9. Wrap Skirt</h4>
+                <div class="definition-box">
+                    <p>A skirt that ties or wraps around the waist. Casual, comfortable, and flattering.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Wraps around the body</li>
+                        <li>Ties or fastens at side or front</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Adjustable fit</li>
+                        <li>Can be loose or fitted</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Defining waistline</li>
+                        <li>Adjustable, comfortable fit</li>
+                        <li>Various body types</li>
+                        <li>Beach and resort wear</li>
+                        <li>Casual styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mini Skirt -->
+            <div class="item-card">
+                <h4>10. Mini Skirt</h4>
+                <div class="definition-box">
+                    <p>A short skirt ending above the knee. Fun, youthful, and playful.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Ends well above knee</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Various materials available</li>
+                        <li>Fun, playful aesthetic</li>
+                        <li>Easy to style</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Showing off legs</li>
+                        <li>Younger, trendier occasions</li>
+                        <li>Casual and elevated casual wear</li>
+                        <li>Pairing with fitted tops</li>
+                        <li>Fashion-forward styling</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid If:</strong>
+                    <ul>
+                        <li>Self-conscious about leg appearance</li>
+                        <li>Professional settings require coverage</li>
+                        <li>Prefer more conservative styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Circle Skirt -->
+            <div class="item-card">
+                <h4>11. Circle Skirt</h4>
+                <div class="definition-box">
+                    <p>A skirt cut from circular fabric that creates dramatic volume and movement. Playful and flattering.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Circular cut creates volume</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Dramatic, flowing movement</li>
+                        <li>Comfortable and flattering</li>
+                        <li>Retro and vintage appeal</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Balancing fuller hip and thigh areas</li>
+                        <li>Creating feminine silhouettes</li>
+                        <li>Retro and vintage styling</li>
+                        <li>Adding movement and drama</li>
+                        <li>Casual and elevated casual wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cargo Skirt -->
+            <div class="item-card">
+                <h4>12. Cargo Skirt</h4>
+                <div class="definition-box">
+                    <p>A casual skirt with large utility pockets. Practical and fashion-forward.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Distinctive side pockets</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Durable, practical fabric</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Various colors available</li>
+                        <li>Utility and fashion combined</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual, edgy styling</li>
+                        <li>Fashion-forward looks</li>
+                        <li>Outdoor and adventure wear</li>
+                        <li>Adding personality to outfits</li>
+                        <li>Practical, functional styling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- DRESSES SECTION -->
+        <div class="section">
+            <h2 style="margin-top:0;">Dresses</h2>
+            <p>Dresses are one-piece garments that combine top and bottom, offering complete, coordinated looks.</p>
+        </div>
+
+        <!-- Professional & Formal Dresses -->
+        <div class="category">
+            <h3>Professional & Formal Dresses</h3>
+            <p>Well-tailored dresses designed for business and formal occasions.</p>
+
+            <!-- Sheath Dress -->
+            <div class="item-card">
+                <h4>13. Sheath Dress</h4>
+                <div class="definition-box">
+                    <p>A fitted, knee-length dress that hugs the body contours. Classic and sophisticated for professional settings.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted through body</li>
+                        <li>Usually knee-length</li>
+                        <li>Can have sleeves</li>
+                        <li>Structured fabric</li>
+                        <li>Can have back slit</li>
+                        <li>Various colors available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Office and professional settings</li>
+                        <li>Job interviews</li>
+                        <li>Creating sophisticated silhouettes</li>
+                        <li>Emphasizing curves</li>
+                        <li>Formal events</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Office wear</li>
+                        <li>Formal events</li>
+                        <li>Job interviews</li>
+                        <li>Business dinners</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Fit-and-Flare Dress -->
+            <div class="item-card">
+                <h4>14. Fit-and-Flare Dress</h4>
+                <div class="definition-box">
+                    <p>A dress fitted at the bodice and waist, then flares out from hip. Flattering and versatile.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted bodice and waist</li>
+                        <li>Flares from hip to hem</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Emphasizes waistline</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Most body types</li>
+                        <li>Emphasizing waistline</li>
+                        <li>Both professional and casual wear</li>
+                        <li>Balancing proportions</li>
+                        <li>Creating feminine silhouettes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Wrap Dress -->
+            <div class="item-card">
+                <h4>15. Wrap Dress</h4>
+                <div class="definition-box">
+                    <p>A dress that wraps around the body and ties at the side or front. Classic, flattering, and versatile.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Wraps around body</li>
+                        <li>Ties at side or front</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Defines waistline</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Defining waistline</li>
+                        <li>Most body types</li>
+                        <li>Both professional and casual occasions</li>
+                        <li>Flattering for various shapes</li>
+                        <li>Versatile styling options</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Shirt Dress -->
+            <div class="item-card">
+                <h4>16. Shirt Dress</h4>
+                <div class="definition-box">
+                    <p>A dress with a shirt-like construction, typically button-down front. Versatile and effortlessly chic.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Button-down front</li>
+                        <li>Shirt collar</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Can be belted at waist</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Smart casual to professional wear</li>
+                        <li>Effortless, chic styling</li>
+                        <li>Various body types</li>
+                        <li>Both casual and dressy occasions</li>
+                        <li>Year-round versatility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Maxi Dress -->
+            <div class="item-card">
+                <h4>17. Maxi Dress</h4>
+                <div class="definition-box">
+                    <p>A long dress extending to the floor or ankles. Elegant and sophisticated for formal occasions.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Floor-length or ankle-length</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Can have various necklines</li>
+                        <li>Can have slit for movement</li>
+                        <li>Elegant appearance</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal and evening events</li>
+                        <li>Creating elegant silhouettes</li>
+                        <li>Longer torsos</li>
+                        <li>Special occasions</li>
+                        <li>Both casual and formal styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Midi Dress -->
+            <div class="item-card">
+                <h4>18. Midi Dress</h4>
+                <div class="definition-box">
+                    <p>A dress reaching mid-calf, between knee and ankle. Sophisticated and contemporary.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Ends at mid-calf</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Can have various necklines and sleeves</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Contemporary look</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Both professional and casual occasions</li>
+                        <li>Contemporary styling</li>
+                        <li>Most body types</li>
+                        <li>Various styling options</li>
+                        <li>Smart casual to formal wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bodycon Dress -->
+            <div class="item-card">
+                <h4>19. Bodycon Dress</h4>
+                <div class="definition-box">
+                    <p>A very form-fitting dress that hugs body contours closely. Sexy and bold.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Form-fitting throughout</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Stretchy, flexible fabric</li>
+                        <li>Emphasizes curves</li>
+                        <li>Can have various necklines</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Toned, confident figures</li>
+                        <li>Night out occasions</li>
+                        <li>Special events</li>
+                        <li>Fashion-forward styling</li>
+                        <li>Emphasizing curves (hourglass shapes)</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid If:</strong>
+                    <ul>
+                        <li>Self-conscious about body shape</li>
+                        <li>Prefer more coverage</li>
+                        <li>Professional settings require conservative dress</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casual Dresses -->
+        <div class="category">
+            <h3>Casual Dresses</h3>
+            <p>Relaxed, comfortable dresses for everyday wear and casual occasions.</p>
+
+            <!-- Shift Dress -->
+            <div class="item-card">
+                <h4>20. Shift Dress</h4>
+                <div class="definition-box">
+                    <p>A straight, loose-fitting dress with minimal shaping. Simple, comfortable, and timeless.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Straight silhouette</li>
+                        <li>Minimal shaping</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Comfortable and relaxed</li>
+                        <li>Can have various necklines</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Comfortable, casual wear</li>
+                        <li>Most body types</li>
+                        <li>Smart casual occasions</li>
+                        <li>Simple, minimalist styling</li>
+                        <li>Year-round versatility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sundress -->
+            <div class="item-card">
+                <h4>21. Sundress</h4>
+                <div class="definition-box">
+                    <p>A light, sleeveless dress perfect for warm weather. Fun, casual, and breezy.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Sleeveless or thin straps</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Light, breathable fabric</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Various colors and patterns</li>
+                        <li>Casual, fun aesthetic</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer and warm weather wear</li>
+                        <li>Beach and resort occasions</li>
+                        <li>Casual, relaxed styling</li>
+                        <li>Comfortable, breezy looks</li>
+                        <li>Various body types</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- T-Shirt Dress -->
+            <div class="item-card">
+                <h4>22. T-Shirt Dress</h4>
+                <div class="definition-box">
+                    <p>A casual dress resembling an oversized t-shirt. Perfect for effortless, comfortable styling.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>T-shirt style construction</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Oversized fit typical</li>
+                        <li>Casual appearance</li>
+                        <li>Can be paired with belt</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual, comfortable wear</li>
+                        <li>Effortless styling</li>
+                        <li>Most body types</li>
+                        <li>Quick, easy outfits</li>
+                        <li>Year-round versatility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Swing Dress -->
+            <div class="item-card">
+                <h4>23. Swing Dress</h4>
+                <div class="definition-box">
+                    <p>A loose, flowy dress with volume throughout. Playful and flattering for various body types.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Loose, flowing silhouette</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Can have various necklines</li>
+                        <li>Comfortable and flattering</li>
+                        <li>Retro and vintage appeal</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Comfortable, casual wear</li>
+                        <li>Balancing proportions</li>
+                        <li>Fuller figures</li>
+                        <li>Retro and vintage styling</li>
+                        <li>Various body types</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Denim Dress -->
+            <div class="item-card">
+                <h4>24. Denim Dress</h4>
+                <div class="definition-box">
+                    <p>A casual dress made from durable denim fabric. Versatile and timeless.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Denim fabric</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Various washes available</li>
+                        <li>Can have distressing</li>
+                        <li>Button-front or pullover</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Smart casual occasions</li>
+                        <li>Year-round versatility</li>
+                        <li>Most body types with proper fit</li>
+                        <li>Easy styling options</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slip Dress -->
+            <div class="item-card">
+                <h4>25. Slip Dress</h4>
+                <div class="definition-box">
+                    <p>A simple, sleeveless dress resembling a slip or undergarment. Minimalist and elegant.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Thin, delicate straps</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Simple, minimalist design</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Can be layered</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual and elevated casual wear</li>
+                        <li>Minimalist styling</li>
+                        <li>Layering opportunities</li>
+                        <li>Simple, elegant looks</li>
+                        <li>Both warm and cool weather with layers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Linen Dress -->
+            <div class="item-card">
+                <h4>26. Linen Dress</h4>
+                <div class="definition-box">
+                    <p>A lightweight dress made from linen fabric. Perfect for warm weather and casual occasions.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Lightweight linen fabric</li>
+                        <li>Breathable and comfortable</li>
+                        <li>Can wrinkle easily</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Perfect for warm weather</li>
+                        <li>Relaxed, casual elegance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer wear</li>
+                        <li>Warm weather occasions</li>
+                        <li>Beach and vacation styling</li>
+                        <li>Elevated casual looks</li>
+                        <li>Resort wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Skater Dress -->
+            <div class="item-card">
+                <h4>27. Skater Dress</h4>
+                <div class="definition-box">
+                    <p>A dress with a fitted bodice and flared skirt from the waist, resembling figure skater attire.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted bodice</li>
+                        <li>Flared skirt from waist</li>
+                        <li>Usually knee-length or shorter</li>
+                        <li>Can have long sleeves</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Balancing proportions</li>
+                        <li>Fuller hip and thigh areas</li>
+                        <li>Casual and elevated casual wear</li>
+                        <li>Creating feminine silhouettes</li>
+                        <li>Both casual and dressy occasions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special & Trendy Dresses -->
+        <div class="category">
+            <h3>Special & Trendy Dresses</h3>
+            <p>Fashion-forward and unique dress styles that make statements.</p>
+
+            <!-- Wrap Around Dress -->
+            <div class="item-card">
+                <h4>28. Wrap Around Dress</h4>
+                <div class="definition-box">
+                    <p>A dress that wraps around the body for complete coverage. Comfortable, adjustable, and flattering.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Wraps around body</li>
+                        <li>Ties at side or front</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Adjustable fit</li>
+                        <li>Defines waistline</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Defining waistline</li>
+                        <li>Most body types</li>
+                        <li>Comfortable, adjustable fit</li>
+                        <li>Both casual and professional wear</li>
+                        <li>Flattering for various shapes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Off-Shoulder Dress -->
+            <div class="item-card">
+                <h4>29. Off-Shoulder Dress</h4>
+                <div class="definition-box">
+                    <p>A dress with the neckline sitting below the shoulders, leaving shoulders exposed. Sexy and contemporary.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Neckline below shoulders</li>
+                        <li>Exposes shoulders and collarbones</li>
+                        <li>Can be knee-length or longer</li>
+                        <li>Can have various sleeve styles</li>
+                        <li>Contemporary look</li>
+                        <li>Sexy, flattering appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Narrow or sloped shoulders</li>
+                        <li>Warm weather wear</li>
+                        <li>Special occasions</li>
+                        <li>Creating feminine looks</li>
+                        <li>Showing off shoulders and collarbones</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Printed/Pattern Dress -->
+            <div class="item-card">
+                <h4>30. Printed/Pattern Dress</h4>
+                <div class="definition-box">
+                    <p>A dress with bold prints, patterns, or multiple colors. Statement-making and fun.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Bold prints or patterns</li>
+                        <li>Various color combinations</li>
+                        <li>Can be various cuts and lengths</li>
+                        <li>Eye-catching appearance</li>
+                        <li>Fashion-forward style</li>
+                        <li>Can transition from casual to dressy</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Expressing personality</li>
+                        <li>Fashion-forward styling</li>
+                        <li>Adding visual interest</li>
+                        <li>Special occasions</li>
+                        <li>Various styling options</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selection & Styling Tips -->
+        <div class="section">
+            <h2>Skirts and Dresses Selection & Styling Guidelines</h2>
+            
+            <h3>Key Principles for Choosing Skirts & Dresses:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Proper Fit:</span> Well-fitting skirts and dresses should not pull or gape. Waistband should sit comfortably without digging in</li>
+                <li><span class="highlight">Correct Length:</span> Hemline should fall at a flattering point on the leg. Typically knee-length is most versatile for professional settings</li>
+                <li><span class="highlight">Body Type Consideration:</span> Choose silhouettes that flatter your body shape and proportions</li>
+                <li><span class="highlight">Occasion Appropriateness:</span> Match style and length to the setting and event</li>
+                <li><span class="highlight">Color Coordination:</span> Choose colors that complement your skin tone and overall aesthetic</li>
+                <li><span class="highlight">Fabric Quality:</span> Quality fabrics hold their shape better and look more polished</li>
+                <li><span class="highlight">Personal Confidence:</span> Choose styles that make you feel confident and comfortable</li>
+            </ul>
+
+            <h3 style="margin-top:30px;">Length Guidelines:</h3>
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ Mini Skirts/Dresses (Above Knee):</strong>
+                    <ul>
+                        <li>Casual and young occasions</li>
+                        <li>Not appropriate for formal or professional settings</li>
+                        <li>Perfect for showing off legs</li>
+                        <li>Requires confident styling</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Knee-Length:</strong>
+                    <ul>
+                        <li>Most professional and versatile</li>
+                        <li>Appropriate for most occasions</li>
+                        <li>Flattering for most body types</li>
+                        <li>Perfect for office and formal wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ Midi (Mid-Calf):</strong>
+                    <ul>
+                        <li>Contemporary and trendy</li>
+                        <li>Appropriate for professional and casual</li>
+                        <li>Flattering for most body types</li>
+                        <li>Elegant and sophisticated</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Maxi (Floor-Length):</strong>
+                    <ul>
+                        <li>Formal and evening occasions</li>
+                        <li>Elegant and sophisticated</li>
+                        <li>Flattering for longer torsos</li>
+                        <li>Perfect for special events</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px;">Selection by Body Type:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Apple Shape:</span> A-line, maxi, and wrap styles balance midsection. Avoid clingy, fitted styles. Choose patterns on top, solid on bottom</li>
+                <li><span class="highlight">Pear Shape:</span> Dark-colored bottoms, A-line, and flared styles balance hips. Avoid tight, fitted styles. Use lighter colors on top</li>
+                <li><span class="highlight">Hourglass Shape:</span> Fitted, wrap, and pencil styles emphasize curves. Cinched waists are flattering. Avoid oversized styles</li>
+                <li><span class="highlight">Rectangle Shape:</span> Patterned or bright styles, peplum, fit-and-flare create curves. Avoid plain, straight cuts. Add texture and volume</li>
+                <li><span class="highlight">Inverted Triangle:</span> A-line, flared, and wide-leg styles balance shoulders. Bright or patterned bottoms draw attention downward</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong>
+                <p>Invest in well-fitting basics in neutral colors (black, navy, gray) in both skirts and dresses. These foundational pieces are incredibly versatile and can be styled countless ways. Then add trendy styles and prints for fashion-forward occasions.</p>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <h2>Summary</h2>
+            <p>
+                Skirts and dresses are essential fashion pieces that offer endless styling possibilities and outfit combinations. From professional pencil skirts to casual sundresses, understanding different styles and their appropriate uses ensures a versatile, well-coordinated wardrobe. Key takeaways:
+            </p>
+            <ul class="content-list">
+                <li>Different silhouettes suit different body types and occasions</li>
+                <li>Proper fit and length are crucial for a polished appearance</li>
+                <li>Skirts and dresses allow for creative styling with various tops and accessories</li>
+                <li>Color and style should complement your overall aesthetic</li>
+                <li>Invest in quality basics that work for multiple occasions</li>
+                <li>Consider body shape when selecting styles and silhouettes</li>
+                <li>Personal confidence and comfort should guide your selections</li>
+            </ul>
+            <p style="margin-top:20px;">
+                Whether you need professional skirts for the office, casual dresses for everyday wear, or elegant gowns for special occasions, understanding skirt and dress types and selection principles ensures you can create beautiful, flattering, well-coordinated outfits for any situation. The right skirt or dress can instantly complete your look and boost your confidence!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Understanding Fashion Library (FDO-355) | All rights reserved</p>
+        <p>Created by: Subhayu</p>
+    </footer>
+
+    <script>
+        function previousChapter(){
+            window.location.href = 'chapter5.html';
+        }
+        function nextChapter(){
+            window.location.href = 'chapter7.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3 - Jacket | Understanding Fashion Library</title>
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+            scroll-behavior:smooth;
+        }
+        body{
+            min-height:100vh;
+            color:#333;
+            overflow-x:hidden;
+        }
+        /* Animated Gradient */
+        body{
+            background:linear-gradient(-45deg,#c6e7ff,#d8b4fe,#fde68a,#bbf7d0,#fbcfe8);
+            background-size:400% 400%;
+            animation:gradient 15s ease infinite;
+        }
+        @keyframes gradient{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+        /* Navigation */
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid rgba(255,255,255,.2);
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+        nav a{
+            color:black;
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.1rem;
+            transition:.3s;
+        }
+        nav a:hover{
+            opacity:.7;
+        }
+        .nav-buttons{
+            display:flex;
+            gap:15px;
+        }
+        .nav-btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:12px;
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,.35);
+            cursor:pointer;
+            font-weight:600;
+            transition:.3s;
+        }
+        .nav-btn:hover{
+            background:rgba(255,255,255,.28);
+            transform:scale(1.05);
+        }
+        /* Main Content */
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:60px 40px;
+        }
+        header{
+            text-align:center;
+            margin-bottom:60px;
+        }
+        header h1{
+            font-size:2.8rem;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+        header .subtitle{
+            font-size:1.2rem;
+            color:#555;
+            font-weight:400;
+        }
+        /* Sections */
+        .section{
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.35);
+            border-radius:20px;
+            padding:40px;
+            margin-bottom:40px;
+            box-shadow:0 8px 30px rgba(0,0,0,.1);
+        }
+        .section h2{
+            font-size:2rem;
+            margin-bottom:20px;
+            color:#1a1a1a;
+            border-bottom:3px solid rgba(0,0,0,.2);
+            padding-bottom:15px;
+        }
+        .section h3{
+            font-size:1.4rem;
+            margin-top:25px;
+            margin-bottom:12px;
+            color:#2a2a2a;
+        }
+        .section h4{
+            font-size:1.1rem;
+            margin-top:18px;
+            margin-bottom:10px;
+            color:#3a3a3a;
+            font-weight:600;
+        }
+        .section p{
+            font-size:1rem;
+            line-height:1.8;
+            color:#444;
+            margin-bottom:15px;
+        }
+        .content-list{
+            list-style:none;
+            margin:20px 0;
+        }
+        .content-list li{
+            padding:12px 0;
+            padding-left:30px;
+            position:relative;
+            font-size:1rem;
+            line-height:1.6;
+            color:#444;
+        }
+        .content-list li:before{
+            content:"▸";
+            position:absolute;
+            left:0;
+            color:#d8b4fe;
+            font-size:1.5rem;
+        }
+        .highlight{
+            background:rgba(216,180,254,.3);
+            padding:3px 8px;
+            border-radius:4px;
+            font-weight:500;
+        }
+        .definition-box{
+            background:rgba(107,114,128,.08);
+            border-left:4px solid #d8b4fe;
+            padding:20px;
+            margin:20px 0;
+            border-radius:8px;
+        }
+        .definition-box p{
+            margin:0;
+            font-style:italic;
+            color:#333;
+        }
+        .jacket-card{
+            background:rgba(255,255,255,.12);
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:15px;
+            padding:25px;
+            margin:20px 0;
+        }
+        .jacket-card h4{
+            margin-top:0;
+            font-size:1.2rem;
+            color:#1a1a1a;
+            margin-bottom:12px;
+        }
+        .characteristics-box{
+            background:rgba(74,222,128,.15);
+            border:1px solid rgba(74,222,128,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .characteristics-box strong{
+            color:#15803d;
+            display:block;
+            margin-bottom:8px;
+        }
+        .recommended-box{
+            background:rgba(59,130,246,.15);
+            border:1px solid rgba(59,130,246,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .recommended-box strong{
+            color:#1e40af;
+            display:block;
+            margin-bottom:8px;
+        }
+        .occasion-box{
+            background:rgba(168,85,247,.15);
+            border:1px solid rgba(168,85,247,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .occasion-box strong{
+            color:#6b21a8;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box{
+            background:rgba(239,68,68,.15);
+            border:1px solid rgba(239,68,68,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .avoid-box strong{
+            color:#991b1b;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box ul, .recommended-box ul, .occasion-box ul{
+            list-style:none;
+            margin:0;
+            padding-left:20px;
+        }
+        .avoid-box li, .recommended-box li, .occasion-box li{
+            padding:5px 0;
+            position:relative;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .avoid-box li:before{
+            content:"✗ ";
+            color:#991b1b;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .recommended-box li:before{
+            content:"✓ ";
+            color:#15803d;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .occasion-box li:before{
+            content:"◆ ";
+            color:#6b21a8;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .tip-box{
+            background:rgba(251,146,60,.15);
+            border-left:4px solid #f97316;
+            padding:15px;
+            border-radius:8px;
+            margin:15px 0;
+        }
+        .tip-box strong{
+            color:#7c2d12;
+            display:block;
+            margin-bottom:8px;
+        }
+        .tip-box p{
+            margin:0;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .jacket-category{
+            background:rgba(255,255,255,.12);
+            border:2px solid rgba(216,180,254,.4);
+            border-radius:15px;
+            padding:25px;
+            margin:25px 0;
+        }
+        .jacket-category h3{
+            margin-top:0;
+            padding-bottom:10px;
+            border-bottom:2px solid rgba(216,180,254,.3);
+        }
+        .grid-2{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+            margin:20px 0;
+        }
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-top:1px solid rgba(255,255,255,.2);
+            margin-top:60px;
+        }
+        footer p{
+            color:#555;
+            font-size:.95rem;
+        }
+        @media(max-width:700px){
+            .container{
+                padding:40px 20px;
+            }
+            header h1{
+                font-size:2rem;
+            }
+            .section{
+                padding:25px;
+            }
+            .section h2{
+                font-size:1.6rem;
+            }
+            nav{
+                flex-direction:column;
+                gap:15px;
+                padding:15px;
+            }
+            .nav-buttons{
+                width:100%;
+                justify-content:center;
+            }
+            .grid-2{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html">← Back to Units</a>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="previousChapter()">← Previous</button>
+            <button class="nav-btn" onclick="nextChapter()">Next →</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Chapter 3: Jacket</h1>
+            <p class="subtitle">Unit - 2: Fashion Library</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <div class="section">
+            <h2>Introduction to Jackets</h2>
+            <p>
+                The <span class="highlight">jacket</span> is a versatile outer garment that plays a crucial role in fashion and functionality. Jackets serve multiple purposes—they provide warmth, structure, and style to any outfit. Understanding different jacket types and their appropriate uses is essential for creating well-balanced, professional, and fashionable looks.
+            </p>
+            <p>
+                Jackets are important because they:
+            </p>
+            <ul class="content-list">
+                <li>Provide protection from weather and temperature</li>
+                <li>Add structure and definition to silhouettes</li>
+                <li>Establish formality level and occasion appropriateness</li>
+                <li>Can instantly elevate or casual down an outfit</li>
+                <li>Frame the upper body and shoulders</li>
+                <li>Provide storage and functionality</li>
+                <li>Allow for self-expression through style and design</li>
+            </ul>
+        </div>
+
+        <!-- Formal & Professional Jackets -->
+        <div class="jacket-category">
+            <h3>Formal & Professional Jackets</h3>
+            <p>Structured jackets designed for professional settings and formal occasions.</p>
+
+            <!-- Blazer -->
+            <div class="jacket-card">
+                <h4>1. Blazer</h4>
+                <div class="definition-box">
+                    <p>A tailored jacket with a structured fit, typically featuring notched lapels, button closures, and clean lines. The classic professional jacket.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Structured, tailored fit</li>
+                        <li>Notched or peaked lapels</li>
+                        <li>Button closure (single or double-breasted)</li>
+                        <li>Can be worn dressed up or down</li>
+                        <li>Available in various colors and fabrics</li>
+                        <li>Often has interior pockets</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Professional workplaces</li>
+                        <li>Business casual to formal settings</li>
+                        <li>Creating polished, put-together looks</li>
+                        <li>Most body types with proper tailoring</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Office wear</li>
+                        <li>Job interviews</li>
+                        <li>Business meetings</li>
+                        <li>Smart casual events</li>
+                        <li>Elevated weekend looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sport Coat/Sports Jacket -->
+            <div class="jacket-card">
+                <h4>2. Sport Coat/Sports Jacket</h4>
+                <div class="definition-box">
+                    <p>A slightly less formal version of a blazer with a more relaxed fit. Often features patterns and textures, and can be worn with casual clothing.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Structured but relaxed fit</li>
+                        <li>Can feature patterns or textures</li>
+                        <li>Notched lapels typical</li>
+                        <li>Button closure</li>
+                        <li>More versatile than blazer</li>
+                        <li>Can mix with casual pieces</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Smart casual occasions</li>
+                        <li>Mixing with casual clothing</li>
+                        <li>Adding structure to relaxed outfits</li>
+                        <li>Weekend elegance</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Smart casual events</li>
+                        <li>Dinner dates</li>
+                        <li>Cocktail parties</li>
+                        <li>Weekend gatherings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Suit Jacket -->
+            <div class="jacket-card">
+                <h4>3. Suit Jacket</h4>
+                <div class="definition-box">
+                    <p>A precisely tailored jacket designed to be worn with matching trousers as a complete suit. Represents the highest level of formality in jackets.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Perfectly matched to trousers</li>
+                        <li>Precise tailoring and fit</li>
+                        <li>High-quality fabric and construction</li>
+                        <li>Can be single or double-breasted</li>
+                        <li>Often features lining</li>
+                        <li>Investment piece</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal events</li>
+                        <li>High-level business settings</li>
+                        <li>Creating polished, professional looks</li>
+                        <li>Special occasions</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Formal business meetings</li>
+                        <li>Court appearances</li>
+                        <li>Weddings</li>
+                        <li>Black-tie adjacent events</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tuxedo Jacket -->
+            <div class="jacket-card">
+                <h4>4. Tuxedo Jacket (Dinner Jacket)</h4>
+                <div class="definition-box">
+                    <p>The most formal jacket, featuring a satin lapel and sophisticated construction. Exclusively worn for black-tie and formal evening events.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Satin lapels (peak or notched)</li>
+                        <li>Black or midnight blue color</li>
+                        <li>Perfectly tailored fit</li>
+                        <li>Often features satin side stripe on trousers</li>
+                        <li>Highest formality level</li>
+                        <li>Premium fabrics</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Black-tie events only</li>
+                        <li>Formal evening affairs</li>
+                        <li>High-level formal occasions</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Black-tie galas</li>
+                        <li>Formal evening events</li>
+                        <li>High-level formal occasions</li>
+                        <li>Premium celebrations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casual & Everyday Jackets -->
+        <div class="jacket-category">
+            <h3>Casual & Everyday Jackets</h3>
+            <p>Relaxed jackets for everyday wear and casual occasions.</p>
+
+            <!-- Denim Jacket -->
+            <div class="jacket-card">
+                <h4>5. Denim Jacket</h4>
+                <div class="definition-box">
+                    <p>A casual jacket made from denim fabric, typically featuring button closures, pockets, and a relaxed fit. A timeless classic staple.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Durable denim fabric</li>
+                        <li>Button closure</li>
+                        <li>Multiple pockets</li>
+                        <li>Can be worn for years</li>
+                        <li>Available in various washes and colors</li>
+                        <li>Versatile for many outfits</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Most body types</li>
+                        <li>Year-round styling</li>
+                        <li>Creating effortless looks</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Casual outings</li>
+                        <li>Weekend wear</li>
+                        <li>Layering piece</li>
+                        <li>Informal gatherings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Leather Jacket -->
+            <div class="jacket-card">
+                <h4>6. Leather Jacket</h4>
+                <div class="definition-box">
+                    <p>A classic jacket made from genuine leather, often featuring a motorcycle or biker style. Projects confidence, edge, and timeless style.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Genuine leather construction</li>
+                        <li>Can be classic or motorcycle style</li>
+                        <li>Zipper or button closure</li>
+                        <li>Improves with age and wear</li>
+                        <li>Requires care and maintenance</li>
+                        <li>Investment piece</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Adding edge to outfits</li>
+                        <li>Creating sophisticated casual looks</li>
+                        <li>Year-round styling</li>
+                        <li>Most body types</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Casual dates</li>
+                        <li>Night out</li>
+                        <li>Elevated casual wear</li>
+                        <li>Fashion-forward styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cardigan -->
+            <div class="jacket-card">
+                <h4>7. Cardigan</h4>
+                <div class="definition-box">
+                    <p>A knitted jacket that opens down the front with buttons, zippers, or snaps. Provides warmth while remaining comfortable and casual.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Knit construction</li>
+                        <li>Button or zip front</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Various lengths available</li>
+                        <li>Comfortable and relaxed</li>
+                        <li>Available in many colors and patterns</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Layering in cool weather</li>
+                        <li>Comfortable, relaxed styling</li>
+                        <li>Most body types</li>
+                        <li>Creating cozy looks</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Layering piece</li>
+                        <li>Office wear (depending on style)</li>
+                        <li>Comfortable home time</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hoodie Jacket -->
+            <div class="jacket-card">
+                <h4>8. Hoodie/Hoodie Jacket</h4>
+                <div class="definition-box">
+                    <p>A casual jacket with an attached hood, typically made from cotton or fleece. Perfect for comfort and casual styling.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Attached hood</li>
+                        <li>Zip or button front (usually zip)</li>
+                        <li>Drawstring hood</li>
+                        <li>Kangaroo pocket typical</li>
+                        <li>Soft, comfortable fabric</li>
+                        <li>Various styles available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Ultra-casual wear</li>
+                        <li>Comfort and ease</li>
+                        <li>Athletic styling</li>
+                        <li>Layering in cool weather</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Casual outings</li>
+                        <li>Gym and sports</li>
+                        <li>Relaxed weekend wear</li>
+                        <li>Comfortable casual styling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seasonal & Weathered Jackets -->
+        <div class="jacket-category">
+            <h3>Seasonal & Weather-Appropriate Jackets</h3>
+            <p>Jackets designed for specific seasons and weather conditions.</p>
+
+            <!-- Bomber Jacket -->
+            <div class="jacket-card">
+                <h4>9. Bomber Jacket</h4>
+                <div class="definition-box">
+                    <p>A short, fitted jacket with a full elastic hem and cuffs, originally designed for pilots. Features a zippered front and minimalist design.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Zip front closure</li>
+                        <li>Elastic hem and cuffs</li>
+                        <li>Lightweight to medium weight</li>
+                        <li>Can have collar or stand-up neckline</li>
+                        <li>Available in many colors and materials</li>
+                        <li>Contemporary and trendy</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Contemporary casual styling</li>
+                        <li>Spring and fall wear</li>
+                        <li>Creating modern looks</li>
+                        <li>Shorter torsos (doesn't add length)</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Casual dating</li>
+                        <li>Trendy social events</li>
+                        <li>Elevated casual wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Puffer/Down Jacket -->
+            <div class="jacket-card">
+                <h4>10. Puffer/Down Jacket</h4>
+                <div class="definition-box">
+                    <p>A heavily insulated jacket filled with down or synthetic material, designed for extreme cold weather protection.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Insulated with down or synthetic fill</li>
+                        <li>Lightweight but warm</li>
+                        <li>Can be bulky in appearance</li>
+                        <li>Water-resistant options available</li>
+                        <li>Various lengths available</li>
+                        <li>Essential for cold climates</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Winter wear and cold weather</li>
+                        <li>Functionality and warmth</li>
+                        <li>Pear and apple body shapes (adds volume)</li>
+                        <li>Outdoor activities</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Winter activities</li>
+                        <li>Cold weather outings</li>
+                        <li>Casual winter styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Trench Coat -->
+            <div class="jacket-card">
+                <h4>11. Trench Coat</h4>
+                <div class="definition-box">
+                    <p>A long, tailored coat with a belt, typically made from waterproof fabric. Classic and sophisticated, originally designed for military use.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Long length (usually knee-length)</li>
+                        <li>Double-breasted button front</li>
+                        <li>Waist belt</li>
+                        <li>Waterproof or water-resistant fabric</li>
+                        <li>Classic, timeless design</li>
+                        <li>Can be worn dressed up or down</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Rainy weather</li>
+                        <li>Creating sophisticated looks</li>
+                        <li>Both casual and professional styling</li>
+                        <li>Tall figures (adds length)</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Professional settings</li>
+                        <li>Rainy day styling</li>
+                        <li>Elevated casual wear</li>
+                        <li>Sophisticated looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Duffel Coat -->
+            <div class="jacket-card">
+                <h4>12. Duffel Coat</h4>
+                <div class="definition-box">
+                    <p>A heavy wool coat with toggle buttons and a hood, designed for cold weather. Features a relaxed, comfortable fit.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Wool or wool-blend fabric</li>
+                        <li>Toggle button closures</li>
+                        <li>Hood included</li>
+                        <li>Relaxed fit</li>
+                        <li>Warm and durable</li>
+                        <li>Can appear bulky</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Winter wear and cold weather</li>
+                        <li>Casual styling</li>
+                        <li>Adding texture and interest</li>
+                        <li>Cozy, comfortable looks</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Winter outings</li>
+                        <li>Casual cold-weather styling</li>
+                        <li>Weekend casual wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Rain Jacket -->
+            <div class="jacket-card">
+                <h4>13. Rain Jacket</h4>
+                <div class="definition-box">
+                    <p>A lightweight, waterproof jacket designed specifically for rain protection. Typically features minimal insulation and water-resistant materials.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Waterproof material</li>
+                        <li>Lightweight construction</li>
+                        <li>Can fold or pack down</li>
+                        <li>Minimal insulation</li>
+                        <li>Often has hood</li>
+                        <li>Available in bright colors</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Rainy seasons</li>
+                        <li>Lightweight layering</li>
+                        <li>Outdoor activities in wet weather</li>
+                        <li>Packable, travel-friendly</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Rainy day outings</li>
+                        <li>Casual weather-appropriate styling</li>
+                        <li>Travel and outdoor activities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specialty & Fashion Jackets -->
+        <div class="jacket-category">
+            <h3>Specialty & Fashion Jackets</h3>
+            <p>Unique jackets designed for specific styles and fashion statements.</p>
+
+            <!-- Jean/Denim Jacket (Styled) -->
+            <div class="jacket-card">
+                <h4>14. Moto Jacket</h4>
+                <div class="definition-box">
+                    <p>A sleek, fitted jacket inspired by motorcycle gear, featuring zippers, studs, and angular details. Projects edgy, confident style.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted, tailored silhouette</li>
+                        <li>Asymmetrical zipper</li>
+                        <li>Can feature studs and hardware</li>
+                        <li>Often leather or faux leather</li>
+                        <li>Edgy, contemporary design</li>
+                        <li>High-low styling piece</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Fashion-forward styling</li>
+                        <li>Adding edge to outfits</li>
+                        <li>Contemporary looks</li>
+                        <li>Creating edgy-casual combinations</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Night out</li>
+                        <li>Fashion-focused events</li>
+                        <li>Elevated casual wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quilted Jacket -->
+            <div class="jacket-card">
+                <h4>15. Quilted Jacket</h4>
+                <div class="definition-box">
+                    <p>A jacket with quilted pattern stitching filled with insulation, combining structure and warmth. Provides both style and function.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Quilted pattern throughout</li>
+                        <li>Insulated filling</li>
+                        <li>Structured appearance</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Various color options</li>
+                        <li>Lightweight to medium weight</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Spring and fall layering</li>
+                        <li>Structured, polished looks</li>
+                        <li>Both casual and professional wear</li>
+                        <li>Pear and apple shapes (adds structure)</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Casual office wear</li>
+                        <li>Elevated casual styling</li>
+                        <li>Weekend wear</li>
+                        <li>Smart casual events</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Denim Jacket (Oversized) -->
+            <div class="jacket-card">
+                <h4>16. Oversized Jacket</h4>
+                <div class="definition-box">
+                    <p>A deliberately oversized, loose-fitting jacket that creates a relaxed, contemporary silhouette. Can be denim, cotton, or any fabric.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Intentionally oversized fit</li>
+                        <li>Loose and relaxed</li>
+                        <li>Contemporary styling</li>
+                        <li>Can be any fabric</li>
+                        <li>Creates modern aesthetic</li>
+                        <li>Comfortable and casual</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Contemporary casual styling</li>
+                        <li>Creating relaxed looks</li>
+                        <li>Fashion-forward aesthetics</li>
+                        <li>Comfortable, effortless styling</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Casual outings</li>
+                        <li>Fashion-focused events</li>
+                        <li>Weekend wear</li>
+                        <li>Trend-setting styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Velvet Jacket -->
+            <div class="jacket-card">
+                <h4>17. Velvet Jacket</h4>
+                <div class="definition-box">
+                    <p>A luxurious jacket made from velvet fabric, featuring a soft texture. Perfect for sophisticated, dressy occasions.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Soft velvet fabric</li>
+                        <li>Luxurious appearance</li>
+                        <li>Can be dressy or casual styling</li>
+                        <li>Various color options</li>
+                        <li>Requires careful care</li>
+                        <li>Elevated, sophisticated feel</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal and evening events</li>
+                        <li>Creating sophisticated looks</li>
+                        <li>Adding texture and luxury</li>
+                        <li>Elevated styling</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Evening events</li>
+                        <li>Formal occasions</li>
+                        <li>Special celebrations</li>
+                        <li>Elegant gatherings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Linen Jacket -->
+            <div class="jacket-card">
+                <h4>18. Linen Jacket</h4>
+                <div class="definition-box">
+                    <p>A lightweight jacket made from linen, designed for warm weather and relaxed elegance. Perfect for summer styling.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Lightweight linen fabric</li>
+                        <li>Breathable and comfortable</li>
+                        <li>Can wrinkle easily</li>
+                        <li>Perfect for warm weather</li>
+                        <li>Available in soft colors</li>
+                        <li>Relaxed elegance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer wear</li>
+                        <li>Warm weather styling</li>
+                        <li>Elevated casual looks</li>
+                        <li>Beach vacation wear</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Summer casual events</li>
+                        <li>Beach vacation</li>
+                        <li>Warm weather gatherings</li>
+                        <li>Resort wear</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jacket Selection & Styling Tips -->
+        <div class="section">
+            <h2>Jacket Selection & Styling Guidelines</h2>
+            
+            <h3>Key Principles for Choosing Jackets:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Proper Fit:</span> A well-fitting jacket should allow movement while maintaining structure. Shoulders should align with natural shoulder points.</li>
+                <li><span class="highlight">Occasion Appropriateness:</span> Match jacket formality to the occasion and setting.</li>
+                <li><span class="highlight">Body Type Consideration:</span> Choose jackets that flatter your body shape through strategic tailoring.</li>
+                <li><span class="highlight">Color Coordination:</span> Select colors that complement skin tone and existing wardrobe.</li>
+                <li><span class="highlight">Sleeve Length:</span> Sleeves should end at the wrist bone, allowing a small amount of shirt cuff to show.</li>
+                <li><span class="highlight">Length Proportion:</span> Jacket length should be proportional to your height and body length.</li>
+                <li><span class="highlight">Quality Investment:</span> Invest in quality basics; they last longer and look better.</li>
+            </ul>
+
+            <h3 style="margin-top:30px;">Styling Tips by Body Type:</h3>
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ For Apple Shape:</strong>
+                    <ul>
+                        <li>Longer jackets that cover hips</li>
+                        <li>Structured styles</li>
+                        <li>Avoid fitted waist styles</li>
+                        <li>Dark colors hide midsection</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ For Pear Shape:</strong>
+                    <ul>
+                        <li>Patterned or bright colored jackets</li>
+                        <li>Shoulder pads add width</li>
+                        <li>Avoid long jackets</li>
+                        <li>Focus attention upward</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ For Hourglass Shape:</strong>
+                    <ul>
+                        <li>Fitted jackets with cinch</li>
+                        <li>Emphasize waist definition</li>
+                        <li>Avoid oversized styles</li>
+                        <li>Highlight curves</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ For Rectangle Shape:</strong>
+                    <ul>
+                        <li>Peplum or patterned jackets</li>
+                        <li>Cinched waistlines</li>
+                        <li>Add texture and volume</li>
+                        <li>Create curves with style</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px;">Jacket Layering Tips:</h3>
+            <ul class="content-list">
+                <li>Lightweight jackets work well over dresses and skirts</li>
+                <li>Structured blazers add polish to casual outfits</li>
+                <li>Oversized jackets create modern, relaxed silhouettes</li>
+                <li>Shorter jackets pair well with high-waisted bottoms</li>
+                <li>Longer jackets elongate shorter frames</li>
+                <li>Pattern and color mixing adds visual interest</li>
+            </ul>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <h2>Summary</h2>
+            <p>
+                Understanding jacket types and their appropriate uses is crucial for building a versatile wardrobe. From formal blazers to casual bombers, each jacket style serves a specific purpose and can transform an outfit. Key takeaways:
+            </p>
+            <ul class="content-list">
+                <li>Different occasions require different jacket styles</li>
+                <li>Proper fit is more important than size or brand</li>
+                <li>Invest in quality basics like blazers and leather jackets</li>
+                <li>Match jacket style to occasion formality level</li>
+                <li>Use jackets to flatter your body type and proportions</li>
+                <li>Build a wardrobe with versatile jackets for multiple seasons</li>
+                <li>Proper tailoring can transform any jacket into a perfect fit</li>
+            </ul>
+            <p style="margin-top:20px;">
+                Whether you need professional polish, casual comfort, or fashion-forward style, there's a jacket type for every occasion, body type, and personal aesthetic!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Understanding Fashion Library (FDO-355) | All rights reserved</p>
+        <p>Created by: Subhayu</p>
+    </footer>
+
+    <script>
+        function previousChapter(){
+            window.location.href = 'chapter2.html';
+        }
+        function nextChapter(){
+            window.location.href = 'chapter4.html';
+        }
+    </script>
+</body>
+</html>

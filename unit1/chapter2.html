@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: Elements and Principles of Fashion Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .intro {
+            background: #fff3e0;
+            padding: 25px;
+            border-left: 5px solid #f5576c;
+            margin-bottom: 35px;
+            border-radius: 8px;
+        }
+
+        .intro p {
+            font-size: 1.05em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #f5576c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #f093fb;
+        }
+
+        .element-card, .principle-card {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #fff;
+            border: 2px solid #f093fb;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .element-card:hover, .principle-card:hover {
+            border-color: #f5576c;
+            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .element-card h3, .principle-card h3 {
+            color: #f5576c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .element-card h3::before, .principle-card h3::before {
+            content: "▸";
+            margin-right: 15px;
+            font-size: 1.5em;
+            color: #f093fb;
+        }
+
+        .definition {
+            background: #fff3f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 500;
+            border-left: 4px solid #f5576c;
+        }
+
+        .example {
+            background: #fff8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .example strong {
+            color: #e65100;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .analogy {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+            font-style: italic;
+        }
+
+        .analogy strong {
+            color: #1565c0;
+            display: block;
+            margin-bottom: 8px;
+            font-style: normal;
+        }
+
+        .key-highlights {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ff6f00;
+        }
+
+        .key-highlights strong {
+            color: #e65100;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .key-highlights ul {
+            margin-left: 20px;
+        }
+
+        .key-highlights li {
+            margin: 8px 0;
+            color: #555;
+        }
+
+        .visual-guide {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px dashed #9c27b0;
+        }
+
+        .visual-guide strong {
+            color: #6a1b9a;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .line-types {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .line-type {
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #f093fb;
+        }
+
+        .line-type strong {
+            color: #f5576c;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .practice-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px 30px;
+            margin-top: 40px;
+        }
+
+        .practice-section h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .quiz-container {
+            background: white;
+            color: #333;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .question {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #f5576c;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            background: #f5f5f5;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            background: #fff3f0;
+            border-color: #f5576c;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        .answer-section {
+            display: none;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .answer-section.show {
+            display: block;
+        }
+
+        .answer-section strong {
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .reasoning {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-check {
+            background: #f5576c;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-check:hover {
+            background: #e63946;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.3);
+        }
+
+        .btn-reset {
+            background: #f5f5f5;
+            color: #333;
+            flex: 1;
+        }
+
+        .btn-reset:hover {
+            background: #e0e0e0;
+        }
+
+        .score-display {
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .score-display.show {
+            display: block;
+        }
+
+        .score-display h3 {
+            color: #2e7d32;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #f5f5f5;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-table thead {
+            background: #f5576c;
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #fff3f0;
+        }
+
+        .comparison-table tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .interactive-visual {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .interactive-visual p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .content, .practice-section {
+                padding: 20px 15px;
+            }
+
+            .element-card, .principle-card {
+                padding: 15px;
+            }
+
+            .line-types {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .element-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .element-list-item {
+            padding: 15px;
+            background: #fff3f0;
+            border-radius: 8px;
+            border-left: 4px solid #f5576c;
+        }
+
+        .element-list-item strong {
+            color: #f5576c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Chapter 2: Elements & Principles of Fashion Design</h1>
+            <p>The Building Blocks and Rules of Fashion Creation</p>
+        </header>
+
+        <div class="content">
+            <div class="intro">
+                <p>
+                    Welcome to the creative heart of fashion design! If Chapter 1 taught you the language of fashion, 
+                    then this chapter teaches you the alphabet and grammar of that language. <strong>Elements</strong> are 
+                    the raw ingredients that designers work with, while <strong>Principles</strong> are the rules that guide 
+                    how these ingredients are combined into harmonious, beautiful designs.
+                </p>
+                <p>
+                    Think of it like cooking: Elements are your ingredients (flour, sugar, eggs), and Principles are your 
+                    recipe (how much of each, in what order, at what temperature). Both are essential to create something delicious!
+                </p>
+            </div>
+
+            <!-- ELEMENTS SECTION -->
+            <h2 class="section-title">📦 THE FOUR ELEMENTS OF FASHION DESIGN</h2>
+
+            <p style="font-size: 1.05em; color: #666; margin-bottom: 20px;">
+                <strong>Definition:</strong> Elements are the fundamental components or "raw materials" that fashion designers use 
+                to create garments. They are the basic building blocks that make design possible.
+            </p>
+
+            <!-- Element 1: Color -->
+            <div class="element-card">
+                <h3>Color</h3>
+                <div class="definition">
+                    <strong>Definition:</strong> Color is the first element that viewers respond to. It refers to the hue, value 
+                    (lightness or darkness), and intensity (brightness or dullness) used in a garment. Color adds excitement, 
+                    mood, and emotion to a design.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    A little black dress instantly communicates sophistication and formality. The same dress in hot pink 
+                    becomes playful and bold. A pastel blue version feels soft and dreamy. The color completely transforms 
+                    the mood and message!
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Color is like the "seasoning" of fashion. The same outfit structure with different colors creates entirely 
+                    different experiences—just like salt enhances one dish and chili peppers enhance another.
+                </div>
+                <div class="key-highlights">
+                    <strong>Color Components:</strong>
+                    <ul>
+                        <li><strong>Hue:</strong> The color name (red, blue, yellow, green)</li>
+                        <li><strong>Value:</strong> How light or dark the color is (tints and shades)</li>
+                        <li><strong>Intensity:</strong> How bright or dull the color is (vibrant vs. muted)</li>
+                    </ul>
+                </div>
+                <div class="visual-guide">
+                    <strong>Color Psychology in Fashion:</strong>
+                    <ul style="margin-left: 20px;">
+                        <li><strong style="color: #d32f2f;">Red:</strong> Power, passion, excitement, energy</li>
+                        <li><strong style="color: #000;">Black:</strong> Sophistication, elegance, mystery, formality</li>
+                        <li><strong style="color: #fff; background: #ccc; padding: 2px 5px;">White:</strong> Purity, cleanliness, simplicity, innocence</li>
+                        <li><strong style="color: #0d47a1;">Blue:</strong> Calmness, trust, stability, professionalism</li>
+                        <li><strong style="color: #f57c00;">Orange:</strong> Warmth, creativity, enthusiasm, playfulness</li>
+                        <li><strong style="color: #689f38;">Green:</strong> Nature, freshness, growth, harmony</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Element 2: Line -->
+            <div class="element-card">
+                <h3>Line</h3>
+                <div class="definition">
+                    <strong>Definition:</strong> In fashion, line refers to the direction of visual interest created by construction 
+                    details such as seams, openings, pleats, gathers, tucks, topstitching, and trims. Lines guide the viewer's eye 
+                    and create visual direction.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    A vertical stripe on a dress makes the wearer look taller and slimmer. Horizontal stripes make the figure appear 
+                    wider and shorter. A diagonal cut on a dress creates movement and intrigue. All these are created by using different 
+                    types of lines!
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Lines are like "roads for the eyes." Vertical lines are highways that move your gaze up and down. Horizontal lines 
+                    are paths that move your gaze left and right. Curved lines are scenic routes that create flowing, smooth movement.
+                </div>
+                <div class="visual-guide">
+                    <strong>Four Major Types of Lines in Fashion:</strong>
+                    <div class="line-types">
+                        <div class="line-type">
+                            <strong>Vertical Lines</strong>
+                            <p>Go up and down ⬆️⬇️</p>
+                            <p>Effect: Creates height, elongation, slenderness, formality</p>
+                            <p>Used in: Tailored blazers, long columns dresses, pin-striped pants</p>
+                        </div>
+                        <div class="line-type">
+                            <strong>Horizontal Lines</strong>
+                            <p>Go left and right ⬅️➡️</p>
+                            <p>Effect: Creates width, makes figure appear wider, adds visual breadth</p>
+                            <p>Used in: Striped tops, bands, trims, waistlines</p>
+                        </div>
+                        <div class="line-type">
+                            <strong>Diagonal Lines</strong>
+                            <p>Go at angles ➙</p>
+                            <p>Effect: Creates movement, energy, excitement, drama</p>
+                            <p>Used in: Asymmetrical cuts, bias cuts, slanted pleats, diagonal stripes</p>
+                        </div>
+                        <div class="line-type">
+                            <strong>Curved Lines</strong>
+                            <p>Flow smoothly ⟿</p>
+                            <p>Effect: Creates fluidity, softness, femininity, grace</p>
+                            <p>Used in: Circular hemlines, curved necklines, flowing fabrics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Element 3: Shape/Silhouette -->
+            <div class="element-card">
+                <h3>Shape (Silhouette)</h3>
+                <div class="definition">
+                    <strong>Definition:</strong> Shape or silhouette refers to the overall outline or contour of a garment. 
+                    It's the overall form seen from a distance and is one of the first things people notice about a piece of clothing.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    An A-line dress has a fitted top that flares out at the bottom. A pencil skirt is straight and form-fitting. 
+                    An oversized t-shirt is boxy and loose. Each creates a completely different silhouette on the body.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Silhouette is like the "shadow" of a garment. If you look at a dress from far away, you don't see details—you see 
+                    just its overall shape, like a shadow on a wall. That's the silhouette.
+                </div>
+                <div class="visual-guide">
+                    <strong>Common Silhouettes in Fashion:</strong>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>A-Line:</strong> Fitted at top, flares out at bottom (think 1950s skirts) - Flattering, classic, timeless</li>
+                        <li><strong>Hourglass:</strong> Emphasizes the waist, balanced curves - Feminine, flattering, structured</li>
+                        <li><strong>Straight/Column:</strong> Minimal curves, sleek and simple - Modern, minimalist, sophisticated</li>
+                        <li><strong>Oversized/Boxy:</strong> Loose, roomy, comfortable - Contemporary, streetwear, dramatic</li>
+                        <li><strong>Peplum:</strong> Fitted with a ruffle at the waist - Fun, feminine, 1980s inspired</li>
+                        <li><strong>Wrap:</strong> Ties at the waist, adjustable - Flattering, versatile, casual-to-formal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Element 4: Texture -->
+            <div class="element-card">
+                <h3>Texture</h3>
+                <div class="definition">
+                    <strong>Definition:</strong> Texture refers to the surface characteristics of a fabric or garment. It's how 
+                    something feels when touched (tactile texture) or appears to feel (visual texture). Texture is created by the 
+                    weave of the fabric and the materials used.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    A silk blouse feels smooth and luxurious when you touch it. A wool sweater feels cozy and thick. Lace feels 
+                    delicate and airy. Leather feels stiff and bold. All of these are different textures that create different 
+                    tactile and visual experiences.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Texture is the "personality" of a fabric. A rough denim feels like a tough friend. A soft cashmere feels like 
+                    a gentle friend. Same item (like a sweater), but different personality based on texture!
+                </div>
+                <div class="key-highlights">
+                    <strong>Types of Textures:</strong>
+                    <ul>
+                        <li><strong>Smooth Textures:</strong> Silk, satin, cotton—feel sleek, luxurious, polished</li>
+                        <li><strong>Rough Textures:</strong> Denim, linen, burlap—feel sturdy, casual, structured</li>
+                        <li><strong>Shiny Textures:</strong> Velvet, sequins, metallic fabrics—catch light, appear glamorous</li>
+                        <li><strong>Matte Textures:</strong> Cotton, wool, suede—don't reflect light, appear subtle</li>
+                        <li><strong>Delicate Textures:</strong> Lace, chiffon, tulle—feel fragile, appear feminine</li>
+                        <li><strong>Heavy Textures:</strong> Leather, neoprene, thick knits—feel substantial, appear bold</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PRINCIPLES SECTION -->
+            <h2 class="section-title">⚖️ THE FIVE PRINCIPLES OF FASHION DESIGN</h2>
+
+            <p style="font-size: 1.05em; color: #666; margin-bottom: 20px;">
+                <strong>Definition:</strong> Principles are guidelines that help designers combine the design elements effectively. 
+                If elements are the "alphabet," principles are the "grammar"—they're the rules for arranging elements in a way that 
+                creates cohesive, visually pleasing designs.
+            </p>
+
+            <!-- Principle 1: Balance -->
+            <div class="principle-card">
+                <h3>Balance</h3>
+                <div class="definition">
+                    <strong>Definition:</strong> Balance is the visual distribution of weight in a garment. It ensures that the 
+                    garment doesn't feel off-kilter by distributing details, colors, and shapes in a stable way. A garment must 
+                    be balanced to be visually pleasing.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    A perfectly tailored suit with pockets on both sides, centered buttons, and symmetrical details feels balanced 
+                    and formal. A one-shoulder dress with an off-center neckline and unequal details can also feel balanced because 
+                    the visual weight is carefully distributed on an imaginary center line.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Balance is like a seesaw. You can have weight equally distributed on both sides (symmetrical), or you can have 
+                    different weights but positioned strategically to keep the seesaw level (asymmetrical). Both can be balanced!
+                </div>
+                <div class="visual-guide">
+                    <strong>Two Types of Balance:</strong>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Symmetrical (Formal) Balance</th>
+                                <th>Asymmetrical (Informal) Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Both sides mirror each other exactly</td>
+                                <td>Both sides are different but equally weighted</td>
+                            </tr>
+                            <tr>
+                                <td>Creates calm, formal, traditional look</td>
+                                <td>Creates dynamic, artistic, modern feel</td>
+                            </tr>
+                            <tr>
+                                <td>Examples: Matching buttons, centered zippers, pockets on both sides</td>
+                                <td>Examples: One-shoulder dress, diagonal hem, unequal details</td>
+                            </tr>
+                            <tr>
+                                <td>Most common and inexpensive to produce</td>
+                                <td>Requires more creative planning</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Principle 2: Emphasis -->
+            <div class="principle-card">
+                <h3>Emphasis (Focal Point)</h3>
+                <div class="definition">
+                    <strong>Definition:</strong> Emphasis creates a center of interest in a garment. It's the point of focus where 
+                    the designer wants the viewer's attention to lie. All other elements support it by echoing its design message.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    A dress might have an elaborate beaded neckline—that's the focal point. Your eye is immediately drawn there. 
+                    Or a dress might have dramatic ruffles on the hem—that becomes the focal point. The rest of the dress supports 
+                    this central point of interest.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Emphasis is like the "star" of a movie. All other characters support the main star. In fashion, one detail is 
+                    the "star" and other details are supporting actors that highlight it.
+                </div>
+                <div class="key-highlights">
+                    <strong>Ways to Create Emphasis:</strong>
+                    <ul>
+                        <li>Color accents (bright colors, contrasting colors)</li>
+                        <li>Significant shapes or decorative details (embroidery, beads, prints)</li>
+                        <li>Lines converging (gathers, pleats coming together)</li>
+                        <li>Groups of details concentrated in one area</li>
+                        <li>Contrast (shiny area against matte, rough against smooth)</li>
+                        <li>Unusual shapes or silhouettes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Principle 3: Proportion -->
+            <div class="principle-card">
+                <h3>Proportion (Scale)</h3>
+                <div class="definition">
+                    <strong>Definition:</strong> Proportion is the pleasing interrelationship between parts of a design. It's about 
+                    how well different sizes work together and whether they are "proportionate" to each other and to the human body. 
+                    The various elements in the design should be scaled to fit its overall proportion.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    A tiny button on an oversized coat looks out of proportion. Buttons should be sized appropriately to the coat. 
+                    A large print on a small child's dress can overwhelm them, while the same print on an adult's dress is perfect. 
+                    Proportion relates sizes to each other.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Proportion is about "right-sizing." A tiny person wearing an oversized coat or a tall person wearing a cropped 
+                    jacket can both look odd. But when proportions are right, everything looks balanced and flattering.
+                </div>
+                <div class="key-highlights">
+                    <strong>Proportion Principles:</strong>
+                    <ul>
+                        <li>Well-judged proportions can complement many body types</li>
+                        <li>Oversized or cropped details can be stylish when balanced well</li>
+                        <li>The Golden Ratio (1:1.618) is a timeless guideline for appealing proportions</li>
+                        <li>Hemlines, necklines, and waistlines should be positioned proportionally</li>
+                        <li>Pattern scale should match the garment size (small prints for petite, large prints for larger)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Principle 4: Rhythm -->
+            <div class="principle-card">
+                <h3>Rhythm</h3>
+                <div class="definition">
+                    <strong>Definition:</strong> Rhythm is the principle that refers to the way a design makes the eyes move across 
+                    a garment. It creates a sense of movement and directs the viewer's gaze from one feature to another. Rhythm can 
+                    be created through repetition, gradation, or opposition.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    Vertical stripes create a rhythm that makes your eye move up and down. A pattern of buttons down the front of 
+                    a dress creates rhythm. A series of ruffles of gradually increasing size creates a gradual rhythm. A checkerboard 
+                    pattern creates rhythm through opposition (light vs. dark squares).
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Rhythm in fashion is like the "beat" in music. Just as music has a pattern that your ears follow (boom-boom-boom), 
+                    fashion rhythm is a pattern that your eyes follow across the garment.
+                </div>
+                <div class="key-highlights">
+                    <strong>Three Types of Rhythm:</strong>
+                    <ul>
+                        <li><strong>Repetition:</strong> The same element repeated (stripes, repeated buttons, polka dots) - Creates predictable, stable rhythm</li>
+                        <li><strong>Gradation:</strong> Elements gradually increasing or decreasing in size (ombre dye, graduating ruffles) - Creates flowing, progressive rhythm</li>
+                        <li><strong>Opposition:</strong> Multiple lines converging at right angles (plaid patterns, geometric designs) - Creates dynamic, exciting rhythm</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Principle 5: Harmony/Unity -->
+            <div class="principle-card">
+                <h3>Harmony (Unity)</h3>
+                <div class="definition">
+                    <strong>Definition:</strong> Harmony (also called Unity) is the overarching principle and ultimate objective in 
+                    fashion design. It's achieved when all elements and principles are successfully integrated, working together 
+                    synergistically to form a visually pleasing, consistent, and cohesive whole.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    A well-designed dress where the color palette is cohesive, the lines work together, the silhouette is flattering, 
+                    the texture choices complement the design, and all principles (balance, emphasis, proportion, rhythm) work in concert. 
+                    Nothing feels out of place or jarring. That's harmony.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Harmony is like an orchestra. Each instrument (element) has its own voice (line, color, texture). The conductor 
+                    (principles) makes sure all instruments play together beautifully. When harmony is achieved, it's magic!
+                </div>
+                <div class="key-highlights">
+                    <strong>How to Achieve Harmony:</strong>
+                    <ul>
+                        <li>Use complementary colors that work together</li>
+                        <li>Ensure proportion, balance, rhythm, and emphasis function in concert</li>
+                        <li>Choose textures that complement the design intent</li>
+                        <li>Use recurring motifs (a color appears multiple times, a line type repeats)</li>
+                        <li>Ensure consistency in the design theme</li>
+                        <li>Make elements complement each other rather than compete</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- QUICK REFERENCE TABLE -->
+            <div style="margin-top: 40px; padding: 20px; background: #f3e5f5; border-radius: 10px;">
+                <h3 style="text-align: center; color: #6a1b9a; margin-bottom: 20px;">📋 Quick Reference: Elements vs. Principles</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="background: #f5576c;">ELEMENTS (Raw Materials)</th>
+                            <th style="background: #f5576c;">PRINCIPLES (Rules)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Color:</strong> Hue, value, intensity</td>
+                            <td><strong>Balance:</strong> Symmetrical or asymmetrical distribution</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Line:</strong> Vertical, horizontal, diagonal, curved</td>
+                            <td><strong>Emphasis:</strong> Creating focal points</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Shape:</strong> Silhouettes and outlines</td>
+                            <td><strong>Proportion:</strong> Pleasing relationships between sizes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Texture:</strong> Surface qualities</td>
+                            <td><strong>Rhythm:</strong> Creating visual movement</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><strong>Harmony:</strong> Overall unity and cohesion</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- REAL-WORLD APPLICATION -->
+            <div style="margin-top: 40px; padding: 25px; background: #fff3e0; border-radius: 10px; border-left: 5px solid #ff6f00;">
+                <h3 style="color: #e65100; margin-bottom: 15px;">🌟 Real-World Application: Analyzing a Famous Design</h3>
+                <p style="margin-bottom: 15px;">
+                    <strong>Example: The Iconic Black Dress (like Audrey Hepburn's in "Breakfast at Tiffany's")</strong>
+                </p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Color:</strong> Classic black = sophistication, timeless elegance</li>
+                    <li><strong>Line:</strong> Clean, simple lines with elegant seams = adds formality and grace</li>
+                    <li><strong>Shape:</strong> Fitted silhouette = emphasizes the body in a flattering, elegant way</li>
+                    <li><strong>Texture:</strong> Smooth fabric = adds luxury and refinement</li>
+                    <li><strong>Balance:</strong> Symmetrical = creates traditional, formal aesthetic</li>
+                    <li><strong>Emphasis:</strong> Pearl necklace at the neckline = focal point that draws attention</li>
+                    <li><strong>Proportion:</strong> Well-tailored fit = proportions perfectly relate to the body</li>
+                    <li><strong>Rhythm:</strong> Simple repeat of seams = creates subtle, elegant rhythm</li>
+                    <li><strong>Harmony:</strong> All elements work together = creates timeless, iconic design</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Practice Section -->
+        <div class="practice-section">
+            <h2>🎓 Practice Corner: Test Your Knowledge</h2>
+            
+            <!-- Quiz 1 -->
+            <div class="quiz-container">
+                <div class="question">1. What are the four basic elements of fashion design?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        <label for="a">Buttons, zippers, seams, and hems</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        <label for="b">Color, line, shape, and texture</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        <label for="c">Balance, proportion, rhythm, and emphasis</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        <label for="d">Couture, bespoke, ready-to-wear, and casual</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(1)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer1">
+                    <strong>✓ Correct Answer: B</strong>
+                    <div class="reasoning">
+                        The four basic elements of fashion design are Color, Line, Shape (Silhouette), and Texture. These are 
+                        the raw materials or building blocks that designers manipulate to create garments. Option A lists construction 
+                        techniques, Option C lists principles (not elements), and Option D lists categories of fashion (from Chapter 1).
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 2 -->
+            <div class="quiz-container">
+                <div class="question">2. Vertical lines in fashion design create which effect?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        <label for="a">Makes the figure appear wider and shorter</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        <label for="b">Creates movement and excitement</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        <label for="c">Creates height, elongation, and slenderness</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="d">
+                        <label for="d">Makes the figure appear round</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(2, 'c')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(2)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer2">
+                    <strong>✓ Correct Answer: C</strong>
+                    <div class="reasoning">
+                        Vertical lines move the eye up and down, creating an illusion of height and elongation. This makes the 
+                        wearer appear taller and slimmer. Horizontal lines (Option A) make the figure appear wider. Diagonal lines 
+                        (Option B) create movement and excitement. These different line types are used strategically in design to 
+                        flatter different body types.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 3 -->
+            <div class="quiz-container">
+                <div class="question">3. Which of the following best describes the difference between Elements and Principles?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="a">
+                        <label for="a">Elements are rules; Principles are raw materials</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="b">
+                        <label for="b">Elements are raw materials; Principles are rules for combining them</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="c">
+                        <label for="c">They are exactly the same thing</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="d">
+                        <label for="d">Elements are expensive; Principles are cheap</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(3, 'b')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(3)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer3">
+                    <strong>✓ Correct Answer: B</strong>
+                    <div class="reasoning">
+                        Elements (color, line, shape, texture) are the raw materials—the alphabet of design. Principles (balance, 
+                        emphasis, proportion, rhythm, harmony) are the rules or guidelines for combining elements effectively—the 
+                        grammar of design. This analogy helps remember their relationship: elements are ingredients, principles are 
+                        the recipe.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 4 -->
+            <div class="quiz-container">
+                <div class="question">4. A designer creates a dress with a dramatic, intricately embroidered neckline. 
+                The rest of the dress is simple and plain. What principle is being applied?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        <label for="a">Emphasis</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        <label for="b">Rhythm</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        <label for="c">Proportion</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        <label for="d">Harmony</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(4, 'a')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(4)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer4">
+                    <strong>✓ Correct Answer: A</strong>
+                    <div class="reasoning">
+                        Emphasis (focal point) is about creating a center of interest where you want the viewer's attention to focus. 
+                        The elaborate neckline is clearly the focal point—it demands attention while the rest of the dress is simple 
+                        and supporting. This is a perfect example of emphasis. Rhythm creates visual movement, Proportion is about 
+                        sizing relationships, and Harmony is overall cohesion.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 5 -->
+            <div class="quiz-container">
+                <div class="question">5. What element of fashion design is most frequently the first thing viewers respond to?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        <label for="a">Line</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        <label for="b">Texture</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        <label for="c">Color</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="d">
+                        <label for="d">Shape</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(5, 'c')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(5)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer5">
+                    <strong>✓ Correct Answer: C</strong>
+                    <div class="reasoning">
+                        Color is the first element to which viewers respond. As a visual perceiver, the first thing any person notices 
+                        in a design is color. While people may not immediately identify line, texture, or other technical elements, 
+                        color is something everyone instantly notices and understands. That's why color is often the starting point 
+                        in fashion design decisions.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 6 -->
+            <div class="quiz-container">
+                <div class="question">6. A dress uses polka dots, stripes, and plaid patterns all together. 
+                This creates a lack of which principle?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="a">
+                        <label for="a">Balance</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="b">
+                        <label for="b">Harmony</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="c">
+                        <label for="c">Emphasis</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="d">
+                        <label for="d">Proportion</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(6, 'b')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(6)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer6">
+                    <strong>✓ Correct Answer: B</strong>
+                    <div class="reasoning">
+                        Harmony (Unity) is achieved when all elements and principles work together cohesively to form a unified whole. 
+                        Mixing too many different patterns without coordination (polka dots + stripes + plaid) creates a chaotic, 
+                        uncoordinated look—lacking harmony. A successful design has unity where elements complement each other. This 
+                        dress would feel overwhelming and confusing rather than cohesive.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 7 -->
+            <div class="quiz-container">
+                <div class="question">7. Which type of balance creates a calm, formal, traditional look?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="a">
+                        <label for="a">Asymmetrical (Informal) balance</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="b">
+                        <label for="b">Symmetrical (Formal) balance</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="c">
+                        <label for="c">Diagonal balance</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="d">
+                        <label for="d">Textural balance</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(7, 'b')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(7)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer7">
+                    <strong>✓ Correct Answer: B</strong>
+                    <div class="reasoning">
+                        Symmetrical (Formal) balance occurs when both sides of a garment mirror each other, creating a calm, stable, 
+                        formal, and traditional aesthetic. Examples include centered buttons, matching pockets on both sides, and 
+                        identical details. Asymmetrical (Informal) balance is different—it creates a dynamic, modern, artistic feel 
+                        while still maintaining visual weight balance.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 8 -->
+            <div class="quiz-container">
+                <div class="question">8. Rhythm in fashion design can be created through which methods?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="a">
+                        <label for="a">Only through repetition of elements</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="b">
+                        <label for="b">Through repetition, gradation, and opposition</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="c">
+                        <label for="c">Through balance and proportion only</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="d">
+                        <label for="d">Through emphasis and harmony</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(8, 'b')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(8)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer8">
+                    <strong>✓ Correct Answer: B</strong>
+                    <div class="reasoning">
+                        Rhythm can be created through three methods: (1) <strong>Repetition</strong>—the same element repeated 
+                        (like stripes or buttons), (2) <strong>Gradation</strong>—elements gradually increasing or decreasing 
+                        (like ombre dye or gradually widening ruffles), and (3) <strong>Opposition</strong>—multiple lines converging 
+                        at angles (like plaid or geometric patterns). Each creates a different type of visual rhythm that guides 
+                        the viewer's eye across the garment.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Score Display -->
+            <div class="score-display" id="scoreDisplay">
+                <h3 id="scoreMessage"></h3>
+                <p id="scorePercentage"></p>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-check" onclick="submitAllAnswers()" style="max-width: 300px;">Submit All Answers</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>🎨 Chapter 2: Elements and Principles of Fashion Design | Master the Foundation of Design</p>
+            <p>Combine these fundamentals with creativity to create stunning fashion designs!</p>
+        </footer>
+    </div>
+
+    <script>
+        let answeredQuestions = {};
+
+        function checkAnswer(questionNum, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            
+            if (!selectedAnswer) {
+                alert('Please select an answer!');
+                return;
+            }
+
+            answeredQuestions[questionNum] = selectedAnswer.value === correctAnswer;
+            const answerSection = document.getElementById(`answer${questionNum}`);
+            answerSection.classList.add('show');
+
+            // Update button state
+            const buttons = event.target.parentElement.querySelectorAll('.btn');
+            buttons[0].disabled = true;
+            buttons[0].style.opacity = '0.6';
+            buttons[0].style.cursor = 'not-allowed';
+        }
+
+        function resetQuestion(questionNum) {
+            document.querySelector(`input[name="q${questionNum}"]:checked`)?.click();
+            document.querySelectorAll(`input[name="q${questionNum}"]`).forEach(input => input.checked = false);
+            document.getElementById(`answer${questionNum}`).classList.remove('show');
+            delete answeredQuestions[questionNum];
+        }
+
+        function submitAllAnswers() {
+            let answered = 0;
+            let correct = 0;
+
+            for (let i = 1; i <= 8; i++) {
+                if (answeredQuestions[i] === true) {
+                    correct++;
+                }
+                if (answeredQuestions[i] !== undefined) {
+                    answered++;
+                }
+            }
+
+            if (answered === 0) {
+                alert('Please answer at least one question before submitting!');
+                return;
+            }
+
+            const percentage = Math.round((correct / answered) * 100);
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const scoreMessage = document.getElementById('scoreMessage');
+            const scorePercentage = document.getElementById('scorePercentage');
+
+            scoreMessage.textContent = `Your Score: ${correct}/${answered}`;
+            scorePercentage.textContent = `You got ${percentage}% correct!`;
+
+            if (percentage === 100) {
+                scoreDisplay.style.borderLeftColor = '#4caf50';
+                scoreDisplay.style.background = '#c8e6c9';
+                scoreMessage.textContent = '🎉 Perfect Score! ' + scoreMessage.textContent;
+            } else if (percentage >= 75) {
+                scoreDisplay.style.borderLeftColor = '#66bb6a';
+                scoreDisplay.style.background = '#c8e6c9';
+                scoreMessage.textContent = '✅ Excellent! ' + scoreMessage.textContent;
+            } else if (percentage >= 50) {
+                scoreDisplay.style.borderLeftColor = '#ffa726';
+                scoreDisplay.style.background = '#ffe0b2';
+                scoreMessage.textContent = '⭐ Good! ' + scoreMessage.textContent;
+            } else {
+                scoreDisplay.style.borderLeftColor = '#ef5350';
+                scoreDisplay.style.background = '#ffcdd2';
+                scoreMessage.textContent = '📖 Keep Learning! ' + scoreMessage.textContent;
+            }
+
+            scoreDisplay.classList.add('show');
+            scoreDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

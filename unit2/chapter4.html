@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4 - Footwears | Understanding Fashion Library</title>
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+            scroll-behavior:smooth;
+        }
+        body{
+            min-height:100vh;
+            color:#333;
+            overflow-x:hidden;
+        }
+        /* Animated Gradient */
+        body{
+            background:linear-gradient(-45deg,#c6e7ff,#d8b4fe,#fde68a,#bbf7d0,#fbcfe8);
+            background-size:400% 400%;
+            animation:gradient 15s ease infinite;
+        }
+        @keyframes gradient{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+        /* Navigation */
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid rgba(255,255,255,.2);
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+        nav a{
+            color:black;
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.1rem;
+            transition:.3s;
+        }
+        nav a:hover{
+            opacity:.7;
+        }
+        .nav-buttons{
+            display:flex;
+            gap:15px;
+        }
+        .nav-btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:12px;
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,.35);
+            cursor:pointer;
+            font-weight:600;
+            transition:.3s;
+        }
+        .nav-btn:hover{
+            background:rgba(255,255,255,.28);
+            transform:scale(1.05);
+        }
+        /* Main Content */
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:60px 40px;
+        }
+        header{
+            text-align:center;
+            margin-bottom:60px;
+        }
+        header h1{
+            font-size:2.8rem;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+        header .subtitle{
+            font-size:1.2rem;
+            color:#555;
+            font-weight:400;
+        }
+        /* Sections */
+        .section{
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.35);
+            border-radius:20px;
+            padding:40px;
+            margin-bottom:40px;
+            box-shadow:0 8px 30px rgba(0,0,0,.1);
+        }
+        .section h2{
+            font-size:2rem;
+            margin-bottom:20px;
+            color:#1a1a1a;
+            border-bottom:3px solid rgba(0,0,0,.2);
+            padding-bottom:15px;
+        }
+        .section h3{
+            font-size:1.4rem;
+            margin-top:25px;
+            margin-bottom:12px;
+            color:#2a2a2a;
+        }
+        .section h4{
+            font-size:1.1rem;
+            margin-top:18px;
+            margin-bottom:10px;
+            color:#3a3a3a;
+            font-weight:600;
+        }
+        .section p{
+            font-size:1rem;
+            line-height:1.8;
+            color:#444;
+            margin-bottom:15px;
+        }
+        .content-list{
+            list-style:none;
+            margin:20px 0;
+        }
+        .content-list li{
+            padding:12px 0;
+            padding-left:30px;
+            position:relative;
+            font-size:1rem;
+            line-height:1.6;
+            color:#444;
+        }
+        .content-list li:before{
+            content:"▸";
+            position:absolute;
+            left:0;
+            color:#d8b4fe;
+            font-size:1.5rem;
+        }
+        .highlight{
+            background:rgba(216,180,254,.3);
+            padding:3px 8px;
+            border-radius:4px;
+            font-weight:500;
+        }
+        .definition-box{
+            background:rgba(107,114,128,.08);
+            border-left:4px solid #d8b4fe;
+            padding:20px;
+            margin:20px 0;
+            border-radius:8px;
+        }
+        .definition-box p{
+            margin:0;
+            font-style:italic;
+            color:#333;
+        }
+        .footwear-card{
+            background:rgba(255,255,255,.12);
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:15px;
+            padding:25px;
+            margin:20px 0;
+        }
+        .footwear-card h4{
+            margin-top:0;
+            font-size:1.2rem;
+            color:#1a1a1a;
+            margin-bottom:12px;
+        }
+        .characteristics-box{
+            background:rgba(74,222,128,.15);
+            border:1px solid rgba(74,222,128,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .characteristics-box strong{
+            color:#15803d;
+            display:block;
+            margin-bottom:8px;
+        }
+        .recommended-box{
+            background:rgba(59,130,246,.15);
+            border:1px solid rgba(59,130,246,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .recommended-box strong{
+            color:#1e40af;
+            display:block;
+            margin-bottom:8px;
+        }
+        .occasion-box{
+            background:rgba(168,85,247,.15);
+            border:1px solid rgba(168,85,247,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .occasion-box strong{
+            color:#6b21a8;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box{
+            background:rgba(239,68,68,.15);
+            border:1px solid rgba(239,68,68,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .avoid-box strong{
+            color:#991b1b;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box ul, .recommended-box ul, .occasion-box ul{
+            list-style:none;
+            margin:0;
+            padding-left:20px;
+        }
+        .avoid-box li, .recommended-box li, .occasion-box li{
+            padding:5px 0;
+            position:relative;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .avoid-box li:before{
+            content:"✗ ";
+            color:#991b1b;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .recommended-box li:before{
+            content:"✓ ";
+            color:#15803d;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .occasion-box li:before{
+            content:"◆ ";
+            color:#6b21a8;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .tip-box{
+            background:rgba(251,146,60,.15);
+            border-left:4px solid #f97316;
+            padding:15px;
+            border-radius:8px;
+            margin:15px 0;
+        }
+        .tip-box strong{
+            color:#7c2d12;
+            display:block;
+            margin-bottom:8px;
+        }
+        .tip-box p{
+            margin:0;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .footwear-category{
+            background:rgba(255,255,255,.12);
+            border:2px solid rgba(216,180,254,.4);
+            border-radius:15px;
+            padding:25px;
+            margin:25px 0;
+        }
+        .footwear-category h3{
+            margin-top:0;
+            padding-bottom:10px;
+            border-bottom:2px solid rgba(216,180,254,.3);
+        }
+        .grid-2{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+            margin:20px 0;
+        }
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-top:1px solid rgba(255,255,255,.2);
+            margin-top:60px;
+        }
+        footer p{
+            color:#555;
+            font-size:.95rem;
+        }
+        @media(max-width:700px){
+            .container{
+                padding:40px 20px;
+            }
+            header h1{
+                font-size:2rem;
+            }
+            .section{
+                padding:25px;
+            }
+            .section h2{
+                font-size:1.6rem;
+            }
+            nav{
+                flex-direction:column;
+                gap:15px;
+                padding:15px;
+            }
+            .nav-buttons{
+                width:100%;
+                justify-content:center;
+            }
+            .grid-2{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html">← Back to Units</a>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="previousChapter()">← Previous</button>
+            <button class="nav-btn" onclick="nextChapter()">Next →</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Chapter 4: Footwears</h1>
+            <p class="subtitle">Unit - 2: Fashion Library</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <div class="section">
+            <h2>Introduction to Footwears</h2>
+            <p>
+                <span class="highlight">Footwear</span> is an essential component of fashion that serves both functional and aesthetic purposes. The right shoes can complete an outfit, enhance proportions, and make a powerful fashion statement. Understanding different footwear styles and their appropriate uses is crucial for creating well-coordinated, professional, and fashionable looks.
+            </p>
+            <p>
+                Footwear is important because it:
+            </p>
+            <ul class="content-list">
+                <li>Protects and supports the feet</li>
+                <li>Completes and defines an overall outfit</li>
+                <li>Can elongate or shorten the silhouette</li>
+                <li>Establishes the formality and occasion appropriateness</li>
+                <li>Affects posture and comfort throughout the day</li>
+                <li>Makes a strong fashion statement and personal style statement</li>
+                <li>Requires investment as quality shoes last longer and look better</li>
+            </ul>
+        </div>
+
+        <!-- Formal & Dressy Footwear -->
+        <div class="footwear-category">
+            <h3>Formal & Dressy Footwear</h3>
+            <p>Elegant shoes designed for formal occasions, professional settings, and special events.</p>
+
+            <!-- Pumps/High Heels -->
+            <div class="footwear-card">
+                <h4>1. Pumps/High Heels</h4>
+                <div class="definition-box">
+                    <p>Classic women's shoes with a closed toe and heel, typically 2-4+ inches high. The ultimate symbol of elegance and sophistication.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>High heel height (varies from kitten to stiletto)</li>
+                        <li>Closed or open toe</li>
+                        <li>Can be pointed, rounded, or square toe</li>
+                        <li>Various materials: leather, suede, satin</li>
+                        <li>Sleek, elongating silhouette</li>
+                        <li>Available in endless colors and styles</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal events and galas</li>
+                        <li>Professional business settings</li>
+                        <li>Elongating the leg visually</li>
+                        <li>Creating elegant, sophisticated looks</li>
+                        <li>Special occasions and celebrations</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Formal dinners</li>
+                        <li>Weddings</li>
+                        <li>Office wear</li>
+                        <li>Evening events</li>
+                        <li>Black-tie occasions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stiletto Heels -->
+            <div class="footwear-card">
+                <h4>2. Stiletto Heels</h4>
+                <div class="definition-box">
+                    <p>High heels with a very thin, high heel (typically 3+ inches). Creates an extremely elegant and dramatic look.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Very high, thin heel</li>
+                        <li>Dramatic, elegant appearance</li>
+                        <li>Significantly elongates the leg</li>
+                        <li>Can be challenging to walk in</li>
+                        <li>Perfect for special occasions</li>
+                        <li>Available in many colors and designs</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Special events and occasions</li>
+                        <li>Evening wear</li>
+                        <li>Creating dramatic elegance</li>
+                        <li>Shorter individuals (adds height)</li>
+                        <li>Formal galas and celebrations</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid If:</strong>
+                    <ul>
+                        <li>You need comfort for long periods</li>
+                        <li>Have foot pain or balance issues</li>
+                        <li>Need to walk long distances</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Block Heel Pumps -->
+            <div class="footwear-card">
+                <h4>3. Block Heel Pumps</h4>
+                <div class="definition-box">
+                    <p>Pumps with a wider, blockier heel that provides better stability and comfort while maintaining an elegant appearance.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Wider, chunkier heel</li>
+                        <li>More stable than stilettos</li>
+                        <li>Still provides height and elegance</li>
+                        <li>More comfortable for extended wear</li>
+                        <li>Contemporary and modern look</li>
+                        <li>Various heel heights available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>All-day formal wear</li>
+                        <li>Professional settings</li>
+                        <li>Comfortable elegance</li>
+                        <li>Those preferring stability</li>
+                        <li>Contemporary formal looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Kitten Heels -->
+            <div class="footwear-card">
+                <h4>4. Kitten Heels</h4>
+                <div class="definition-box">
+                    <p>Pumps with a low heel (typically 1-2 inches) that provides height while maintaining comfort and practicality.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Low, thin heel (1-2 inches)</li>
+                        <li>Comfortable and wearable</li>
+                        <li>Elegant without being dramatic</li>
+                        <li>Perfect for extended wear</li>
+                        <li>Flattering yet practical</li>
+                        <li>Timeless classic style</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Office and professional settings</li>
+                        <li>All-day comfort wear</li>
+                        <li>Those uncomfortable in high heels</li>
+                        <li>Combining comfort with elegance</li>
+                        <li>Older individuals seeking comfort</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Oxfords (Women's) -->
+            <div class="footwear-card">
+                <h4>5. Oxfords (Women's)</h4>
+                <div class="definition-box">
+                    <p>Laced low-heeled shoes with a closed toe. Classic and sophisticated, can be worn for professional or casual occasions.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Laced closure</li>
+                        <li>Low heel or flat sole</li>
+                        <li>Closed toe design</li>
+                        <li>Can be leather or other materials</li>
+                        <li>Timeless, classic appearance</li>
+                        <li>Comfortable and supportive</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Professional settings</li>
+                        <li>Business casual wear</li>
+                        <li>Smart casual occasions</li>
+                        <li>All-day comfort</li>
+                        <li>Classic, timeless styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Loafers -->
+            <div class="footwear-card">
+                <h4>6. Loafers</h4>
+                <div class="definition-box">
+                    <p>Slip-on shoes with a distinctive horizontal strap across the instep. Sophisticated yet comfortable, can be dressed up or down.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Slip-on design (no laces)</li>
+                        <li>Distinctive strap across instep</li>
+                        <li>Can be leather or suede</li>
+                        <li>Comfortable and easy to wear</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Various styles and designs</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Business casual settings</li>
+                        <li>Smart casual occasions</li>
+                        <li>Comfortable all-day wear</li>
+                        <li>Both formal and casual styling</li>
+                        <li>Professional polish</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sandals (Dressy) -->
+            <div class="footwear-card">
+                <h4>7. Dressy Sandals</h4>
+                <div class="definition-box">
+                    <p>Elegant sandals with straps, often featuring embellishments, metallic finishes, or heels. Perfect for formal summer occasions.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Strappy design</li>
+                        <li>Can feature heels or flat sole</li>
+                        <li>Often embellished or metallic</li>
+                        <li>Elegant and sophisticated</li>
+                        <li>Perfect for warm weather formal events</li>
+                        <li>Various designs available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer formal events</li>
+                        <li>Beach weddings</li>
+                        <li>Evening outdoor occasions</li>
+                        <li>Warm weather formal wear</li>
+                        <li>Showing off pedicures</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Heeled Mules -->
+            <div class="footwear-card">
+                <h4>8. Heeled Mules</h4>
+                <div class="definition-box">
+                    <p>Backless heels with a closed or open toe. Sophisticated and effortless, can transition from day to evening.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Backless design</li>
+                        <li>Can have various heel heights</li>
+                        <li>Closed or open toe</li>
+                        <li>Easy slip-on design</li>
+                        <li>Sophisticated appearance</li>
+                        <li>Perfect for transitional seasons</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Office and professional wear</li>
+                        <li>Smart casual occasions</li>
+                        <li>Elevated everyday looks</li>
+                        <li>Easy, effortless styling</li>
+                        <li>Transitional season wear</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casual & Everyday Footwear -->
+        <div class="footwear-category">
+            <h3>Casual & Everyday Footwear</h3>
+            <p>Comfortable shoes designed for everyday wear and casual occasions.</p>
+
+            <!-- Sneakers -->
+            <div class="footwear-card">
+                <h4>9. Sneakers</h4>
+                <div class="definition-box">
+                    <p>Athletic shoes with cushioned soles, laced or slip-on design. Comfortable, versatile, and increasingly fashionable.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Cushioned sole for comfort</li>
+                        <li>Can be laced or slip-on</li>
+                        <li>Various styles and designs</li>
+                        <li>Breathable materials</li>
+                        <li>Perfect for active wear</li>
+                        <li>Fashion-forward designs available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Athletic activities</li>
+                        <li>Comfortable all-day wear</li>
+                        <li>Smart casual styling</li>
+                        <li>Most occasions (depending on style)</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Casual dates</li>
+                        <li>Gym and sports</li>
+                        <li>Shopping and errands</li>
+                        <li>Casual social events</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Flats -->
+            <div class="footwear-card">
+                <h4>10. Flats</h4>
+                <div class="definition-box">
+                    <p>Shoes with no heel or minimal heel height. Comfortable and versatile, can be dressed up or down.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>No heel or minimal heel</li>
+                        <li>Various styles available</li>
+                        <li>Can be open or closed toe</li>
+                        <li>Comfortable for extended wear</li>
+                        <li>Can be casual or dressy</li>
+                        <li>Versatile styling options</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>All-day comfort</li>
+                        <li>Casual and business casual wear</li>
+                        <li>Pregnant individuals and those with foot pain</li>
+                        <li>Smart casual occasions</li>
+                        <li>Both casual and professional styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ballet Flats -->
+            <div class="footwear-card">
+                <h4>11. Ballet Flats</h4>
+                <div class="definition-box">
+                    <p>Simple, elegant flats inspired by ballet slippers. Soft, comfortable, and extremely versatile for any occasion.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Soft, minimalist design</li>
+                        <li>Rounded toe</li>
+                        <li>Flexible sole</li>
+                        <li>Various colors and patterns</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Timeless classic style</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual and professional wear</li>
+                        <li>All-day comfort</li>
+                        <li>Pairing with dresses</li>
+                        <li>Smart casual occasions</li>
+                        <li>Most occasions and outfits</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Loafers (Casual) -->
+            <div class="footwear-card">
+                <h4>12. Casual Loafers</h4>
+                <div class="definition-box">
+                    <p>Comfortable slip-on shoes in casual materials and styles. Perfect for relaxed, comfortable everyday wear.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Slip-on design</li>
+                        <li>Casual materials</li>
+                        <li>Comfortable and easy to wear</li>
+                        <li>Various designs and colors</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Durable construction</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Smart casual occasions</li>
+                        <li>Comfortable all-day wear</li>
+                        <li>Relaxed styling</li>
+                        <li>Various casual occasions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Boat Shoes -->
+            <div class="footwear-card">
+                <h4>13. Boat Shoes</h4>
+                <div class="definition-box">
+                    <p>Casual shoes with a distinctive horizontal stitching and non-slip sole. Originally designed for boating, now a casual staple.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Non-slip rubber sole</li>
+                        <li>Distinctive stitching pattern</li>
+                        <li>Comfortable and durable</li>
+                        <li>Can be leather or canvas</li>
+                        <li>Casual, preppy appearance</li>
+                        <li>Various color options</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual summer wear</li>
+                        <li>Nautical and preppy styling</li>
+                        <li>Outdoor casual activities</li>
+                        <li>Comfortable, relaxed occasions</li>
+                        <li>Smart casual looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slip-On Shoes -->
+            <div class="footwear-card">
+                <h4>14. Slip-On Shoes</h4>
+                <div class="definition-box">
+                    <p>Shoes without laces that slip onto the foot. Convenient, comfortable, and available in countless styles.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>No laces or closures</li>
+                        <li>Quick and easy to put on</li>
+                        <li>Various styles available</li>
+                        <li>Can be casual or dressy</li>
+                        <li>Comfortable for extended wear</li>
+                        <li>Many material options</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Busy, on-the-go lifestyles</li>
+                        <li>Casual everyday wear</li>
+                        <li>Quick errand runs</li>
+                        <li>Comfort and convenience</li>
+                        <li>Various casual occasions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Boots -->
+        <div class="footwear-category">
+            <h3>Boots</h3>
+            <p>Footwear that extends above the ankle, available in many styles for different seasons and occasions.</p>
+
+            <!-- Ankle Boots -->
+            <div class="footwear-card">
+                <h4>15. Ankle Boots</h4>
+                <div class="definition-box">
+                    <p>Boots that extend to the ankle, available in various heel heights and styles. Versatile for many occasions and seasons.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Extends to ankle level</li>
+                        <li>Various heel heights</li>
+                        <li>Can be laced or zipped</li>
+                        <li>Many style variations</li>
+                        <li>Can be casual or dressy</li>
+                        <li>Perfect for transitional seasons</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Transitional seasons</li>
+                        <li>Both casual and professional wear</li>
+                        <li>Various styling options</li>
+                        <li>Smart casual to dressy occasions</li>
+                        <li>Year-round versatility</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Office wear</li>
+                        <li>Casual dating</li>
+                        <li>Smart casual events</li>
+                        <li>Professional settings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Combat Boots -->
+            <div class="footwear-card">
+                <h4>16. Combat Boots</h4>
+                <div class="definition-box">
+                    <p>Sturdy, laced boots with a military-inspired design. Tough, durable, and adds an edgy aesthetic to outfits.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Sturdy construction</li>
+                        <li>Laced closures</li>
+                        <li>Military-inspired design</li>
+                        <li>Can have chunky soles</li>
+                        <li>Edgy, tough appearance</li>
+                        <li>Durable and long-lasting</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Edgy, alternative styling</li>
+                        <li>Fashion-forward looks</li>
+                        <li>Adding attitude to outfits</li>
+                        <li>Casual and elevated casual wear</li>
+                        <li>Autumn and winter seasons</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Knee-High Boots -->
+            <div class="footwear-card">
+                <h4>17. Knee-High Boots</h4>
+                <div class="definition-box">
+                    <p>Tall boots that extend to the knee or below. Creates a sleek, elongating silhouette and dresses up any outfit.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Extends to knee or below</li>
+                        <li>Various heel heights</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Many style options</li>
+                        <li>Elongates the leg visually</li>
+                        <li>Can be casual or dressy</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Leg elongation</li>
+                        <li>Autumn and winter wear</li>
+                        <li>Both casual and professional styling</li>
+                        <li>Dressy and casual occasions</li>
+                        <li>Creating sophisticated looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Over-The-Knee Boots -->
+            <div class="footwear-card">
+                <h4>18. Over-The-Knee Boots</h4>
+                <div class="definition-box">
+                    <p>Extra-tall boots that extend above the knee. Creates a dramatic, glamorous, elongating effect.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Extends above the knee</li>
+                        <li>Various heel heights</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Dramatic appearance</li>
+                        <li>Significantly elongates legs</li>
+                        <li>Statement-making footwear</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Fashion-forward styling</li>
+                        <li>Creating dramatic looks</li>
+                        <li>Special occasions</li>
+                        <li>Leg elongation</li>
+                        <li>Statement-making outfits</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Chelsea Boots -->
+            <div class="footwear-card">
+                <h4>19. Chelsea Boots</h4>
+                <div class="definition-box">
+                    <p>Ankle-height boots with elastic side panels and no laces. Classic, timeless, and effortlessly sophisticated.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Elastic side panels</li>
+                        <li>No laces</li>
+                        <li>Can have various heel heights</li>
+                        <li>Sleek, minimalist design</li>
+                        <li>Easy to slip on and off</li>
+                        <li>Timeless classic style</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Professional settings</li>
+                        <li>Smart casual occasions</li>
+                        <li>Effortless sophistication</li>
+                        <li>Both casual and dressy wear</li>
+                        <li>Timeless styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cowboy Boots -->
+            <div class="footwear-card">
+                <h4>20. Cowboy Boots</h4>
+                <div class="definition-box">
+                    <p>Western-style boots with a distinctive heel and shaft. Adds a rustic, edgy character to outfits.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Western design</li>
+                        <li>Distinctive heel</li>
+                        <li>Patterned or textured shaft</li>
+                        <li>Can be leather or suede</li>
+                        <li>Statement-making footwear</li>
+                        <li>Various colors available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Western and country styling</li>
+                        <li>Edgy, alternative looks</li>
+                        <li>Fashion-forward styling</li>
+                        <li>Adding personality to outfits</li>
+                        <li>Casual occasions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sandals & Warm Weather Footwear -->
+        <div class="footwear-category">
+            <h3>Sandals & Warm Weather Footwear</h3>
+            <p>Open footwear designed for warm weather and casual occasions.</p>
+
+            <!-- Flip-Flops/Thongs -->
+            <div class="footwear-card">
+                <h4>21. Flip-Flops/Thongs</h4>
+                <div class="definition-box">
+                    <p>Minimal footwear with a sole and a simple strap between the toes. Perfect for casual, quick trips.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Minimal construction</li>
+                        <li>Between-toe strap</li>
+                        <li>Various sole materials</li>
+                        <li>Quick and easy to wear</li>
+                        <li>Perfect for beaches and pools</li>
+                        <li>Many colors and patterns</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Beach and pool wear</li>
+                        <li>Casual summer wear</li>
+                        <li>Quick errand runs</li>
+                        <li>Relaxed, comfortable styling</li>
+                        <li>Warm weather</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide Sandals -->
+            <div class="footwear-card">
+                <h4>22. Slide Sandals</h4>
+                <div class="definition-box">
+                    <p>Slip-on sandals with a single strap across the instep. Comfortable, easy to wear, and available in many styles.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Slip-on design</li>
+                        <li>Single or multiple straps</li>
+                        <li>Can have arch support</li>
+                        <li>Comfortable for extended wear</li>
+                        <li>Various styles available</li>
+                        <li>Can be casual or dressy</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual summer wear</li>
+                        <li>Beach and pool occasions</li>
+                        <li>Comfortable all-day wear</li>
+                        <li>Relaxed styling</li>
+                        <li>Warm weather</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Strappy Sandals -->
+            <div class="footwear-card">
+                <h4>23. Strappy Sandals</h4>
+                <div class="definition-box">
+                    <p>Sandals with multiple straps across the foot and ankle. Can range from casual to formal styles.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Multiple straps</li>
+                        <li>Can have heel or flat sole</li>
+                        <li>Various materials available</li>
+                        <li>Provides good foot support</li>
+                        <li>Can be casual or dressy</li>
+                        <li>Many style options</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer occasions</li>
+                        <li>Both casual and dressy wear</li>
+                        <li>Warm weather styling</li>
+                        <li>Various occasions</li>
+                        <li>Good foot support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Gladiator Sandals -->
+            <div class="footwear-card">
+                <h4>24. Gladiator Sandals</h4>
+                <div class="definition-box">
+                    <p>Strappy sandals with multiple vertical straps creating a cage-like effect. Bold, statement-making footwear.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Multiple vertical straps</li>
+                        <li>Can have heel or flat sole</li>
+                        <li>Bold appearance</li>
+                        <li>Can extend up the leg</li>
+                        <li>Statement-making footwear</li>
+                        <li>Various materials</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Fashion-forward styling</li>
+                        <li>Summer casual occasions</li>
+                        <li>Creating statement looks</li>
+                        <li>Warm weather wear</li>
+                        <li>Elevated casual styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Thong Sandals (Dressy) -->
+            <div class="footwear-card">
+                <h4>25. Dressy Thong Sandals</h4>
+                <div class="definition-box">
+                    <p>Elevated thong sandals with embellishments, metallic finishes, or heels. Perfect for warm weather formal occasions.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Thong strap design</li>
+                        <li>Can have heel or flat sole</li>
+                        <li>Embellished or metallic</li>
+                        <li>Elegant appearance</li>
+                        <li>Perfect for formal summer events</li>
+                        <li>Various colors and designs</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer formal events</li>
+                        <li>Beach weddings</li>
+                        <li>Evening outdoor occasions</li>
+                        <li>Warm weather elegant styling</li>
+                        <li>Special summer celebrations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Espadrilles -->
+            <div class="footwear-card">
+                <h4>26. Espadrilles</h4>
+                <div class="definition-box">
+                    <p>Lightweight canvas or fabric shoes with a rope sole. Casual, comfortable, and perfect for warm weather.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Canvas or fabric upper</li>
+                        <li>Rope sole</li>
+                        <li>Can have heel or flat</li>
+                        <li>Lightweight and breathable</li>
+                        <li>Casual summer aesthetic</li>
+                        <li>Various colors available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer casual wear</li>
+                        <li>Beach vacation styling</li>
+                        <li>Warm weather occasions</li>
+                        <li>Comfortable, relaxed looks</li>
+                        <li>Mediterranean-inspired styling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footwear Selection & Styling Tips -->
+        <div class="section">
+            <h2>Footwear Selection & Styling Guidelines</h2>
+            
+            <h3>Key Principles for Choosing Footwear:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Occasion Appropriateness:</span> Match footwear formality and style to the occasion and setting</li>
+                <li><span class="highlight">Comfort First:</span> Well-fitting, comfortable shoes are essential as you'll spend hours in them</li>
+                <li><span class="highlight">Color Coordination:</span> Choose colors that complement your outfit and overall aesthetic</li>
+                <li><span class="highlight">Leg Elongation:</span> Shoes with pointed toes and heels can elongate the leg visually</li>
+                <li><span class="highlight">Proportion Balance:</span> Consider how shoe style balances your overall silhouette</li>
+                <li><span class="highlight">Quality Investment:</span> Invest in quality shoes; they last longer and look better over time</li>
+                <li><span class="highlight">Personal Style:</span> Choose shoes that express your personal style and make you feel confident</li>
+            </ul>
+
+            <h3 style="margin-top:30px;">Footwear by Occasion:</h3>
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ Formal/Evening:</strong>
+                    <ul>
+                        <li>Pumps and heels</li>
+                        <li>Dressy sandals</li>
+                        <li>Elegant flats</li>
+                        <li>Classic oxfords (for men)</li>
+                        <li>Metallic or embellished styles</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Professional/Office:</strong>
+                    <ul>
+                        <li>Pumps and block heels</li>
+                        <li>Loafers</li>
+                        <li>Ballet flats</li>
+                        <li>Chelsea boots</li>
+                        <li>Dressy mules</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ Smart Casual:</strong>
+                    <ul>
+                        <li>Ankle boots</li>
+                        <li>Loafers</li>
+                        <li>Dressy flats</li>
+                        <li>Comfortable sneakers</li>
+                        <li>Kitten heels</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Casual:</strong>
+                    <ul>
+                        <li>Sneakers</li>
+                        <li>Flip-flops</li>
+                        <li>Slide sandals</li>
+                        <li>Casual flats</li>
+                        <li>Boat shoes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px;">Footwear by Body Type:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Short Stature:</span> Heels and pointed-toe shoes elongate legs; avoid heavy or chunky shoes</li>
+                <li><span class="highlight">Tall Stature:</span> Can wear almost any shoe style; flat shoes won't shorten appearance</li>
+                <li><span class="highlight">Wider Feet:</span> Choose wider shoe widths; avoid very delicate or strappy designs</li>
+                <li><span class="highlight">Narrow Feet:</span> Look for adjustable options like laced or strappy shoes; avoid very loose styles</li>
+                <li><span class="highlight">Fuller Figure:</span> Block heels provide stability; avoid very delicate shoe styles</li>
+                <li><span class="highlight">Slim Figure:</span> Can wear any heel height and style; chunkier shoes don't look overwhelming</li>
+            </ul>
+
+            <h3 style="margin-top:30px;">Footwear Care & Investment Tips:</h3>
+            <ul class="content-list">
+                <li>Invest in quality basics: neutral-colored pumps, loafers, ankle boots, and comfortable flats</li>
+                <li>Proper shoe care extends the life of your footwear significantly</li>
+                <li>Rotate shoes to prevent excessive wear on a single pair</li>
+                <li>Use shoe trees or stuff with newspaper to maintain shape</li>
+                <li>Clean shoes regularly and address stains promptly</li>
+                <li>Have shoes professionally resoled or repaired when needed</li>
+                <li>Choose timeless styles for investment pieces rather than trendy designs</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong>
+                <p>A well-fitting shoe is crucial. Take time to measure your feet regularly and try on shoes later in the day when feet are slightly swollen. This ensures the most accurate fit for all-day comfort.</p>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <h2>Summary</h2>
+            <p>
+                Footwear is an essential fashion element that serves both practical and aesthetic purposes. From formal pumps to casual sneakers, understanding different shoe styles and their appropriate uses ensures you can create well-coordinated outfits for any occasion. Key takeaways:
+            </p>
+            <ul class="content-list">
+                <li>Different occasions require different footwear styles and formality levels</li>
+                <li>Comfort should never be sacrificed for style; well-fitting shoes are essential</li>
+                <li>Shoes significantly impact the overall silhouette and elongation of your legs</li>
+                <li>Invest in quality basics that work with multiple outfits</li>
+                <li>Color coordination between shoes and outfit creates polished, cohesive looks</li>
+                <li>Proper shoe care extends the life and maintains the appearance of your footwear</li>
+                <li>Personal style and confidence should guide your footwear choices</li>
+            </ul>
+            <p style="margin-top:20px;">
+                Whether you need professional office shoes, comfortable everyday sneakers, elegant formal heels, or casual sandals, understanding footwear types and selection principles ensures you're always wearing the perfect shoes for any occasion and looking your best from head to toe!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Understanding Fashion Library (FDO-355) | All rights reserved</p>
+        <p>Created by: Subhayu</p>
+    </footer>
+
+    <script>
+        function previousChapter(){
+            window.location.href = 'chapter3.html';
+        }
+        function nextChapter(){
+            window.location.href = 'chapter5.html';
+        }
+    </script>
+</body>
+</html>

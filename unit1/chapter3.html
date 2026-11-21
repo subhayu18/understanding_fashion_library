@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3 - Silhouette | Understanding Fashion Library</title>
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+            scroll-behavior:smooth;
+        }
+        body{
+            min-height:100vh;
+            color:#333;
+            overflow-x:hidden;
+        }
+        /* Animated Gradient */
+        body{
+            background:linear-gradient(-45deg,#c6e7ff,#d8b4fe,#fde68a,#bbf7d0,#fbcfe8);
+            background-size:400% 400%;
+            animation:gradient 15s ease infinite;
+        }
+        @keyframes gradient{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+        /* Navigation */
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid rgba(255,255,255,.2);
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+        nav a{
+            color:black;
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.1rem;
+            transition:.3s;
+        }
+        nav a:hover{
+            opacity:.7;
+        }
+        .nav-buttons{
+            display:flex;
+            gap:15px;
+        }
+        .nav-btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:12px;
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,.35);
+            cursor:pointer;
+            font-weight:600;
+            transition:.3s;
+        }
+        .nav-btn:hover{
+            background:rgba(255,255,255,.28);
+            transform:scale(1.05);
+        }
+        /* Main Content */
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:60px 40px;
+        }
+        header{
+            text-align:center;
+            margin-bottom:60px;
+        }
+        header h1{
+            font-size:2.8rem;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+        header .subtitle{
+            font-size:1.2rem;
+            color:#555;
+            font-weight:400;
+        }
+        /* Sections */
+        .section{
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.35);
+            border-radius:20px;
+            padding:40px;
+            margin-bottom:40px;
+            box-shadow:0 8px 30px rgba(0,0,0,.1);
+        }
+        .section h2{
+            font-size:2rem;
+            margin-bottom:20px;
+            color:#1a1a1a;
+            border-bottom:3px solid rgba(0,0,0,.2);
+            padding-bottom:15px;
+        }
+        .section h3{
+            font-size:1.4rem;
+            margin-top:25px;
+            margin-bottom:12px;
+            color:#2a2a2a;
+        }
+        .section p{
+            font-size:1rem;
+            line-height:1.8;
+            color:#444;
+            margin-bottom:15px;
+        }
+        .content-list{
+            list-style:none;
+            margin:20px 0;
+        }
+        .content-list li{
+            padding:12px 0;
+            padding-left:30px;
+            position:relative;
+            font-size:1rem;
+            line-height:1.6;
+            color:#444;
+        }
+        .content-list li:before{
+            content:"▸";
+            position:absolute;
+            left:0;
+            color:#d8b4fe;
+            font-size:1.5rem;
+        }
+        .highlight{
+            background:rgba(216,180,254,.3);
+            padding:3px 8px;
+            border-radius:4px;
+            font-weight:500;
+        }
+        .definition-box{
+            background:rgba(107,114,128,.08);
+            border-left:4px solid #d8b4fe;
+            padding:20px;
+            margin:20px 0;
+            border-radius:8px;
+        }
+        .definition-box p{
+            margin:0;
+            font-style:italic;
+            color:#333;
+        }
+        .example-box{
+            background:rgba(186,247,208,.2);
+            padding:20px;
+            border-radius:12px;
+            margin:20px 0;
+            border:1px solid rgba(186,247,208,.4);
+        }
+        .example-box strong{
+            color:#059669;
+            display:block;
+            margin-bottom:10px;
+        }
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-top:1px solid rgba(255,255,255,.2);
+            margin-top:60px;
+        }
+        footer p{
+            color:#555;
+            font-size:.95rem;
+        }
+        @media(max-width:700px){
+            .container{
+                padding:40px 20px;
+            }
+            header h1{
+                font-size:2rem;
+            }
+            .section{
+                padding:25px;
+            }
+            .section h2{
+                font-size:1.6rem;
+            }
+            nav{
+                flex-direction:column;
+                gap:15px;
+                padding:15px;
+            }
+            .nav-buttons{
+                width:100%;
+                justify-content:center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html">← Back to Units</a>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="previousChapter()">← Previous</button>
+            <button class="nav-btn" onclick="nextChapter()">Next →</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Chapter 3: Silhouette</h1>
+            <p class="subtitle">Unit - 1: Introduction of Fashion</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <div class="section">
+            <h2>Introduction to Silhouette</h2>
+            <p>
+                The <span class="highlight">silhouette</span> is one of the most fundamental concepts in fashion design. It refers to the <span class="highlight">overall outline or shape</span> of a garment as seen from the side. The silhouette is what gives a garment its distinctive profile and is one of the first things an observer notices about an outfit.
+            </p>
+            <p>
+                Understanding silhouettes is crucial for:
+            </p>
+            <ul class="content-list">
+                <li>Fashion designers in creating new collections</li>
+                <li>Stylists in recommending appropriate clothing</li>
+                <li>Consumers in selecting clothes that flatter their body type</li>
+                <li>Fashion historians in dating garments and understanding fashion evolution</li>
+            </ul>
+        </div>
+
+        <!-- Different Types of Silhouettes -->
+        <div class="section">
+            <h2>Different Types of Silhouettes</h2>
+            
+            <h3>1. Straight/Tubular Silhouette</h3>
+            <div class="definition-box">
+                <p>A silhouette that follows the body contours without emphasis on curves. The garment hangs straight from shoulder to hem.</p>
+            </div>
+            <ul class="content-list">
+                <li>Also called <span class="highlight">rectangular or column silhouette</span></li>
+                <li>Popular in minimalist and contemporary fashion</li>
+                <li>Creates an elongated, sleek appearance</li>
+                <li>Examples: Shift dresses, straight-cut trousers</li>
+            </ul>
+
+            <h3>2. Fitted Silhouette</h3>
+            <div class="definition-box">
+                <p>A silhouette that closely follows the natural contours of the body, emphasizing curves and body shape.</p>
+            </div>
+            <ul class="content-list">
+                <li>Highlights the wearer's body structure</li>
+                <li>Requires precise tailoring and measurement</li>
+                <li>Creates a sophisticated and elegant look</li>
+                <li>Examples: Bodycon dresses, fitted blazers, slim-fit trousers</li>
+            </ul>
+
+            <h3>3. Flared/Bell Silhouette</h3>
+            <div class="definition-box">
+                <p>A silhouette that is fitted at the top and gradually widens toward the hem, creating a bell-like shape.</p>
+            </div>
+            <ul class="content-list">
+                <li>Widens below the knee or mid-thigh</li>
+                <li>Creates movement and fluidity</li>
+                <li>Balances wider proportions in the lower body</li>
+                <li>Examples: Flared skirts, bell-bottom pants, A-line dresses</li>
+            </ul>
+
+            <h3>4. Peplum Silhouette</h3>
+            <div class="definition-box">
+                <p>A silhouette featuring a fitted bodice with a gathered or flared ruffle at the waist, extending over the hips.</p>
+            </div>
+            <ul class="content-list">
+                <li>Creates volume and emphasis at the hip area</li>
+                <li>Flatters by adding curves to straighter body types</li>
+                <li>Became extremely popular in 2010s fashion</li>
+                <li>Examples: Peplum tops, peplum dresses, peplum skirts</li>
+            </ul>
+
+            <h3>5. Empire Silhouette</h3>
+            <div class="definition-box">
+                <p>A silhouette with a high waistline positioned just below the bust, with a flowing skirt below.</p>
+            </div>
+            <ul class="content-list">
+                <li>Also called <span class="highlight">Grecian or high-waisted silhouette</span></li>
+                <li>Creates an elegant, elongated appearance</li>
+                <li>Flatters by emphasizing the bust and creating length</li>
+                <li>Examples: Empire waist dresses, Regency-style gowns</li>
+            </ul>
+
+            <h3>6. Hourglass Silhouette</h3>
+            <div class="definition-box">
+                <p>A silhouette that is fitted at the waist with volume at both the bust and hip areas, creating balanced proportions.</p>
+            </div>
+            <ul class="content-list">
+                <li>Emphasizes the natural curves of the body</li>
+                <li>Created through fitted bodices and flared skirts</li>
+                <li>Considered a classic, feminine silhouette</li>
+                <li>Examples: Cinched dresses, fit-and-flare designs</li>
+            </ul>
+
+            <h3>7. Tent/A-Line Silhouette</h3>
+            <div class="definition-box">
+                <p>A silhouette that is fitted at the shoulders and gradually widens toward the hem, resembling the letter 'A'.</p>
+            </div>
+            <ul class="content-list">
+                <li>Also called <span class="highlight">triangular silhouette</span></li>
+                <li>Creates a balanced, flattering look for most body types</li>
+                <li>Provides comfort without clinging</li>
+                <li>Examples: A-line skirts, trapeze dresses, swing dresses</li>
+            </ul>
+
+            <h3>8. Mermaid/Fishtail Silhouette</h3>
+            <div class="definition-box">
+                <p>A silhouette that is fitted through the torso and hips, then flares dramatically at the thighs or below the knee.</p>
+            </div>
+            <ul class="content-list">
+                <li>Creates a dramatic, glamorous effect</li>
+                <li>Popular in evening wear and formal gowns</li>
+                <li>Requires careful tailoring for comfort</li>
+                <li>Examples: Mermaid gowns, fishtail skirts, trumpet dresses</li>
+            </ul>
+        </div>
+
+        <!-- Illusions of Silhouettes -->
+        <div class="section">
+            <h2>Illusions of Silhouettes</h2>
+            <p>
+                Fashion illusions are clever design techniques that create visual effects, making the body appear different than it actually is. By manipulating silhouettes, designers can flatter different body types and create specific visual impressions.
+            </p>
+
+            <h3>1. Vertical Illusions</h3>
+            <div class="definition-box">
+                <p>Design elements that create the illusion of length and height, making the wearer appear taller and more elongated.</p>
+            </div>
+            <ul class="content-list">
+                <li><span class="highlight">Vertical stripes:</span> Create an elongating effect</li>
+                <li><span class="highlight">Long necklaces:</span> Draw the eye downward, adding perceived length</li>
+                <li><span class="highlight">Vertical patterns:</span> Emphasize height</li>
+                <li><span class="highlight">Monochromatic colors:</span> Create an unbroken line from head to toe</li>
+            </ul>
+            <div class="example-box">
+                <strong>✓ Example:</strong>
+                A tall, vertical stripe pattern on a dress creates the illusion of additional height and a slimmer silhouette.
+            </div>
+
+            <h3>2. Horizontal Illusions</h3>
+            <div class="definition-box">
+                <p>Design elements that create the illusion of width and breadth, making the body appear wider.</p>
+            </div>
+            <ul class="content-list">
+                <li><span class="highlight">Horizontal stripes:</span> Add width to the figure</li>
+                <li><span class="highlight">Wide collars:</span> Broaden the shoulder area</li>
+                <li><span class="highlight">Horizontal seams:</span> Create visual width</li>
+                <li><span class="highlight">Ruching:</span> Can add volume when placed horizontally</li>
+            </ul>
+            <div class="example-box">
+                <strong>✓ Example:</strong>
+                Horizontal stripes on a narrow frame create the illusion of a broader, more balanced figure.
+            </div>
+
+            <h3>3. Diagonal Illusions</h3>
+            <div class="definition-box">
+                <p>Design elements placed diagonally that create dynamic, slimming effects.</p>
+            </div>
+            <ul class="content-list">
+                <li><span class="highlight">Diagonal seams:</span> Create a slimming effect</li>
+                <li><span class="highlight">Diagonal stripes:</span> Visually elongate the body</li>
+                <li><span class="highlight">Diagonal wraps:</span> Cinch the waist and create curves</li>
+                <li><span class="highlight">Asymmetrical cuts:</span> Create movement and visual interest</li>
+            </ul>
+            <div class="example-box">
+                <strong>✓ Example:</strong>
+                A diagonal wrap dress creates the illusion of a defined waist and elongated figure.
+            </div>
+
+            <h3>4. Color Illusions</h3>
+            <div class="definition-box">
+                <p>Using color theory to create visual effects that alter the perceived silhouette and body proportions.</p>
+            </div>
+            <ul class="content-list">
+                <li><span class="highlight">Dark colors:</span> Make areas appear smaller and slimmer</li>
+                <li><span class="highlight">Light colors:</span> Make areas appear larger and fuller</li>
+                <li><span class="highlight">Contrasting colors:</span> Draw attention to specific areas</li>
+                <li><span class="highlight">Color blocking:</span> Can elongate or shorten the silhouette</li>
+            </ul>
+            <div class="example-box">
+                <strong>✓ Example:</strong>
+                A dark-colored center panel with light-colored side panels creates the illusion of a slimmer waist.
+            </div>
+
+            <h3>5. Pattern and Texture Illusions</h3>
+            <div class="definition-box">
+                <p>Using patterns and textures strategically to create visual effects on the body.</p>
+            </div>
+            <ul class="content-list">
+                <li><span class="highlight">Small patterns:</span> Make areas appear smaller</li>
+                <li><span class="highlight">Large patterns:</span> Make areas appear larger</li>
+                <li><span class="highlight">Textured fabrics:</span> Can add or minimize volume</li>
+                <li><span class="highlight">Shiny fabrics:</span> Reflect light and can add fullness</li>
+                <li><span class="highlight">Matte fabrics:</span> Absorb light and appear slimmer</li>
+            </ul>
+            <div class="example-box">
+                <strong>✓ Example:</strong>
+                Using a large bold pattern on the torso and small patterns on the lower body creates visual balance for pear-shaped figures.
+            </div>
+
+            <h3>6. Ruching and Gathering Illusions</h3>
+            <div class="definition-box">
+                <p>Strategic placement of ruches and gathers to create or minimize volume in specific areas.</p>
+            </div>
+            <ul class="content-list">
+                <li><span class="highlight">Side ruching:</span> Creates a slimming effect</li>
+                <li><span class="highlight">Ruching at the bust:</span> Adds volume and definition</li>
+                <li><span class="highlight">Gathered skirts:</span> Add fullness where needed</li>
+                <li><span class="highlight">Strategic gathering:</span> Can balance proportions</li>
+            </ul>
+
+            <h3>7. Cut-Out Illusions</h3>
+            <div class="definition-box">
+                <p>Strategic placement of cut-outs to create visual interest and alter perceived body proportions.</p>
+            </div>
+            <ul class="content-list">
+                <li><span class="highlight">Waist cut-outs:</span> Define and emphasize the waistline</li>
+                <li><span class="highlight">Shoulder cut-outs:</span> Broaden the shoulder area</li>
+                <li><span class="highlight">Strategic sheer panels:</span> Create visual breaks that add length</li>
+            </ul>
+        </div>
+
+        <!-- Practical Applications -->
+        <div class="section">
+            <h2>Practical Applications</h2>
+            <h3>How to Choose the Right Silhouette for Your Body Type:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Apple body shape:</span> Flared or A-line silhouettes work best to balance a fuller midsection</li>
+                <li><span class="highlight">Pear body shape:</span> Empire or fit-and-flare silhouettes help balance broader hips</li>
+                <li><span class="highlight">Rectangle body shape:</span> Peplum or hourglass silhouettes create curves and definition</li>
+                <li><span class="highlight">Hourglass body shape:</span> Fitted silhouettes emphasize natural curves</li>
+                <li><span class="highlight">Inverted triangle body shape:</span> A-line or flared silhouettes balance broader shoulders</li>
+            </ul>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <h2>Summary</h2>
+            <p>
+                Understanding silhouettes and their illusions is essential for anyone involved in fashion—whether as a designer, stylist, or consumer. By mastering how different silhouettes work and how to manipulate them through color, pattern, and design elements, you can create flattering, visually interesting garments for any body type. The key is to understand how visual elements work together to create the desired effect.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Understanding Fashion Library (FDO-355) | All rights reserved</p>
+        <p>Created by: Subhayu</p>
+    </footer>
+
+    <script>
+        function previousChapter(){
+            window.location.href = 'chapter2.html';
+        }
+        function nextChapter(){
+            window.location.href = 'chapter4.html';
+        }
+    </script>
+</body>
+</html>

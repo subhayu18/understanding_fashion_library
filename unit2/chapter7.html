@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 7 - Bags | Understanding Fashion Library</title>
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+            scroll-behavior:smooth;
+        }
+        body{
+            min-height:100vh;
+            color:#333;
+            overflow-x:hidden;
+        }
+        /* Animated Gradient */
+        body{
+            background:linear-gradient(-45deg,#c6e7ff,#d8b4fe,#fde68a,#bbf7d0,#fbcfe8);
+            background-size:400% 400%;
+            animation:gradient 15s ease infinite;
+        }
+        @keyframes gradient{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+        /* Navigation */
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid rgba(255,255,255,.2);
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+        nav a{
+            color:black;
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.1rem;
+            transition:.3s;
+        }
+        nav a:hover{
+            opacity:.7;
+        }
+        .nav-buttons{
+            display:flex;
+            gap:15px;
+        }
+        .nav-btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:12px;
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,.35);
+            cursor:pointer;
+            font-weight:600;
+            transition:.3s;
+        }
+        .nav-btn:hover{
+            background:rgba(255,255,255,.28);
+            transform:scale(1.05);
+        }
+        /* Main Content */
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:60px 40px;
+        }
+        header{
+            text-align:center;
+            margin-bottom:60px;
+        }
+        header h1{
+            font-size:2.8rem;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+        header .subtitle{
+            font-size:1.2rem;
+            color:#555;
+            font-weight:400;
+        }
+        /* Sections */
+        .section{
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.35);
+            border-radius:20px;
+            padding:40px;
+            margin-bottom:40px;
+            box-shadow:0 8px 30px rgba(0,0,0,.1);
+        }
+        .section h2{
+            font-size:2rem;
+            margin-bottom:20px;
+            color:#1a1a1a;
+            border-bottom:3px solid rgba(0,0,0,.2);
+            padding-bottom:15px;
+        }
+        .section h3{
+            font-size:1.4rem;
+            margin-top:25px;
+            margin-bottom:12px;
+            color:#2a2a2a;
+        }
+        .section h4{
+            font-size:1.1rem;
+            margin-top:18px;
+            margin-bottom:10px;
+            color:#3a3a3a;
+            font-weight:600;
+        }
+        .section p{
+            font-size:1rem;
+            line-height:1.8;
+            color:#444;
+            margin-bottom:15px;
+        }
+        .content-list{
+            list-style:none;
+            margin:20px 0;
+        }
+        .content-list li{
+            padding:12px 0;
+            padding-left:30px;
+            position:relative;
+            font-size:1rem;
+            line-height:1.6;
+            color:#444;
+        }
+        .content-list li:before{
+            content:"▸";
+            position:absolute;
+            left:0;
+            color:#d8b4fe;
+            font-size:1.5rem;
+        }
+        .highlight{
+            background:rgba(216,180,254,.3);
+            padding:3px 8px;
+            border-radius:4px;
+            font-weight:500;
+        }
+        .definition-box{
+            background:rgba(107,114,128,.08);
+            border-left:4px solid #d8b4fe;
+            padding:20px;
+            margin:20px 0;
+            border-radius:8px;
+        }
+        .definition-box p{
+            margin:0;
+            font-style:italic;
+            color:#333;
+        }
+        .bag-card{
+            background:rgba(255,255,255,.12);
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:15px;
+            padding:25px;
+            margin:20px 0;
+        }
+        .bag-card h4{
+            margin-top:0;
+            font-size:1.2rem;
+            color:#1a1a1a;
+            margin-bottom:12px;
+        }
+        .characteristics-box{
+            background:rgba(74,222,128,.15);
+            border:1px solid rgba(74,222,128,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .characteristics-box strong{
+            color:#15803d;
+            display:block;
+            margin-bottom:8px;
+        }
+        .recommended-box{
+            background:rgba(59,130,246,.15);
+            border:1px solid rgba(59,130,246,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .recommended-box strong{
+            color:#1e40af;
+            display:block;
+            margin-bottom:8px;
+        }
+        .occasion-box{
+            background:rgba(168,85,247,.15);
+            border:1px solid rgba(168,85,247,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .occasion-box strong{
+            color:#6b21a8;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box{
+            background:rgba(239,68,68,.15);
+            border:1px solid rgba(239,68,68,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .avoid-box strong{
+            color:#991b1b;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box ul, .recommended-box ul, .occasion-box ul{
+            list-style:none;
+            margin:0;
+            padding-left:20px;
+        }
+        .avoid-box li, .recommended-box li, .occasion-box li{
+            padding:5px 0;
+            position:relative;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .avoid-box li:before{
+            content:"✗ ";
+            color:#991b1b;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .recommended-box li:before{
+            content:"✓ ";
+            color:#15803d;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .occasion-box li:before{
+            content:"◆ ";
+            color:#6b21a8;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .tip-box{
+            background:rgba(251,146,60,.15);
+            border-left:4px solid #f97316;
+            padding:15px;
+            border-radius:8px;
+            margin:15px 0;
+        }
+        .tip-box strong{
+            color:#7c2d12;
+            display:block;
+            margin-bottom:8px;
+        }
+        .tip-box p{
+            margin:0;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .bag-category{
+            background:rgba(255,255,255,.12);
+            border:2px solid rgba(216,180,254,.4);
+            border-radius:15px;
+            padding:25px;
+            margin:25px 0;
+        }
+        .bag-category h3{
+            margin-top:0;
+            padding-bottom:10px;
+            border-bottom:2px solid rgba(216,180,254,.3);
+        }
+        .grid-2{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+            margin:20px 0;
+        }
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-top:1px solid rgba(255,255,255,.2);
+            margin-top:60px;
+        }
+        footer p{
+            color:#555;
+            font-size:.95rem;
+        }
+        @media(max-width:700px){
+            .container{
+                padding:40px 20px;
+            }
+            header h1{
+                font-size:2rem;
+            }
+            .section{
+                padding:25px;
+            }
+            .section h2{
+                font-size:1.6rem;
+            }
+            nav{
+                flex-direction:column;
+                gap:15px;
+                padding:15px;
+            }
+            .nav-buttons{
+                width:100%;
+                justify-content:center;
+            }
+            .grid-2{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html">← Back to Units</a>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="previousChapter()">← Previous</button>
+            <button class="nav-btn" onclick="nextChapter()">Next Unit →</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Chapter 7: Bags</h1>
+            <p class="subtitle">Unit - 2: Fashion Library</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <div class="section">
+            <h2>Introduction to Bags</h2>
+            <p>
+                <span class="highlight">Bags</span> are essential fashion accessories that serve both functional and aesthetic purposes. They complete outfits, provide organization for daily necessities, and make powerful style statements. Understanding different bag types and their appropriate uses is crucial for creating well-coordinated, practical, and fashionable looks.
+            </p>
+            <p>
+                Bags are important because they:
+            </p>
+            <ul class="content-list">
+                <li>Complete and define an overall outfit's aesthetic</li>
+                <li>Provide necessary storage and organization</li>
+                <li>Can elevate or casual down an entire look</li>
+                <li>Establish occasion appropriateness and formality level</li>
+                <li>Affect overall silhouette and proportions</li>
+                <li>Represent an investment piece in fashion</li>
+                <li>Allow for self-expression through color, texture, and style</li>
+            </ul>
+        </div>
+
+        <!-- Professional & Formal Bags -->
+        <div class="bag-category">
+            <h3>Professional & Formal Bags</h3>
+            <p>Structured bags designed for business and formal occasions.</p>
+
+            <!-- Tote Bag -->
+            <div class="bag-card">
+                <h4>1. Tote Bag</h4>
+                <div class="definition-box">
+                    <p>A spacious, structured bag with two handles and an open top. Perfect for work and professional settings.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Spacious interior</li>
+                        <li>Two sturdy handles</li>
+                        <li>Can have structured or soft sides</li>
+                        <li>Can have zipper closure or open top</li>
+                        <li>Various materials available</li>
+                        <li>Various colors available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Office and professional settings</li>
+                        <li>Carrying multiple items</li>
+                        <li>Both casual and professional styling</li>
+                        <li>Everyday versatility</li>
+                        <li>Work and business occasions</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Office wear</li>
+                        <li>Business meetings</li>
+                        <li>Smart casual occasions</li>
+                        <li>Everyday errands</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Satchel Bag -->
+            <div class="bag-card">
+                <h4>2. Satchel Bag</h4>
+                <div class="definition-box">
+                    <p>A structured, rectangular bag with a handle and often a shoulder strap. Classic and professional.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Structured rectangular shape</li>
+                        <li>Top handle with optional shoulder strap</li>
+                        <li>Can have clasp or zipper closure</li>
+                        <li>High-quality materials typical</li>
+                        <li>Timeless, classic design</li>
+                        <li>Various sizes available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Professional and business settings</li>
+                        <li>Creating sophisticated looks</li>
+                        <li>Investment piece</li>
+                        <li>Both casual and professional occasions</li>
+                        <li>Carrying essential items</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Office and professional settings</li>
+                        <li>Business dinners</li>
+                        <li>Smart casual events</li>
+                        <li>Elevated everyday looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Briefcase -->
+            <div class="bag-card">
+                <h4>3. Briefcase</h4>
+                <div class="definition-box">
+                    <p>A professional bag designed specifically for carrying work documents and business essentials. Formal and structured.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Hard or soft-sided construction</li>
+                        <li>Can have multiple compartments</li>
+                        <li>Can be carried by handle or shoulder strap</li>
+                        <li>Often has combination locks</li>
+                        <li>High-quality leather typical</li>
+                        <li>Professional appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Professional business settings</li>
+                        <li>Carrying work documents</li>
+                        <li>Business travel</li>
+                        <li>Formal business occasions</li>
+                        <li>High-level professional environments</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Doctor's Bag/Structured Bag -->
+            <div class="bag-card">
+                <h4>4. Doctor's Bag/Structured Bag</h4>
+                <div class="definition-box">
+                    <p>A round or oval structured bag with top handles. Sophisticated and vintage-inspired.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Rounded or oval shape</li>
+                        <li>Top handles</li>
+                        <li>Structured, sturdy construction</li>
+                        <li>Can have clasp or zipper closure</li>
+                        <li>Vintage or modern designs available</li>
+                        <li>High-quality materials typical</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Professional and smart casual occasions</li>
+                        <li>Creating sophisticated looks</li>
+                        <li>Both vintage and modern styling</li>
+                        <li>Formal events</li>
+                        <li>Investment piece</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Clutch -->
+            <div class="bag-card">
+                <h4>5. Clutch</h4>
+                <div class="definition-box">
+                    <p>A small, handheld bag without handles or with a wristlet strap. Perfect for formal and evening occasions.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Small, compact size</li>
+                        <li>Can be carried by hand or on wrist</li>
+                        <li>Can be hard or soft-sided</li>
+                        <li>Can have clasp or zipper closure</li>
+                        <li>Various materials available</li>
+                        <li>Can be embellished or plain</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal and evening occasions</li>
+                        <li>Carrying minimal essentials</li>
+                        <li>Special events and galas</li>
+                        <li>Creating elegant silhouettes</li>
+                        <li>Weddings and formal dinners</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Formal events</li>
+                        <li>Evening wear</li>
+                        <li>Weddings</li>
+                        <li>Galas and formal dinners</li>
+                        <li>Black-tie occasions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casual & Everyday Bags -->
+        <div class="bag-category">
+            <h3>Casual & Everyday Bags</h3>
+            <p>Relaxed bags designed for daily wear and casual occasions.</p>
+
+            <!-- Hobo Bag -->
+            <div class="bag-card">
+                <h4>6. Hobo Bag</h4>
+                <div class="definition-box">
+                    <p>A large, crescent-shaped bag with a curved top handle. Casual, comfortable, and spacious.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Crescent or slouchy shape</li>
+                        <li>Large capacity</li>
+                        <li>Single curved handle</li>
+                        <li>Soft, unstructured design</li>
+                        <li>Can be carried on shoulder</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Carrying multiple items</li>
+                        <li>Comfortable, relaxed styling</li>
+                        <li>Both casual and smart casual occasions</li>
+                        <li>Everyday versatility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Crossbody Bag -->
+            <div class="bag-card">
+                <h4>7. Crossbody Bag</h4>
+                <div class="definition-box">
+                    <p>A bag with a long strap worn diagonally across the body. Practical and hands-free.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Long adjustable strap</li>
+                        <li>Worn across body</li>
+                        <li>Hands-free carrying</li>
+                        <li>Can be small or medium sized</li>
+                        <li>Various shapes and styles</li>
+                        <li>Can be casual or dressy</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Hands-free, practical carrying</li>
+                        <li>Casual and smart casual occasions</li>
+                        <li>Travel and shopping</li>
+                        <li>Both casual and elevated looks</li>
+                        <li>Various styling options</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Shoulder Bag -->
+            <div class="bag-card">
+                <h4>8. Shoulder Bag</h4>
+                <div class="definition-box">
+                    <p>A medium-sized bag with straps designed to be worn on the shoulder. Versatile and practical.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Medium capacity</li>
+                        <li>Shoulder straps</li>
+                        <li>Can be structured or soft</li>
+                        <li>Various shapes available</li>
+                        <li>Can be casual or dressy</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Comfortable carrying</li>
+                        <li>Both casual and professional occasions</li>
+                        <li>Various styling options</li>
+                        <li>Practical versatility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Backpack -->
+            <div class="bag-card">
+                <h4>9. Backpack</h4>
+                <div class="definition-box">
+                    <p>A large bag carried on both shoulders. Practical, comfortable, and increasingly fashionable.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Two shoulder straps</li>
+                        <li>Large capacity</li>
+                        <li>Can be structured or soft</li>
+                        <li>Can have various compartments</li>
+                        <li>Can be casual or dressy</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>School and university</li>
+                        <li>Travel and outdoor activities</li>
+                        <li>Comfortable, practical carrying</li>
+                        <li>Both casual and elevated looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bucket Bag -->
+            <div class="bag-card">
+                <h4>10. Bucket Bag</h4>
+                <div class="definition-box">
+                    <p>A cylindrical or rounded bag with a drawstring closure. Casual and unique.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Bucket or cylindrical shape</li>
+                        <li>Drawstring or clasp closure</li>
+                        <li>Can have one or two handles</li>
+                        <li>Spacious interior</li>
+                        <li>Can be casual or dressy</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Carrying multiple items</li>
+                        <li>Relaxed, comfortable styling</li>
+                        <li>Beach and vacation wear</li>
+                        <li>Various casual occasions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Duffel Bag -->
+            <div class="bag-card">
+                <h4>11. Duffel Bag</h4>
+                <div class="definition-box">
+                    <p>A large, cylindrical bag with two handles or a shoulder strap. Perfect for travel and sports.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Large, spacious capacity</li>
+                        <li>Cylindrical shape</li>
+                        <li>Can have top handles or shoulder strap</li>
+                        <li>Durable materials typical</li>
+                        <li>Can have zipper closure</li>
+                        <li>Various sizes available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Travel and overnight trips</li>
+                        <li>Sports and gym use</li>
+                        <li>Casual outdoor activities</li>
+                        <li>Carrying large amounts of items</li>
+                        <li>Practical, functional carrying</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Messenger Bag -->
+            <div class="bag-card">
+                <h4>12. Messenger Bag</h4>
+                <div class="definition-box">
+                    <p>A rectangular bag with a long strap worn across the body or shoulder. Practical and stylish.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Rectangular shape</li>
+                        <li>Long adjustable strap</li>
+                        <li>Worn across body or on shoulder</li>
+                        <li>Can have flap closure</li>
+                        <li>Various materials available</li>
+                        <li>Can be casual or dressy</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>School and university</li>
+                        <li>Work and professional settings</li>
+                        <li>Casual and smart casual occasions</li>
+                        <li>Both practical and stylish</li>
+                        <li>Various styling options</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tote Bag (Casual) -->
+            <div class="bag-card">
+                <h4>13. Canvas Tote</h4>
+                <div class="definition-box">
+                    <p>A casual, canvas tote bag for everyday use. Durable, affordable, and eco-friendly.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Canvas or durable fabric</li>
+                        <li>Large, open capacity</li>
+                        <li>Two sturdy handles</li>
+                        <li>Can have pockets</li>
+                        <li>Affordable and eco-friendly options</li>
+                        <li>Various designs available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Shopping and errands</li>
+                        <li>Beach and casual wear</li>
+                        <li>Eco-conscious styling</li>
+                        <li>Comfortable, practical carrying</li>
+                        <li>Affordable investment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Occasion Bags -->
+        <div class="bag-category">
+            <h3>Special Occasion & Dressy Bags</h3>
+            <p>Elegant bags designed for formal and special occasions.</p>
+
+            <!-- Evening Clutch/Minaudiere -->
+            <div class="bag-card">
+                <h4>14. Evening Clutch/Minaudiere</h4>
+                <div class="definition-box">
+                    <p>A small, ornate clutch for formal evening events. Often embellished and luxurious.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Small, compact size</li>
+                        <li>Can be embellished or plain</li>
+                        <li>Luxurious materials typical</li>
+                        <li>Can have clasp or frame closure</li>
+                        <li>Can be hard or soft-sided</li>
+                        <li>Elegant appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal evening events</li>
+                        <li>Galas and black-tie occasions</li>
+                        <li>Special celebrations</li>
+                        <li>Weddings and formal dinners</li>
+                        <li>Creating elegant silhouettes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Wristlet -->
+            <div class="bag-card">
+                <h4>15. Wristlet</h4>
+                <div class="definition-box">
+                    <p>A small bag with a wrist strap, designed to be carried on the wrist. Practical and stylish.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Small, compact size</li>
+                        <li>Wrist strap attached</li>
+                        <li>Can hold essential items</li>
+                        <li>Can be casual or dressy</li>
+                        <li>Various materials available</li>
+                        <li>Can be hard or soft</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Carrying minimal essentials</li>
+                        <li>Both casual and dressy occasions</li>
+                        <li>Events and parties</li>
+                        <li>Hands-free styling</li>
+                        <li>Various occasions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Frame Bag -->
+            <div class="bag-card">
+                <h4>16. Frame Bag</h4>
+                <div class="definition-box">
+                    <p>A vintage-inspired bag with a prominent metal frame at the top. Sophisticated and elegant.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Metal frame closure at top</li>
+                        <li>Can be small to medium sized</li>
+                        <li>Can have top handle or shoulder strap</li>
+                        <li>Luxurious materials typical</li>
+                        <li>Vintage or modern designs</li>
+                        <li>Sophisticated appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal and special occasions</li>
+                        <li>Vintage and retro styling</li>
+                        <li>Creating sophisticated looks</li>
+                        <li>Investment piece</li>
+                        <li>Elegant evening wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Beaded/Sequin Bag -->
+            <div class="bag-card">
+                <h4>17. Beaded/Sequin Bag</h4>
+                <div class="definition-box">
+                    <p>A heavily embellished bag with beads, sequins, or crystals. Eye-catching and glamorous.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Heavily embellished with beads/sequins</li>
+                        <li>Can be small to medium sized</li>
+                        <li>Can have clasp or frame closure</li>
+                        <li>Luxurious appearance</li>
+                        <li>Eye-catching design</li>
+                        <li>Perfect for special occasions</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal evening events</li>
+                        <li>Galas and special celebrations</li>
+                        <li>Creating glamorous looks</li>
+                        <li>Statement-making pieces</li>
+                        <li>Special occasion styling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specialty & Fashion Bags -->
+        <div class="bag-category">
+            <h3>Specialty & Fashion Bags</h3>
+            <p>Unique and trendy bags that make fashion statements.</p>
+
+            <!-- Leather Shoulder Bag -->
+            <div class="bag-card">
+                <h4>18. Leather Shoulder Bag</h4>
+                <div class="definition-box">
+                    <p>A quality leather bag worn on the shoulder. Timeless, durable investment piece.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Genuine leather construction</li>
+                        <li>Various shapes and sizes</li>
+                        <li>Can be structured or slouchy</li>
+                        <li>Improves with age and use</li>
+                        <li>High-quality craftsmanship</li>
+                        <li>Investment piece</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Investment piece</li>
+                        <li>Both professional and casual occasions</li>
+                        <li>Year-round versatility</li>
+                        <li>Various styling options</li>
+                        <li>Long-lasting durability</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bucket Bag (Luxury) -->
+            <div class="bag-card">
+                <h4>19. Luxury Bucket Bag</h4>
+                <div class="definition-box">
+                    <p>A luxury bucket bag in premium materials. Elevated casual sophistication.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Bucket or rounded shape</li>
+                        <li>Premium materials (leather, suede)</li>
+                        <li>High-end brand or craftsmanship</li>
+                        <li>Can have drawstring closure</li>
+                        <li>Investment piece</li>
+                        <li>Elevated aesthetic</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Elevated casual wear</li>
+                        <li>Investment piece</li>
+                        <li>Smart casual occasions</li>
+                        <li>Both professional and casual use</li>
+                        <li>Various styling options</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quilted Bag -->
+            <div class="bag-card">
+                <h4>20. Quilted Bag</h4>
+                <div class="definition-box">
+                    <p>A bag with decorative quilted pattern. Textured and sophisticated.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Quilted pattern throughout</li>
+                        <li>Can be various shapes and sizes</li>
+                        <li>Can have chain or leather straps</li>
+                        <li>Can be classic or contemporary</li>
+                        <li>Various materials available</li>
+                        <li>Textured, interesting appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Both casual and professional occasions</li>
+                        <li>Adding texture and interest</li>
+                        <li>Various styling options</li>
+                        <li>Smart casual to elevated looks</li>
+                        <li>Year-round versatility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Chain Bag -->
+            <div class="bag-card">
+                <h4>21. Chain Bag</h4>
+                <div class="definition-box">
+                    <p>A bag with chain straps for carrying on the shoulder or as a clutch. Elegant and luxurious.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Metal chain straps</li>
+                        <li>Can be small to medium sized</li>
+                        <li>Can be carried by hand or on shoulder</li>
+                        <li>Luxurious materials typical</li>
+                        <li>Can have flap closure</li>
+                        <li>Sophisticated appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal and special occasions</li>
+                        <li>Evening wear</li>
+                        <li>Creating elegant silhouettes</li>
+                        <li>Weddings and celebrations</li>
+                        <li>Investment piece</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Straw/Woven Bag -->
+            <div class="bag-card">
+                <h4>22. Straw/Woven Bag</h4>
+                <div class="definition-box">
+                    <p>A casual bag made from straw or woven materials. Perfect for summer and beach wear.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Straw or woven materials</li>
+                        <li>Large, spacious capacity</li>
+                        <li>Can have leather handles</li>
+                        <li>Lightweight and breathable</li>
+                        <li>Casual, natural aesthetic</li>
+                        <li>Perfect for warm weather</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer and beach wear</li>
+                        <li>Warm weather occasions</li>
+                        <li>Casual styling</li>
+                        <li>Beach and vacation</li>
+                        <li>Comfortable, relaxed looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Velvet Bag -->
+            <div class="bag-card">
+                <h4>23. Velvet Bag</h4>
+                <div class="definition-box">
+                    <p>A luxurious bag made from soft velvet fabric. Elegant and statement-making.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Soft velvet fabric</li>
+                        <li>Luxurious appearance</li>
+                        <li>Can be small or medium sized</li>
+                        <li>Can have various closure types</li>
+                        <li>Various colors available</li>
+                        <li>Requires careful care</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal and evening events</li>
+                        <li>Special occasions</li>
+                        <li>Creating elegant looks</li>
+                        <li>Adding luxury and texture</li>
+                        <li>Elevated styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Clear/Transparent Bag -->
+            <div class="bag-card">
+                <h4>24. Clear/Transparent Bag</h4>
+                <div class="definition-box">
+                    <p>A trendy bag made from clear or transparent materials. Modern and minimalist.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Clear or transparent materials</li>
+                        <li>Can be various shapes and sizes</li>
+                        <li>Can have colored trim or handles</li>
+                        <li>Contemporary look</li>
+                        <li>Fashion-forward aesthetic</li>
+                        <li>Can carry items visible inside</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Fashion-forward styling</li>
+                        <li>Contemporary looks</li>
+                        <li>Events with security requirements</li>
+                        <li>Summer and casual wear</li>
+                        <li>Statement-making pieces</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Leather Backpack -->
+            <div class="bag-card">
+                <h4>25. Leather Backpack</h4>
+                <div class="definition-box">
+                    <p>A quality leather backpack. Sophisticated and functional for work or travel.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Genuine leather construction</li>
+                        <li>Two shoulder straps</li>
+                        <li>Can have various compartments</li>
+                        <li>Can have top handle</li>
+                        <li>High-quality craftsmanship</li>
+                        <li>Improves with age</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Work and professional settings</li>
+                        <li>Travel and commuting</li>
+                        <li>Investment piece</li>
+                        <li>Both casual and professional use</li>
+                        <li>Comfortable, practical carrying</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bag Selection & Styling Tips -->
+        <div class="section">
+            <h2>Bag Selection & Styling Guidelines</h2>
+            
+            <h3>Key Principles for Choosing Bags:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Occasion Appropriateness:</span> Match bag style and size to the occasion and setting</li>
+                <li><span class="highlight">Outfit Coordination:</span> Choose bags that complement your outfit's color, style, and formality level</li>
+                <li><span class="highlight">Proportions:</span> Bag size should be proportional to your body size and outfit</li>
+                <li><span class="highlight">Quality Investment:</span> Quality bags last longer, look better, and can be worn for years</li>
+                <li><span class="highlight">Functionality:</span> Choose bags that hold what you need without being unnecessarily large</li>
+                <li><span class="highlight">Color Selection:</span> Neutral colors are versatile; colored bags add personality</li>
+                <li><span class="highlight">Personal Style:</span> Choose bags that express your personal aesthetic and make you feel confident</li>
+            </ul>
+
+            <h3 style="margin-top:30px;">Bag Selection by Occasion:</h3>
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ Professional/Office:</strong>
+                    <ul>
+                        <li>Totes and satchels</li>
+                        <li>Structured leather bags</li>
+                        <li>Shoulder bags</li>
+                        <li>Briefcases</li>
+                        <li>Neutral colors</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Formal/Evening:</strong>
+                    <ul>
+                        <li>Clutches</li>
+                        <li>Evening clutches</li>
+                        <li>Beaded bags</li>
+                        <li>Chain bags</li>
+                        <li>Luxurious materials</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ Casual/Everyday:</strong>
+                    <ul>
+                        <li>Totes and canvas bags</li>
+                        <li>Crossbody bags</li>
+                        <li>Backpacks</li>
+                        <li>Shoulder bags</li>
+                        <li>Various colors and styles</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Smart Casual:</strong>
+                    <ul>
+                        <li>Structured bags</li>
+                        <li>Leather shoulder bags</li>
+                        <li>Quilted bags</li>
+                        <li>Medium-sized totes</li>
+                        <li>Quality materials</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px;">Essential Bag Investment Pieces:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Neutral Tote:</span> A well-made tote in black, navy, or camel for work and everyday use</li>
+                <li><span class="highlight">Structured Leather Bag:</span> A classic satchel or shoulder bag in quality leather</li>
+                <li><span class="highlight">Evening Clutch:</span> A small clutch in black or metallic for formal occasions</li>
+                <li><span class="highlight">Crossbody Bag:</span> A practical bag for hands-free carrying in neutral color</li>
+                <li><span class="highlight">Quality Backpack:</span> A leather or high-quality backpack for work or travel</li>
+            </ul>
+
+            <h3 style="margin-top:30px;">Bag Care & Maintenance:</h3>
+            <ul class="content-list">
+                <li>Store bags in dust bags or boxes away from direct sunlight</li>
+                <li>Clean leather regularly with appropriate leather cleaner</li>
+                <li>Condition leather periodically to maintain suppleness</li>
+                <li>Use stuffing (tissue, newspaper) to maintain bag shape</li>
+                <li>Avoid overstuffing which causes stretching and damage</li>
+                <li>Rotate bags to prevent excessive wear on one piece</li>
+                <li>Address stains and damage promptly before they worsen</li>
+                <li>Use protective sprays on fabric and suede bags</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong>
+                <p>Invest in a few quality bags in neutral colors that work with multiple outfits (black, navy, camel, gray). Then add trendy styles and colors for personality. Quality bags are investment pieces that last years and elevate any outfit.</p>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <h2>Summary</h2>
+            <p>
+                Bags are essential fashion accessories that complete outfits while serving practical functions. From professional totes to elegant clutches to casual backpacks, understanding different bag types and their appropriate uses ensures a versatile, well-coordinated wardrobe. Key takeaways:
+            </p>
+            <ul class="content-list">
+                <li>Different bags suit different occasions and body types</li>
+                <li>Quality bags are investment pieces that last for years</li>
+                <li>Proper bag selection completes and defines an outfit</li>
+                <li>Neutral colors offer versatility; colored bags add personality</li>
+                <li>Bag proportion should match your body size and outfit</li>
+                <li>Build a wardrobe with essential bags in neutral colors</li>
+                <li>Personal style and comfort should guide bag selections</li>
+            </ul>
+            <p style="margin-top:20px;">
+                Whether you need a professional tote for the office, an elegant clutch for formal events, a casual crossbody for everyday wear, or a statement piece to express your personality, understanding bag types and selection principles ensures you always have the perfect bag to complete your look. The right bag is both a practical necessity and a powerful fashion statement!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Understanding Fashion Library (FDO-355) | All rights reserved</p>
+        <p>Created by: Subhayu</p>
+    </footer>
+
+    <script>
+        function previousChapter(){
+            window.location.href = 'chapter6.html';
+        }
+        function nextChapter(){
+            window.location.href = '../../index.html';
+        }
+    </script>
+</body>
+</html>

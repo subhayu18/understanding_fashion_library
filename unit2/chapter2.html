@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2 - Sleeves | Understanding Fashion Library</title>
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+            scroll-behavior:smooth;
+        }
+        body{
+            min-height:100vh;
+            color:#333;
+            overflow-x:hidden;
+        }
+        /* Animated Gradient */
+        body{
+            background:linear-gradient(-45deg,#c6e7ff,#d8b4fe,#fde68a,#bbf7d0,#fbcfe8);
+            background-size:400% 400%;
+            animation:gradient 15s ease infinite;
+        }
+        @keyframes gradient{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+        /* Navigation */
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid rgba(255,255,255,.2);
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+        nav a{
+            color:black;
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.1rem;
+            transition:.3s;
+        }
+        nav a:hover{
+            opacity:.7;
+        }
+        .nav-buttons{
+            display:flex;
+            gap:15px;
+        }
+        .nav-btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:12px;
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,.35);
+            cursor:pointer;
+            font-weight:600;
+            transition:.3s;
+        }
+        .nav-btn:hover{
+            background:rgba(255,255,255,.28);
+            transform:scale(1.05);
+        }
+        /* Main Content */
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:60px 40px;
+        }
+        header{
+            text-align:center;
+            margin-bottom:60px;
+        }
+        header h1{
+            font-size:2.8rem;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+        header .subtitle{
+            font-size:1.2rem;
+            color:#555;
+            font-weight:400;
+        }
+        /* Sections */
+        .section{
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.35);
+            border-radius:20px;
+            padding:40px;
+            margin-bottom:40px;
+            box-shadow:0 8px 30px rgba(0,0,0,.1);
+        }
+        .section h2{
+            font-size:2rem;
+            margin-bottom:20px;
+            color:#1a1a1a;
+            border-bottom:3px solid rgba(0,0,0,.2);
+            padding-bottom:15px;
+        }
+        .section h3{
+            font-size:1.4rem;
+            margin-top:25px;
+            margin-bottom:12px;
+            color:#2a2a2a;
+        }
+        .section h4{
+            font-size:1.1rem;
+            margin-top:18px;
+            margin-bottom:10px;
+            color:#3a3a3a;
+            font-weight:600;
+        }
+        .section p{
+            font-size:1rem;
+            line-height:1.8;
+            color:#444;
+            margin-bottom:15px;
+        }
+        .content-list{
+            list-style:none;
+            margin:20px 0;
+        }
+        .content-list li{
+            padding:12px 0;
+            padding-left:30px;
+            position:relative;
+            font-size:1rem;
+            line-height:1.6;
+            color:#444;
+        }
+        .content-list li:before{
+            content:"▸";
+            position:absolute;
+            left:0;
+            color:#d8b4fe;
+            font-size:1.5rem;
+        }
+        .highlight{
+            background:rgba(216,180,254,.3);
+            padding:3px 8px;
+            border-radius:4px;
+            font-weight:500;
+        }
+        .definition-box{
+            background:rgba(107,114,128,.08);
+            border-left:4px solid #d8b4fe;
+            padding:20px;
+            margin:20px 0;
+            border-radius:8px;
+        }
+        .definition-box p{
+            margin:0;
+            font-style:italic;
+            color:#333;
+        }
+        .sleeve-card{
+            background:rgba(255,255,255,.12);
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:15px;
+            padding:25px;
+            margin:20px 0;
+        }
+        .sleeve-card h4{
+            margin-top:0;
+            font-size:1.2rem;
+            color:#1a1a1a;
+            margin-bottom:12px;
+        }
+        .characteristics-box{
+            background:rgba(74,222,128,.15);
+            border:1px solid rgba(74,222,128,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .characteristics-box strong{
+            color:#15803d;
+            display:block;
+            margin-bottom:8px;
+        }
+        .recommended-box{
+            background:rgba(59,130,246,.15);
+            border:1px solid rgba(59,130,246,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .recommended-box strong{
+            color:#1e40af;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box{
+            background:rgba(239,68,68,.15);
+            border:1px solid rgba(239,68,68,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .avoid-box strong{
+            color:#991b1b;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box ul, .recommended-box ul{
+            list-style:none;
+            margin:0;
+            padding-left:20px;
+        }
+        .avoid-box li, .recommended-box li{
+            padding:5px 0;
+            position:relative;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .avoid-box li:before{
+            content:"✗ ";
+            color:#991b1b;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .recommended-box li:before{
+            content:"✓ ";
+            color:#15803d;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .tip-box{
+            background:rgba(251,146,60,.15);
+            border-left:4px solid #f97316;
+            padding:15px;
+            border-radius:8px;
+            margin:15px 0;
+        }
+        .tip-box strong{
+            color:#7c2d12;
+            display:block;
+            margin-bottom:8px;
+        }
+        .tip-box p{
+            margin:0;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .grid-2{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+            margin:20px 0;
+        }
+        .sleeve-category{
+            background:rgba(255,255,255,.12);
+            border:2px solid rgba(216,180,254,.4);
+            border-radius:15px;
+            padding:25px;
+            margin:25px 0;
+        }
+        .sleeve-category h3{
+            margin-top:0;
+            padding-bottom:10px;
+            border-bottom:2px solid rgba(216,180,254,.3);
+        }
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-top:1px solid rgba(255,255,255,.2);
+            margin-top:60px;
+        }
+        footer p{
+            color:#555;
+            font-size:.95rem;
+        }
+        @media(max-width:700px){
+            .container{
+                padding:40px 20px;
+            }
+            header h1{
+                font-size:2rem;
+            }
+            .section{
+                padding:25px;
+            }
+            .section h2{
+                font-size:1.6rem;
+            }
+            nav{
+                flex-direction:column;
+                gap:15px;
+                padding:15px;
+            }
+            .nav-buttons{
+                width:100%;
+                justify-content:center;
+            }
+            .grid-2{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html">← Back to Units</a>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="previousChapter()">← Previous</button>
+            <button class="nav-btn" onclick="nextChapter()">Next →</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Chapter 2: Sleeves</h1>
+            <p class="subtitle">Unit - 2: Fashion Library</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <div class="section">
+            <h2>Introduction to Sleeves</h2>
+            <p>
+                The <span class="highlight">sleeve</span> is a fundamental component of garment construction that covers the arm. Sleeves play a crucial role in defining a garment's style, formality level, and suitability for different occasions and seasons. The variety of sleeve styles available offers countless possibilities for creative design and flattering garment construction.
+            </p>
+            <p>
+                Sleeves are important because they:
+            </p>
+            <ul class="content-list">
+                <li>Define the overall silhouette of a garment</li>
+                <li>Establish the formality and style of an outfit</li>
+                <li>Provide coverage and comfort based on season and occasion</li>
+                <li>Can flatter or detract from arm and shoulder proportions</li>
+                <li>Contribute to the ease of movement and wearability</li>
+                <li>Add visual interest through design details</li>
+                <li>Allow for self-expression through style choices</li>
+            </ul>
+        </div>
+
+        <!-- Full-Length Sleeves -->
+        <div class="sleeve-category">
+            <h3>Full-Length Sleeves</h3>
+            <p>Sleeves that extend from the shoulder to the wrist, providing complete arm coverage.</p>
+
+            <!-- Long Sleeve -->
+            <div class="sleeve-card">
+                <h4>1. Long Sleeve (Standard)</h4>
+                <div class="definition-box">
+                    <p>A classic sleeve that extends from the shoulder to the wrist. The most common and versatile sleeve length.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Extends to the wrist</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Can be cuffed or finished with hem</li>
+                        <li>Works for all seasons with appropriate fabric</li>
+                        <li>Versatile for casual and formal wear</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>All body types and arm shapes</li>
+                        <li>Professional and formal settings</li>
+                        <li>Cooler weather</li>
+                        <li>Most occasions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Fitted Long Sleeve -->
+            <div class="sleeve-card">
+                <h4>2. Fitted Long Sleeve</h4>
+                <div class="definition-box">
+                    <p>A long sleeve that fits closely to the arm from shoulder to wrist, emphasizing the arm's natural shape.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Follows arm contours closely</li>
+                        <li>Creates sleek, elegant look</li>
+                        <li>Can be slightly stretchy or rigid fabric</li>
+                        <li>Emphasizes arm definition</li>
+                        <li>Often paired with cuffs or ribbing</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Toned, slim arms</li>
+                        <li>Formal and professional wear</li>
+                        <li>Creating elegant silhouettes</li>
+                        <li>Modern, contemporary styles</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid If:</strong>
+                    <ul>
+                        <li>Self-conscious about arm shape</li>
+                        <li>Prefer loose, comfortable fit</li>
+                        <li>Have fuller arms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Loose/Relaxed Long Sleeve -->
+            <div class="sleeve-card">
+                <h4>3. Loose/Relaxed Long Sleeve</h4>
+                <div class="definition-box">
+                    <p>A long sleeve with generous fullness that drapes softly around the arm, providing comfort and ease of movement.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Extra fullness throughout</li>
+                        <li>Comfortable and relaxed fit</li>
+                        <li>Can be cuffed or straight hem</li>
+                        <li>Works with various fabrics</li>
+                        <li>Casual and comfortable appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Fuller or heavier arms</li>
+                        <li>Casual and comfortable wear</li>
+                        <li>Creating loose, flowing silhouettes</li>
+                        <li>All arm types for comfort</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tailored/Structured Long Sleeve -->
+            <div class="sleeve-card">
+                <h4>4. Tailored/Structured Long Sleeve</h4>
+                <div class="definition-box">
+                    <p>A precisely cut long sleeve with structured seams and darts for a polished, well-fitted appearance.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Precise tailoring and seaming</li>
+                        <li>Often includes darts or seams</li>
+                        <li>Creates smooth fit without excess fabric</li>
+                        <li>Professional and refined look</li>
+                        <li>Requires quality construction</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Professional and formal settings</li>
+                        <li>High-quality garments</li>
+                        <li>Creating sophisticated looks</li>
+                        <li>Well-fitted, polished appearance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Three-Quarter & Bracelet Sleeves -->
+        <div class="sleeve-category">
+            <h3>Three-Quarter & Mid-Length Sleeves</h3>
+            <p>Sleeves that fall between the elbow and wrist, offering a balanced coverage option.</p>
+
+            <!-- Three-Quarter Sleeve -->
+            <div class="sleeve-card">
+                <h4>5. Three-Quarter Sleeve</h4>
+                <div class="definition-box">
+                    <p>A sleeve that extends three-quarters of the way down the arm, typically ending between the elbow and wrist.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Ends at mid-forearm or slightly above wrist</li>
+                        <li>Provides partial arm coverage</li>
+                        <li>Flattering for many arm types</li>
+                        <li>Perfect for transitional seasons</li>
+                        <li>Versatile for casual and business wear</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Spring and fall seasons</li>
+                        <li>Most arm shapes and types</li>
+                        <li>Business casual settings</li>
+                        <li>Creating interesting proportions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bracelet/Push-Up Sleeve -->
+            <div class="sleeve-card">
+                <h4>6. Bracelet/Push-Up Sleeve</h4>
+                <div class="definition-box">
+                    <p>A long sleeve that is rolled or pushed up to the mid-forearm level, creating a casual, relaxed look.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Long sleeve rolled up to forearm</li>
+                        <li>Creates casual, effortless look</li>
+                        <li>Shows part of the wrist and arm</li>
+                        <li>Can expose wrist accessories</li>
+                        <li>Popular in contemporary fashion</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual summer looks</li>
+                        <li>Showing off jewelry</li>
+                        <li>Creating modern, relaxed vibes</li>
+                        <li>Lightweight fabrics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Short Sleeves -->
+        <div class="sleeve-category">
+            <h3>Short Sleeves</h3>
+            <p>Sleeves that end above the elbow, providing minimal arm coverage and comfort in warm weather.</p>
+
+            <!-- Short Sleeve -->
+            <div class="sleeve-card">
+                <h4>7. Short Sleeve (Standard)</h4>
+                <div class="definition-box">
+                    <p>A sleeve that extends from the shoulder to just above the elbow, the most common short sleeve length.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Ends just above or at the elbow</li>
+                        <li>Perfect for warm weather</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Can be cuffed or finished with hem</li>
+                        <li>Versatile for casual to business-casual wear</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer wear</li>
+                        <li>Warm weather occasions</li>
+                        <li>Casual and business-casual settings</li>
+                        <li>Most arm types</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cap Sleeve -->
+            <div class="sleeve-card">
+                <h4>8. Cap Sleeve</h4>
+                <div class="definition-box">
+                    <p>A very short sleeve that covers only the top of the shoulder and upper arm, providing minimal coverage.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Covers only the shoulder and top of arm</li>
+                        <li>Creates feminine, delicate look</li>
+                        <li>Often has a curved or gathered shape</li>
+                        <li>Perfect for summer dresses</li>
+                        <li>Flatters shoulders</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Narrow or sloped shoulders</li>
+                        <li>Summer dresses</li>
+                        <li>Feminine and romantic styles</li>
+                        <li>Warm weather wear</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid If:</strong>
+                    <ul>
+                        <li>Self-conscious about arms</li>
+                        <li>Have broad shoulders</li>
+                        <li>Prefer full arm coverage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Flutter Sleeve -->
+            <div class="sleeve-card">
+                <h4>9. Flutter Sleeve</h4>
+                <div class="definition-box">
+                    <p>A short sleeve with extra fabric at the edges that flutters and moves, creating a soft, feminine effect.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Short, loose sleeve</li>
+                        <li>Flutters with movement</li>
+                        <li>Creates soft, feminine look</li>
+                        <li>Often gathered or ruffled</li>
+                        <li>Adds volume at shoulders</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Narrow shoulders (adds width)</li>
+                        <li>Feminine and romantic styles</li>
+                        <li>Summer wear</li>
+                        <li>Dresses and blouses</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- T-Shirt Sleeve -->
+            <div class="sleeve-card">
+                <h4>10. T-Shirt Sleeve</h4>
+                <div class="definition-box">
+                    <p>A simple, short sleeve that is fitted close to the arm, typical of t-shirts and casual wear.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Short and fitted</li>
+                        <li>Simple construction</li>
+                        <li>Casual appearance</li>
+                        <li>Can have cuff or simple hem</li>
+                        <li>Comfortable and relaxed</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Toned arms</li>
+                        <li>Warm weather</li>
+                        <li>Sporty and relaxed styles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sleeve Variations -->
+        <div class="sleeve-category">
+            <h3>Specialized Sleeve Designs</h3>
+            <p>Sleeves with special design features and construction techniques that add visual interest and style.</p>
+
+            <!-- Puffed Sleeve -->
+            <div class="sleeve-card">
+                <h4>11. Puffed Sleeve</h4>
+                <div class="definition-box">
+                    <p>A sleeve with extra fullness gathered at the shoulder, creating a puffy, voluminous effect that tapers toward the cuff.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Gathered fullness at shoulder</li>
+                        <li>Can be short or long</li>
+                        <li>Creates dramatic, feminine look</li>
+                        <li>Often has elastic or cuff at wrist</li>
+                        <li>Adds volume and shape</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Narrow or sloped shoulders</li>
+                        <li>Feminine and romantic styles</li>
+                        <li>Formal and evening wear</li>
+                        <li>Adding visual drama</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bell Sleeve -->
+            <div class="sleeve-card">
+                <h4>12. Bell Sleeve (Flare)</h4>
+                <div class="definition-box">
+                    <p>A sleeve that fits closely from shoulder to elbow, then flares dramatically outward toward the cuff.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted at shoulder and elbow</li>
+                        <li>Flares at forearm</li>
+                        <li>Creates dramatic, stylish look</li>
+                        <li>Can be subtle or dramatic</li>
+                        <li>Often seen in bohemian styles</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Fashion-forward styling</li>
+                        <li>Bohemian and romantic looks</li>
+                        <li>Adding visual interest</li>
+                        <li>Showing off wrist jewelry</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Batwing/Dolman Sleeve -->
+            <div class="sleeve-card">
+                <h4>13. Batwing/Dolman Sleeve</h4>
+                <div class="definition-box">
+                    <p>A sleeve that is very loose and wide at the shoulder, tapering dramatically to a fitted cuff at the wrist.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Loose, oversized at shoulder</li>
+                        <li>Fitted cuff at wrist</li>
+                        <li>Creates flowing, draped effect</li>
+                        <li>Creates unusual silhouette</li>
+                        <li>Dramatic and stylish appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Oversized, bohemian styles</li>
+                        <li>Fashion-forward looks</li>
+                        <li>Comfortable, relaxed wear</li>
+                        <li>Creating dramatic silhouettes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Kimono Sleeve -->
+            <div class="sleeve-card">
+                <h4>14. Kimono Sleeve</h4>
+                <div class="definition-box">
+                    <p>A wide, unlined sleeve cut in one piece with the garment body, inspired by traditional Japanese kimono design.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>One-piece construction</li>
+                        <li>Wide and flowing</li>
+                        <li>No fitted armhole</li>
+                        <li>Creates relaxed, comfortable fit</li>
+                        <li>Elegant and sophisticated</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Loose, relaxed styles</li>
+                        <li>Comfortable, everyday wear</li>
+                        <li>Robes and wraps</li>
+                        <li>Creating flowing silhouettes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Raglan Sleeve -->
+            <div class="sleeve-card">
+                <h4>15. Raglan Sleeve</h4>
+                <div class="definition-box">
+                    <p>A sleeve that extends from the neck/shoulder area down to the underarm, creating a diagonal seam from neck to armpit.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Diagonal seam from neck to armpit</li>
+                        <li>Extended shoulder coverage</li>
+                        <li>Provides extra mobility</li>
+                        <li>Creates distinctive seam line</li>
+                        <li>Often seen in sports wear</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Athletic and sports wear</li>
+                        <li>Comfortable, relaxed styles</li>
+                        <li>Broader shoulders</li>
+                        <li>Creating ease of movement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Drop Shoulder -->
+            <div class="sleeve-card">
+                <h4>16. Drop Shoulder Sleeve</h4>
+                <div class="definition-box">
+                    <p>A sleeve where the shoulder seam sits lower than the natural shoulder point, creating a relaxed, oversized appearance.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Shoulder seam drops below natural shoulder</li>
+                        <li>Creates oversized look</li>
+                        <li>Relaxed, comfortable fit</li>
+                        <li>Can be fitted or loose sleeve</li>
+                        <li>Contemporary, trendy style</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Oversized, relaxed looks</li>
+                        <li>Contemporary fashion</li>
+                        <li>Comfortable, casual wear</li>
+                        <li>Broader shoulders (creates balance)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cuffed/Rolled Sleeve -->
+            <div class="sleeve-card">
+                <h4>17. Cuffed/Rolled Sleeve</h4>
+                <div class="definition-box">
+                    <p>A sleeve with a fold or roll at the cuff area, creating a layered, intentional design detail.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Folded or rolled at cuff</li>
+                        <li>Can be fixed or adjustable</li>
+                        <li>Shows contrasting interior fabric</li>
+                        <li>Creates polished, intentional look</li>
+                        <li>Can be subtle or dramatic</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Showing off sleeve lining</li>
+                        <li>Creating polished looks</li>
+                        <li>Adjusting sleeve length</li>
+                        <li>Adding design detail</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Off-Shoulder/Cold Shoulder Sleeve -->
+            <div class="sleeve-card">
+                <h4>18. Off-Shoulder/Cold Shoulder</h4>
+                <div class="definition-box">
+                    <p>A sleeve design where the garment or sleeve extends below the shoulder, leaving the shoulder area exposed.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Leaves shoulders exposed</li>
+                        <li>Can have cap or longer sleeves</li>
+                        <li>Creates sexy, modern look</li>
+                        <li>Exposes collarbone and shoulders</li>
+                        <li>Perfect for summer styles</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Narrow shoulders</li>
+                        <li>Warm weather wear</li>
+                        <li>Contemporary, trendy styles</li>
+                        <li>Creating feminine looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sleeve Embellishments -->
+            <div class="sleeve-card">
+                <h4>19. Ruffled/Layered Sleeves</h4>
+                <div class="definition-box">
+                    <p>Sleeves with ruffles, tiers, or layered fabric elements creating texture and visual interest.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Multiple layers or ruffles</li>
+                        <li>Creates texture and movement</li>
+                        <li>Adds volume and drama</li>
+                        <li>Often seen in romantic styles</li>
+                        <li>Can be subtle or dramatic</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Feminine and romantic styles</li>
+                        <li>Adding visual drama</li>
+                        <li>Creating textural interest</li>
+                        <li>Special occasions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slit Sleeve -->
+            <div class="sleeve-card">
+                <h4>20. Slit Sleeve</h4>
+                <div class="definition-box">
+                    <p>A sleeve with an opening or slit, typically along the underside of the arm, creating a modern, edgy design.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Intentional slit in sleeve</li>
+                        <li>Can show skin or layer</li>
+                        <li>Modern, contemporary look</li>
+                        <li>Creates visual interest</li>
+                        <li>Often styled with cuffs</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Fashion-forward styling</li>
+                        <li>Contemporary looks</li>
+                        <li>Creating visual drama</li>
+                        <li>Showing toned arms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sleeveless -->
+        <div class="sleeve-category">
+            <h3>Sleeveless Designs</h3>
+            <p>Garments without sleeves, providing maximum arm exposure and freedom of movement.</p>
+
+            <!-- Tank/Sleeveless -->
+            <div class="sleeve-card">
+                <h4>21. Tank/Sleeveless</h4>
+                <div class="definition-box">
+                    <p>A garment with no sleeves, exposing the entire arm and shoulder area.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>No sleeve coverage</li>
+                        <li>Maximum arm exposure</li>
+                        <li>Perfect for warm weather</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Casual and sporty appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Warm weather</li>
+                        <li>Athletic and sporty styles</li>
+                        <li>Toned, fit arms</li>
+                        <li>Casual wear</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid If:</strong>
+                    <ul>
+                        <li>Self-conscious about arms</li>
+                        <li>Prefer coverage</li>
+                        <li>Cooler weather</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Halter -->
+            <div class="sleeve-card">
+                <h4>22. Halter Sleeveless</h4>
+                <div class="definition-box">
+                    <p>A sleeveless design where the garment ties behind the neck, leaving shoulders and back exposed.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Ties behind neck</li>
+                        <li>Exposes back and shoulders</li>
+                        <li>No sleeve coverage</li>
+                        <li>Creates balance for lower body</li>
+                        <li>Perfect for summer wear</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Narrow shoulders</li>
+                        <li>Summer wear</li>
+                        <li>Pear-shaped body types</li>
+                        <li>Showing off back</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Strapless -->
+            <div class="sleeve-card">
+                <h4>23. Strapless</h4>
+                <div class="definition-box">
+                    <p>A sleeveless garment where the neckline extends across the shoulders without straps, requiring support and structure.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>No sleeves or straps</li>
+                        <li>Neckline extends across shoulders</li>
+                        <li>Requires internal structure</li>
+                                                <li>Often has boning or bra cups</li>
+                        <li>Elegant and sophisticated</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal and evening wear</li>
+                        <li>Special occasions</li>
+                        <li>Showing off shoulders and collarbones</li>
+                        <li>Creating elegant looks</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid If:</strong>
+                    <ul>
+                        <li>Self-conscious about arms or shoulders</li>
+                        <li>Have broad shoulders (draws attention)</li>
+                        <li>Prefer straps for security</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Spaghetti Strap -->
+            <div class="sleeve-card">
+                <h4>24. Spaghetti Strap</h4>
+                <div class="definition-box">
+                    <p>A sleeveless design with very thin, narrow straps over the shoulders. Provides minimal coverage and support.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Very thin shoulder straps</li>
+                        <li>Minimal sleeve coverage</li>
+                        <li>Delicate appearance</li>
+                        <li>Perfect for warm weather</li>
+                        <li>Requires well-fitted undergarments</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer and warm weather</li>
+                        <li>Toned shoulders and arms</li>
+                        <li>Casual and dressy occasions</li>
+                        <li>Layering underneath</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- One Shoulder -->
+            <div class="sleeve-card">
+                <h4>25. One Shoulder</h4>
+                <div class="definition-box">
+                    <p>An asymmetrical sleeveless design where one shoulder is covered with fabric while the other is exposed.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Asymmetrical neckline</li>
+                        <li>One shoulder exposed</li>
+                        <li>Can have one strap or be strapless</li>
+                        <li>Creates dramatic effect</li>
+                        <li>Fashion-forward and stylish</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal and evening wear</li>
+                        <li>Fashion-focused occasions</li>
+                        <li>Creating visual drama</li>
+                        <li>Showing off asymmetrical beauty</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sleeve Selection & Styling Tips -->
+        <div class="section">
+            <h2>Sleeve Selection & Styling Guidelines</h2>
+            
+            <h3>Key Principles for Choosing Sleeves:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Occasion Appropriateness:</span> Match sleeve length and style to the formality of the occasion</li>
+                <li><span class="highlight">Season & Weather:</span> Choose appropriate coverage for the season and climate</li>
+                <li><span class="highlight">Body Type & Arm Shape:</span> Select sleeves that flatter your arms and overall silhouette</li>
+                <li><span class="highlight">Comfort & Movement:</span> Ensure sleeves allow comfortable movement for the activity</li>
+                <li><span class="highlight">Personal Confidence:</span> Choose styles that make you feel confident and comfortable</li>
+                <li><span class="highlight">Sleeve Length Proportion:</span> Sleeve length should be proportional to arm length and overall height</li>
+                <li><span class="highlight">Fabric Interaction:</span> Consider how fabric drapes and behaves with different sleeve styles</li>
+            </ul>
+
+            <h3 style="margin-top:30px;">Sleeve Length Guidelines:</h3>
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ Short Sleeves:</strong>
+                    <ul>
+                        <li>Summer and warm weather wear</li>
+                        <li>Casual occasions</li>
+                        <li>Athletic and sporty activities</li>
+                        <li>Showing off toned arms</li>
+                        <li>Comfortable, relaxed styling</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Long Sleeves:</strong>
+                    <ul>
+                        <li>Professional and formal settings</li>
+                        <li>Cooler weather</li>
+                        <li>Coverage and modesty</li>
+                        <li>Year-round versatility</li>
+                        <li>Creating elegant looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px;">Styling Tips by Arm Type:</h3>
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ For Toned, Slim Arms:</strong>
+                    <ul>
+                        <li>Fitted sleeves that emphasize definition</li>
+                        <li>Short sleeves to show off arms</li>
+                        <li>Off-shoulder and sleeveless styles</li>
+                        <li>Close-fitting designs</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ For Fuller Arms:</strong>
+                    <ul>
+                        <li>Loose, flowing sleeves</li>
+                        <li>Three-quarter or long sleeves</li>
+                        <li>Dark colors minimize appearance</li>
+                        <li>Avoid very fitted styles</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ For Short Arms:</strong>
+                    <ul>
+                        <li>Shorter sleeves to avoid overwhelming</li>
+                        <li>Cap sleeves or flutter sleeves</li>
+                        <li>Three-quarter sleeves to balance</li>
+                        <li>Avoid very long, dragging sleeves</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ For Long Arms:</strong>
+                    <ul>
+                        <li>Long, full-length sleeves</li>
+                        <li>Longer sleeves that reach wrist</li>
+                        <li>Can carry off oversized styles</li>
+                        <li>Dramatic sleeve designs work well</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px;">Seasonal Sleeve Selection:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Summer:</span> Short sleeves, sleeveless, cap sleeves, flutter sleeves for maximum cooling</li>
+                <li><span class="highlight">Spring/Fall:</span> Three-quarter sleeves, bracelet sleeves, light long sleeves for transitional weather</li>
+                <li><span class="highlight">Winter:</span> Long sleeves, puffed sleeves, batwing sleeves for warmth and layering</li>
+                <li><span class="highlight">Year-Round:</span> Long sleeves in lightweight fabrics adapt to any season with proper layering</li>
+            </ul>
+        </div>
+
+        <!-- Sleeve Details & Construction -->
+        <div class="section">
+            <h3>Sleeve Details & Construction Elements</h3>
+            
+            <h4>Cuff Styles:</h4>
+            <ul class="content-list">
+                <li><span class="highlight">Band Cuff:</span> Simple hem folded and stitched at sleeve opening</li>
+                <li><span class="highlight">Buttoned Cuff:</span> Cuff with button closure for adjustable fit</li>
+                <li><span class="highlight">French Cuff:</span> Double cuff that folds back and closes with cufflinks, formal look</li>
+                <li><span class="highlight">Elastic Cuff:</span> Stretch elastic at sleeve opening for fitted, comfortable feel</li>
+                <li><span class="highlight">Ruffle Cuff:</span> Ruffled edge at sleeve opening for decorative effect</li>
+            </ul>
+
+            <h4 style="margin-top:20px;">Sleeve Openings:</h4>
+            <ul class="content-list">
+                <li><span class="highlight">Fitted Armhole:</span> Close-fitted opening that creates structured look</li>
+                <li><span class="highlight">Drop Armhole:</span> Lower opening that creates relaxed, comfortable fit</li>
+                <li><span class="highlight">Set-In Sleeve:</span> Traditional sleeve inserted into armhole with seam</li>
+                <li><span class="highlight">Kimono/Cut-On Sleeve:</span> Sleeve cut as one piece with garment body</li>
+                <li><span class="highlight">Raglan Sleeve:</span> Diagonal seam from neck to armpit</li>
+            </ul>
+
+            <h4 style="margin-top:20px;">Sleeve Embellishments:</h4>
+            <ul class="content-list">
+                <li>Lace detailing and overlays</li>
+                <li>Embroidery and beading</li>
+                <li>Ruching and gathering</li>
+                <li>Ruffles and tiers</li>
+                <li>Slits and cutouts</li>
+                <li>Contrasting panels or color blocking</li>
+                <li>Cuffs with contrast fabric or metallic finish</li>
+            </ul>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <h2>Summary</h2>
+            <p>
+                Sleeves are a critical element of garment design that affects both style and function. From classic long sleeves to dramatic bell sleeves to sleeveless designs, understanding sleeve types helps in creating flattering, appropriate garments for any occasion. Key takeaways:
+            </p>
+            <ul class="content-list">
+                <li>Different sleeve lengths and styles suit different occasions and seasons</li>
+                <li>Sleeve choice significantly affects the overall silhouette of an outfit</li>
+                <li>Proper sleeve length is crucial for a polished, well-fitted appearance</li>
+                <li>Body type and arm shape should influence sleeve selection</li>
+                <li>Specialized sleeve designs add visual interest and fashion-forward appeal</li>
+                <li>Sleeve details like cuffs and embellishments enhance garment design</li>
+                <li>Personal comfort and confidence should guide sleeve choices</li>
+            </ul>
+            <p style="margin-top:20px;">
+                Whether creating a professional blazer with tailored sleeves, a romantic dress with flutter sleeves, or a casual t-shirt with standard sleeves, understanding the characteristics and appropriate uses of different sleeve styles ensures the perfect choice for any garment and occasion!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Understanding Fashion Library (FDO-355) | All rights reserved</p>
+        <p>Created by: Subhayu</p>
+    </footer>
+
+    <script>
+        function previousChapter(){
+            window.location.href = 'chapter1.html';
+        }
+        function nextChapter(){
+            window.location.href = 'chapter3.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1 - Collars | Understanding Fashion Library</title>
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+            scroll-behavior:smooth;
+        }
+        body{
+            min-height:100vh;
+            color:#333;
+            overflow-x:hidden;
+        }
+        /* Animated Gradient */
+        body{
+            background:linear-gradient(-45deg,#c6e7ff,#d8b4fe,#fde68a,#bbf7d0,#fbcfe8);
+            background-size:400% 400%;
+            animation:gradient 15s ease infinite;
+        }
+        @keyframes gradient{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+        /* Navigation */
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid rgba(255,255,255,.2);
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+        nav a{
+            color:black;
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.1rem;
+            transition:.3s;
+        }
+        nav a:hover{
+            opacity:.7;
+        }
+        .nav-buttons{
+            display:flex;
+            gap:15px;
+        }
+        .nav-btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:12px;
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,.35);
+            cursor:pointer;
+            font-weight:600;
+            transition:.3s;
+        }
+        .nav-btn:hover{
+            background:rgba(255,255,255,.28);
+            transform:scale(1.05);
+        }
+        /* Main Content */
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:60px 40px;
+        }
+        header{
+            text-align:center;
+            margin-bottom:60px;
+        }
+        header h1{
+            font-size:2.8rem;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+        header .subtitle{
+            font-size:1.2rem;
+            color:#555;
+            font-weight:400;
+        }
+        /* Sections */
+        .section{
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.35);
+            border-radius:20px;
+            padding:40px;
+            margin-bottom:40px;
+            box-shadow:0 8px 30px rgba(0,0,0,.1);
+        }
+        .section h2{
+            font-size:2rem;
+            margin-bottom:20px;
+            color:#1a1a1a;
+            border-bottom:3px solid rgba(0,0,0,.2);
+            padding-bottom:15px;
+        }
+        .section h3{
+            font-size:1.4rem;
+            margin-top:25px;
+            margin-bottom:12px;
+            color:#2a2a2a;
+        }
+        .section h4{
+            font-size:1.1rem;
+            margin-top:18px;
+            margin-bottom:10px;
+            color:#3a3a3a;
+            font-weight:600;
+        }
+        .section p{
+            font-size:1rem;
+            line-height:1.8;
+            color:#444;
+            margin-bottom:15px;
+        }
+        .content-list{
+            list-style:none;
+            margin:20px 0;
+        }
+        .content-list li{
+            padding:12px 0;
+            padding-left:30px;
+            position:relative;
+            font-size:1rem;
+            line-height:1.6;
+            color:#444;
+        }
+        .content-list li:before{
+            content:"▸";
+            position:absolute;
+            left:0;
+            color:#d8b4fe;
+            font-size:1.5rem;
+        }
+        .highlight{
+            background:rgba(216,180,254,.3);
+            padding:3px 8px;
+            border-radius:4px;
+            font-weight:500;
+        }
+        .definition-box{
+            background:rgba(107,114,128,.08);
+            border-left:4px solid #d8b4fe;
+            padding:20px;
+            margin:20px 0;
+            border-radius:8px;
+        }
+        .definition-box p{
+            margin:0;
+            font-style:italic;
+            color:#333;
+        }
+        .collar-card{
+            background:rgba(255,255,255,.12);
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:15px;
+            padding:25px;
+            margin:20px 0;
+        }
+        .collar-card h4{
+            margin-top:0;
+            font-size:1.2rem;
+            color:#1a1a1a;
+            margin-bottom:12px;
+        }
+        .characteristics-box{
+            background:rgba(74,222,128,.15);
+            border:1px solid rgba(74,222,128,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .characteristics-box strong{
+            color:#15803d;
+            display:block;
+            margin-bottom:8px;
+        }
+        .recommended-box{
+            background:rgba(59,130,246,.15);
+            border:1px solid rgba(59,130,246,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .recommended-box strong{
+            color:#1e40af;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box{
+            background:rgba(239,68,68,.15);
+            border:1px solid rgba(239,68,68,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .avoid-box strong{
+            color:#991b1b;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box ul, .recommended-box ul{
+            list-style:none;
+            margin:0;
+            padding-left:20px;
+        }
+        .avoid-box li, .recommended-box li{
+            padding:5px 0;
+            position:relative;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .avoid-box li:before{
+            content:"✗ ";
+            color:#991b1b;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .recommended-box li:before{
+            content:"✓ ";
+            color:#15803d;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .face-shape-card{
+            background:rgba(255,255,255,.12);
+            border:2px solid rgba(216,180,254,.4);
+            border-radius:15px;
+            padding:25px;
+            margin:25px 0;
+        }
+        .face-shape-card h4{
+            margin-top:0;
+            font-size:1.2rem;
+            color:#1a1a1a;
+            margin-bottom:15px;
+            padding-bottom:10px;
+            border-bottom:2px solid rgba(216,180,254,.3);
+        }
+        .face-shape-card .characteristics{
+            margin:15px 0;
+        }
+        .face-shape-card .characteristics strong{
+            color:#1a1a1a;
+            font-weight:600;
+        }
+        .grid-2{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+            margin:20px 0;
+        }
+        .tip-box{
+            background:rgba(251,146,60,.15);
+            border-left:4px solid #f97316;
+            padding:15px;
+            border-radius:8px;
+            margin:15px 0;
+        }
+        .tip-box strong{
+            color:#7c2d12;
+            display:block;
+            margin-bottom:8px;
+        }
+        .tip-box p{
+            margin:0;
+            font-size:0.95rem;
+            color:#444;
+        }
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-top:1px solid rgba(255,255,255,.2);
+            margin-top:60px;
+        }
+        footer p{
+            color:#555;
+            font-size:.95rem;
+        }
+        @media(max-width:700px){
+            .container{
+                padding:40px 20px;
+            }
+            header h1{
+                font-size:2rem;
+            }
+            .section{
+                padding:25px;
+            }
+            .section h2{
+                font-size:1.6rem;
+            }
+            nav{
+                flex-direction:column;
+                gap:15px;
+                padding:15px;
+            }
+            .nav-buttons{
+                width:100%;
+                justify-content:center;
+            }
+            .grid-2{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html">← Back to Units</a>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="previousChapter()">← Unit 1</button>
+            <button class="nav-btn" onclick="nextChapter()">Next →</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Chapter 1: Collars</h1>
+            <p class="subtitle">Unit - 2: Fashion Library</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <div class="section">
+            <h2>Introduction to Collars</h2>
+            <p>
+                The <span class="highlight">collar</span> is one of the most distinctive and versatile elements of garment design. It frames the face and neck, playing a crucial role in both the aesthetic and functional aspects of clothing. Collars can completely transform the look and feel of an outfit, making them essential to understand for fashion design and styling.
+            </p>
+            <p>
+                Collars are important because they:
+            </p>
+            <ul class="content-list">
+                <li>Frame and define the face and neckline</li>
+                <li>Add structure and shape to garments</li>
+                <li>Provide visual balance to the upper body</li>
+                <li>Establish the overall style and formality level</li>
+                <li>Can flatter or detract from facial features and shape</li>
+                <li>Contribute to both function and fashion</li>
+            </ul>
+        </div>
+
+        <!-- Different Types of Collars -->
+        <div class="section">
+            <h2>Different Types of Collars</h2>
+
+            <!-- Shirt Collar -->
+            <div class="collar-card">
+                <h4>1. Shirt Collar (Classic/Pointed Collar)</h4>
+                <div class="definition-box">
+                    <p>A traditional collar with two pointed lapels that fold down and lie flat against the garment. The points extend downward on both sides.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Two sharp, pointed ends</li>
+                        <li>Lies flat against the chest</li>
+                        <li>Classic and timeless design</li>
+                        <li>Can have varying point lengths</li>
+                        <li>Works with buttons or open neckline</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Round or oval faces</li>
+                        <li>Formal and professional settings</li>
+                        <li>Both casual and dressy occasions</li>
+                        <li>Most face shapes due to its versatility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Spread Collar -->
+            <div class="collar-card">
+                <h4>2. Spread Collar (Wide Spread)</h4>
+                <div class="definition-box">
+                    <p>A collar with points that spread wide apart, creating a broader neckline opening. The points angle outward rather than downward.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Wide angle between collar points</li>
+                        <li>Creates a broader neckline appearance</li>
+                        <li>Modern and contemporary look</li>
+                        <li>Works well with ties and open necklines</li>
+                        <li>Requires larger knot size if worn with tie</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Long or narrow faces</li>
+                        <li>Narrow shoulders</li>
+                        <li>Creates width at the neckline</li>
+                        <li>Modern, fashion-forward styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Wing Collar -->
+            <div class="collar-card">
+                <h4>3. Wing Collar</h4>
+                <div class="definition-box">
+                    <p>A formal collar with small, horizontal wing-like points that fold down. Typically used in formal evening wear and tuxedos.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Small, horizontal points (wings)</li>
+                        <li>Very formal appearance</li>
+                        <li>Traditional for black-tie events</li>
+                        <li>Always worn with bow tie</li>
+                        <li>Creates a crisp, structured look</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal events and black-tie occasions</li>
+                        <li>Tuxedos and evening wear</li>
+                        <li>Most face shapes in formal settings</li>
+                        <li>Creates elegance and sophistication</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Grandad Collar (Mandarin) -->
+            <div class="collar-card">
+                <h4>4. Grandad Collar (Mandarin/Band Collar)</h4>
+                <div class="definition-box">
+                    <p>A simple, standing collar without lapels or points. It sits close to the neck and stands upright.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>No lapels or points</li>
+                        <li>Stands upright around the neck</li>
+                        <li>Simple, clean design</li>
+                        <li>Can be buttoned or left open</li>
+                        <li>Contemporary and casual feel</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Long necks (creates width)</li>
+                        <li>Square or rectangular faces</li>
+                        <li>Casual and contemporary styles</li>
+                        <li>Henley shirts and casual wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Turtle Neck -->
+            <div class="collar-card">
+                <h4>5. Turtle Neck (High Mock Neck)</h4>
+                <div class="definition-box">
+                    <p>A high, close-fitting collar that covers most of the neck. It rolls over and extends up toward the chin.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>High-fitting neckline</li>
+                        <li>Rolled or folded design</li>
+                        <li>Covers majority of the neck</li>
+                        <li>Creates a sleek, polished look</li>
+                        <li>Can be standalone or layered</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Long necks</li>
+                        <li>Oblong or rectangular faces</li>
+                        <li>Creates warmth and elegance</li>
+                        <li>Autumn and winter styling</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid If:</strong>
+                    <ul>
+                        <li>You have a short neck</li>
+                        <li>You have a round face (can make it look rounder)</li>
+                        <li>You prefer showing your neck area</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- V-Neck -->
+            <div class="collar-card">
+                <h4>6. V-Neck</h4>
+                <div class="definition-box">
+                    <p>A neckline that dips downward in the center, creating a 'V' shape. While technically not a collar, it's a key neckline style.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>V-shaped neckline opening</li>
+                        <li>Can be shallow or deep</li>
+                        <li>Elongates the torso</li>
+                        <li>Creates a slimming effect</li>
+                        <li>Versatile for many occasions</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Round faces (creates length)</li>
+                        <li>Short necks (elongates)</li>
+                        <li>Fuller figures (slimming effect)</li>
+                        <li>Most casual and formal occasions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Boat Neck -->
+            <div class="collar-card">
+                <h4>7. Boat Neck (Bateau)</h4>
+                <div class="definition-box">
+                    <p>A wide, horizontal neckline that extends from shoulder to shoulder, following the collarbone.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Wide, horizontal neckline</li>
+                        <li>Extends to shoulder seams</li>
+                        <li>Creates a streamlined look</li>
+                        <li>Shows shoulders and collarbones</li>
+                        <li>Classic and elegant style</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Narrow shoulders</li>
+                        <li>Heart-shaped faces</li>
+                        <li>Longer necks</li>
+                        <li>Creates width at shoulders</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid If:</strong>
+                    <ul>
+                        <li>You have broad shoulders</li>
+                        <li>You have a round face</li>
+                        <li>You prefer coverage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Peter Pan Collar -->
+            <div class="collar-card">
+                <h4>8. Peter Pan Collar</h4>
+                <div class="definition-box">
+                    <p>A small, rounded collar that sits close to the neck with no points. It has a rounded, continuous edge.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Small, rounded design</li>
+                        <li>Sits flat against the neck</li>
+                        <li>No pointed ends</li>
+                        <li>Cute and playful appearance</li>
+                        <li>Often seen in vintage or romantic styles</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Heart-shaped or long faces</li>
+                        <li>Creates a youthful, cute look</li>
+                        <li>Works with vintage aesthetics</li>
+                        <li>Shorter necks (adds interest)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Halter Neck -->
+            <div class="collar-card">
+                <h4>9. Halter Neck</h4>
+                <div class="definition-box">
+                    <p>A neckline that ties around the neck from the back, leaving the shoulders and back exposed. Often used in dresses and tops.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Ties behind the neck</li>
+                        <li>Leaves shoulders exposed</li>
+                        <li>Creates balance for lower body emphasis</li>
+                        <li>Flattering for smaller busts</li>
+                        <li>Perfect for summer wear</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Narrow shoulders</li>
+                        <li>Heart-shaped or diamond faces</li>
+                        <li>Pear-shaped body types</li>
+                        <li>Creates balance for broader hips</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Turtleneck (High Mock Neck) -->
+            <div class="collar-card">
+                <h4>10. Cowl Neck</h4>
+                <div class="definition-box">
+                    <p>A deep, draped neckline that hangs loosely around the neck and shoulders, creating folds and drape.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Draped, loose neckline</li>
+                        <li>Creates soft folds</li>
+                        <li>Elegant and sophisticated</li>
+                        <li>Can be adjusted for depth</li>
+                        <li>Flatters various body types</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Long, narrow faces</li>
+                        <li>Creates width at neckline</li>
+                        <li>Hides neck imperfections</li>
+                        <li>Elegant evening wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Strapless/Sweetheart -->
+            <div class="collar-card">
+                <h4>11. Sweetheart Neckline</h4>
+                <div class="definition-box">
+                    <p>A neckline shaped like the top of a heart, dipping in at the center and curving upward on each side.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Heart-shaped neckline</li>
+                        <li>Dips at center, curves up at sides</li>
+                        <li>Flattering to the bust</li>
+                        <li>Romantic and feminine</li>
+                        <li>Often strapless or with thin straps</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Heart-shaped or square faces</li>
+                        <li>Emphasizes bust area</li>
+                        <li>Creates balance for pear shapes</li>
+                        <li>Formal events and dresses</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Off-Shoulder -->
+            <div class="collar-card">
+                <h4>12. Off-Shoulder Neckline</h4>
+                <div class="definition-box">
+                    <p>A neckline that sits below the shoulders, exposing the upper shoulders and collarbones.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Sits below shoulder line</li>
+                        <li>Exposes shoulders and collarbones</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Sexy and contemporary look</li>
+                        <li>Perfect for warm weather</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Narrow or sloped shoulders</li>
+                        <li>Heart-shaped or diamond faces</li>
+                        <li>Creates width at shoulders</li>
+                        <li>Summer and casual occasions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collars According to Face Shape -->
+        <div class="section">
+            <h2>Suitable Collars According to Face Shape</h2>
+            <p>
+                One of the most important styling rules is selecting collars that complement your face shape. The right collar can enhance your features, while the wrong one can detract from them. Here's a guide to choosing the best collars for different face shapes.
+            </p>
+
+            <!-- Round Face -->
+            <div class="face-shape-card">
+                <h4>Round Face</h4>
+                <div class="characteristics">
+                    <strong>Face Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Equal width and length</li>
+                        <li>Soft, curved features</li>
+                        <li>Fuller cheeks</li>
+                        <li>Rounded chin and jawline</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best Collar Choices:</strong>
+                    <ul>
+                        <li><strong>V-Neck:</strong> Elongates the face and creates length</li>
+                        <li><strong>Pointed Collar:</strong> Creates angles that contrast roundness</li>
+                        <li><strong>Spread Collar:</strong> Adds width to balance round features</li>
+                        <li><strong>Cowl Neck:</strong> Drapes elegantly and frames the face</li>
+                        <li><strong>Boat Neck:</strong> Creates horizontal lines for balance</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid:</strong>
+                    <ul>
+                        <li>Turtle Neck (makes face look rounder)</li>
+                        <li>Crew Neck (emphasizes roundness)</li>
+                        <li>High Mock Neck (closes up the face)</li>
+                        <li>Circular collars (echo the face shape)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Oval Face -->
+            <div class="face-shape-card">
+                <h4>Oval Face</h4>
+                <div class="characteristics">
+                    <strong>Face Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Longer than it is wide</li>
+                        <li>Balanced proportions</li>
+                        <li>Rounded chin</li>
+                        <li>Wider forehead</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best Collar Choices:</strong>
+                    <ul>
+                        <li><strong>Shirt Collar:</strong> Works well with most styles</li>
+                        <li><strong>Pointed Collar:</strong> Complements balanced features</li>
+                        <li><strong>V-Neck:</strong> Flatters most face shapes</li>
+                        <li><strong>Turtle Neck:</strong> Can wear most styles</li>
+                        <li><strong>Boat Neck:</strong> Creates width when needed</li>
+                    </ul>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Tip:</strong>
+                    <p>Oval faces are versatile and can wear almost any collar style. Focus on personal preference and body proportions instead.</p>
+                </div>
+            </div>
+
+            <!-- Square Face -->
+            <div class="face-shape-card">
+                <h4>Square Face</h4>
+                <div class="characteristics">
+                    <strong>Face Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Equal width and length</li>
+                        <li>Strong, angular jawline</li>
+                        <li>Broad forehead</li>
+                        <li>Defined chin</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best Collar Choices:</strong>
+                    <ul>
+                        <li><strong>V-Neck:</strong> Softens angular features</li>
+                        <li><strong>Cowl Neck:</strong> Drapes softly to soften angles</li>
+                        <li><strong>Round Necklines:</strong> Counteract sharp angles</li>
+                        <li><strong>Peter Pan Collar:</strong> Adds softness</li>
+                        <li><strong>Sweetheart Neckline:</strong> Curves contrast with angles</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid:</strong>
+                    <ul>
+                        <li>Boat Neck (emphasizes width)</li>
+                        <li>Spread Collar (adds width to jaw)</li>
+                        <li>Pointed Collar (adds angles)</li>
+                        <li>Turtle Neck (emphasizes jawline)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Heart Face -->
+            <div class="face-shape-card">
+                <h4>Heart-Shaped Face</h4>
+                <div class="characteristics">
+                    <strong>Face Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Wider forehead</li>
+                        <li>Narrower jawline and chin</li>
+                        <li>Wider at temples</li>
+                        <li>Pointed or narrow chin</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best Collar Choices:</strong>
+                    <ul>
+                        <li><strong>Boat Neck:</strong> Widens the lower face</li>
+                        <li><strong>Halter Neck:</strong> Balances the face</li>
+                        <li><strong>Off-Shoulder:</strong> Adds width at lower face</li>
+                        <li><strong>Sweetheart Neckline:</strong> Complements shape</li>
+                        <li><strong>Peter Pan Collar:</strong> Adds softness</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid:</strong>
+                    <ul>
+                        <li>V-Neck (emphasizes narrow chin)</li>
+                        <li>High Mock Neck (closes the neck)</li>
+                        <li>Turtle Neck (draws attention upward)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Long/Oblong Face -->
+            <div class="face-shape-card">
+                <h4>Long/Oblong Face</h4>
+                <div class="characteristics">
+                    <strong>Face Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Longer than it is wide</li>
+                        <li>Narrow across cheeks</li>
+                        <li>Long chin</li>
+                        <li>Narrow forehead</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best Collar Choices:</strong>
+                    <ul>
+                        <li><strong>Boat Neck:</strong> Creates horizontal width</li>
+                        <li><strong>Turtle Neck:</strong> Adds width to neck area</li>
+                        <li><strong>Grandad Collar:</strong> Creates horizontal interest</li>
+                        <li><strong>Cowl Neck:</strong> Drapes for added width</li>
+                        <li><strong>Spread Collar:</strong> Widens the neckline</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid:</strong>
+                    <ul>
+                        <li>V-Neck (elongates further)</li>
+                        <li>Turtle Neck (too high for long face)</li>
+                        <li>Pointed Collar (adds length)</li>
+                        <li>High necklines (make face appear longer)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Diamond Face -->
+            <div class="face-shape-card">
+                <h4>Diamond-Shaped Face</h4>
+                <div class="characteristics">
+                    <strong>Face Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Narrow forehead</li>
+                        <li>Wide cheekbones</li>
+                        <li>Narrow jaw and chin</li>
+                        <li>Angular features</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best Collar Choices:</strong>
+                    <ul>
+                        <li><strong>Boat Neck:</strong> Widens the jaw area</li>
+                        <li><strong>Halter Neck:</strong> Balances proportions</li>
+                        <li><strong>Off-Shoulder:</strong> Adds width at shoulders</li>
+                        <li><strong>Turtle Neck:</strong> Can work with styling</li>
+                        <li><strong>Cowl Neck:</strong> Creates interesting drape</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid:</strong>
+                    <ul>
+                        <li>High Mock Neck (emphasizes cheekbones)</li>
+                        <li>Spread Collar (too wide for narrow jaw)</li>
+                        <li>V-Neck (emphasizes narrow chin)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- General Guidelines -->
+        <div class="section">
+            <h2>General Collar Selection Guidelines</h2>
+            
+            <h3>Key Principles:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Contrast and Balance:</span> Choose collars that contrast your face shape (round faces need angular collars)</li>
+                <li><span class="highlight">Neckline Proportion:</span> Match collar size to your face size (small faces suit small collars)</li>
+                <li><span class="highlight">Occasion Appropriateness:</span> Consider the formality and context of your outfit</li>
+                <li><span class="highlight">Personal Comfort:</span> Choose styles that make you feel confident</li>
+                <li><span class="highlight">Hair and Makeup:</span> Consider how your collar complements your hairstyle and makeup</li>
+                <li><span class="highlight">Skin Tone:</span> While collar color depends on skin tone, the shape should suit your face</li>
+            </ul>
+
+            <h3 style="margin-top:30px;">Additional Considerations:</h3>
+            <div class="grid-2">
+                <div class="recommendation-box">
+                    <strong>✓ For Short Necks:</strong>
+                    <ul>
+                        <li>V-neck styles</li>
+                        <li>Off-shoulder</li>
+                        <li>Sweetheart neckline</li>
+                        <li>High collars to add length</li>
+                    </ul>
+                </div>
+                <div class="recommendation-box">
+                    <strong>✓ For Long Necks:</strong>
+                    <ul>
+                        <li>Turtle necks</li>
+                        <li>High mock necks</li>
+                        <li>Boat necklines</li>
+                        <li>Collars that add width</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="recommendation-box">
+                    <strong>✓ For Narrow Shoulders:</strong>
+                    <ul>
+                        <li>Boat neck (adds width)</li>
+                        <li>Off-shoulder</li>
+                        <li>Halter neck</li>
+                        <li>Spread collar</li>
+                    </ul>
+                </div>
+                <div class="recommendation-box">
+                    <strong>✓ For Broad Shoulders:</strong>
+                    <ul>
+                        <li>V-neck (draws eye downward)</li>
+                        <li>High necklines</li>
+                        <li>Pointed collar</li>
+                        <li>Avoid boat neck</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <h2>Summary</h2>
+            <p>
+                Understanding collars and necklines is essential for creating flattering, well-designed garments. The right collar can enhance your facial features, balance your proportions, and elevate your overall look. Remember:
+            </p>
+            <ul class="content-list">
+                <li>Different collar styles have distinct characteristics and associations</li>
+                <li>Your face shape should guide your collar selection</li>
+                <li>Collar choice affects the overall appearance and perception of your outfit</li>
+                <li>Personal comfort and confidence are crucial factors</li>
+                <li>The same collar style can look different on different people—fit and proportion matter</li>
+            </ul>
+            <p style="margin-top:20px;">
+                Use this knowledge as a guide when designing garments or selecting outfits. The most flattering collar is one that balances your unique features and makes you feel confident!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Understanding Fashion Library (FDO-355) | All rights reserved</p>
+        <p>Created by: Subhayu</p>
+    </footer>
+
+    <script>
+        function previousChapter(){
+            window.location.href = '../../index.html';
+        }
+        function nextChapter(){
+            window.location.href = 'chapter2.html';
+        }
+    </script>
+</body>
+</html>

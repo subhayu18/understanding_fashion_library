@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5 - Trousers | Understanding Fashion Library</title>
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+            scroll-behavior:smooth;
+        }
+        body{
+            min-height:100vh;
+            color:#333;
+            overflow-x:hidden;
+        }
+        /* Animated Gradient */
+        body{
+            background:linear-gradient(-45deg,#c6e7ff,#d8b4fe,#fde68a,#bbf7d0,#fbcfe8);
+            background-size:400% 400%;
+            animation:gradient 15s ease infinite;
+        }
+        @keyframes gradient{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+        /* Navigation */
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid rgba(255,255,255,.2);
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+        nav a{
+            color:black;
+            text-decoration:none;
+            font-weight:600;
+            font-size:1.1rem;
+            transition:.3s;
+        }
+        nav a:hover{
+            opacity:.7;
+        }
+        .nav-buttons{
+            display:flex;
+            gap:15px;
+        }
+        .nav-btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:12px;
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,.35);
+            cursor:pointer;
+            font-weight:600;
+            transition:.3s;
+        }
+        .nav-btn:hover{
+            background:rgba(255,255,255,.28);
+            transform:scale(1.05);
+        }
+        /* Main Content */
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:60px 40px;
+        }
+        header{
+            text-align:center;
+            margin-bottom:60px;
+        }
+        header h1{
+            font-size:2.8rem;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+        header .subtitle{
+            font-size:1.2rem;
+            color:#555;
+            font-weight:400;
+        }
+        /* Sections */
+        .section{
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(18px);
+            border:1px solid rgba(255,255,255,.35);
+            border-radius:20px;
+            padding:40px;
+            margin-bottom:40px;
+            box-shadow:0 8px 30px rgba(0,0,0,.1);
+        }
+        .section h2{
+            font-size:2rem;
+            margin-bottom:20px;
+            color:#1a1a1a;
+            border-bottom:3px solid rgba(0,0,0,.2);
+            padding-bottom:15px;
+        }
+        .section h3{
+            font-size:1.4rem;
+            margin-top:25px;
+            margin-bottom:12px;
+            color:#2a2a2a;
+        }
+        .section h4{
+            font-size:1.1rem;
+            margin-top:18px;
+            margin-bottom:10px;
+            color:#3a3a3a;
+            font-weight:600;
+        }
+        .section p{
+            font-size:1rem;
+            line-height:1.8;
+            color:#444;
+            margin-bottom:15px;
+        }
+        .content-list{
+            list-style:none;
+            margin:20px 0;
+        }
+        .content-list li{
+            padding:12px 0;
+            padding-left:30px;
+            position:relative;
+            font-size:1rem;
+            line-height:1.6;
+            color:#444;
+        }
+        .content-list li:before{
+            content:"▸";
+            position:absolute;
+            left:0;
+            color:#d8b4fe;
+            font-size:1.5rem;
+        }
+        .highlight{
+            background:rgba(216,180,254,.3);
+            padding:3px 8px;
+            border-radius:4px;
+            font-weight:500;
+        }
+        .definition-box{
+            background:rgba(107,114,128,.08);
+            border-left:4px solid #d8b4fe;
+            padding:20px;
+            margin:20px 0;
+            border-radius:8px;
+        }
+        .definition-box p{
+            margin:0;
+            font-style:italic;
+            color:#333;
+        }
+        .trouser-card{
+            background:rgba(255,255,255,.12);
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:15px;
+            padding:25px;
+            margin:20px 0;
+        }
+        .trouser-card h4{
+            margin-top:0;
+            font-size:1.2rem;
+            color:#1a1a1a;
+            margin-bottom:12px;
+        }
+        .characteristics-box{
+            background:rgba(74,222,128,.15);
+            border:1px solid rgba(74,222,128,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .characteristics-box strong{
+            color:#15803d;
+            display:block;
+            margin-bottom:8px;
+        }
+        .recommended-box{
+            background:rgba(59,130,246,.15);
+            border:1px solid rgba(59,130,246,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .recommended-box strong{
+            color:#1e40af;
+            display:block;
+            margin-bottom:8px;
+        }
+        .occasion-box{
+            background:rgba(168,85,247,.15);
+            border:1px solid rgba(168,85,247,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .occasion-box strong{
+            color:#6b21a8;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box{
+            background:rgba(239,68,68,.15);
+            border:1px solid rgba(239,68,68,.3);
+            padding:15px;
+            border-radius:10px;
+            margin:12px 0;
+        }
+        .avoid-box strong{
+            color:#991b1b;
+            display:block;
+            margin-bottom:8px;
+        }
+        .avoid-box ul, .recommended-box ul, .occasion-box ul{
+            list-style:none;
+            margin:0;
+            padding-left:20px;
+        }
+        .avoid-box li, .recommended-box li, .occasion-box li{
+            padding:5px 0;
+            position:relative;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .avoid-box li:before{
+            content:"✗ ";
+            color:#991b1b;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .recommended-box li:before{
+            content:"✓ ";
+            color:#15803d;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .occasion-box li:before{
+            content:"◆ ";
+            color:#6b21a8;
+            font-weight:bold;
+            margin-right:8px;
+            position:absolute;
+            left:-20px;
+        }
+        .tip-box{
+            background:rgba(251,146,60,.15);
+            border-left:4px solid #f97316;
+            padding:15px;
+            border-radius:8px;
+            margin:15px 0;
+        }
+        .tip-box strong{
+            color:#7c2d12;
+            display:block;
+            margin-bottom:8px;
+        }
+        .tip-box p{
+            margin:0;
+            font-size:0.95rem;
+            color:#444;
+        }
+        .trouser-category{
+            background:rgba(255,255,255,.12);
+            border:2px solid rgba(216,180,254,.4);
+            border-radius:15px;
+            padding:25px;
+            margin:25px 0;
+        }
+        .trouser-category h3{
+            margin-top:0;
+            padding-bottom:10px;
+            border-bottom:2px solid rgba(216,180,254,.3);
+        }
+        .grid-2{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+            margin:20px 0;
+        }
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:40px;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(10px);
+            border-top:1px solid rgba(255,255,255,.2);
+            margin-top:60px;
+        }
+        footer p{
+            color:#555;
+            font-size:.95rem;
+        }
+        @media(max-width:700px){
+            .container{
+                padding:40px 20px;
+            }
+            header h1{
+                font-size:2rem;
+            }
+            .section{
+                padding:25px;
+            }
+            .section h2{
+                font-size:1.6rem;
+            }
+            nav{
+                flex-direction:column;
+                gap:15px;
+                padding:15px;
+            }
+            .nav-buttons{
+                width:100%;
+                justify-content:center;
+            }
+            .grid-2{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html">← Back to Units</a>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="previousChapter()">← Previous</button>
+            <button class="nav-btn" onclick="nextChapter()">Next →</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Chapter 5: Trousers</h1>
+            <p class="subtitle">Unit - 2: Fashion Library</p>
+        </header>
+
+        <!-- Introduction Section -->
+        <div class="section">
+            <h2>Introduction to Trousers</h2>
+            <p>
+                <span class="highlight">Trousers</span> (or pants) are a fundamental garment that covers the lower body and legs. They serve as the foundation of countless outfits and come in endless styles, fits, and designs. Understanding different trouser types and their appropriate uses is essential for building a versatile, professional, and fashionable wardrobe.
+            </p>
+            <p>
+                Trousers are important because they:
+            </p>
+            <ul class="content-list">
+                <li>Form the foundation of most outfits</li>
+                <li>Significantly affect the overall silhouette and proportions</li>
+                <li>Can be adapted for professional, casual, or formal settings</li>
+                <li>Can flatter or detract from body type and leg shape</li>
+                <li>Require proper fit and length for a polished appearance</li>
+                <li>Allow for self-expression through color, pattern, and style</li>
+                <li>Can transition an outfit from casual to professional with minimal changes</li>
+            </ul>
+        </div>
+
+        <!-- Professional & Formal Trousers -->
+        <div class="trouser-category">
+            <h3>Professional & Formal Trousers</h3>
+            <p>Well-tailored trousers designed for business and formal occasions.</p>
+
+            <!-- Dress Trousers/Formal Pants -->
+            <div class="trouser-card">
+                <h4>1. Dress Trousers/Formal Pants</h4>
+                <div class="definition-box">
+                    <p>Tailored, structured trousers made from quality fabric. The foundation of professional and formal wardrobes.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Precisely tailored fit</li>
+                        <li>High-quality fabric (wool, cotton blend)</li>
+                        <li>Crease down the front</li>
+                        <li>Waistband with zipper and button</li>
+                        <li>Can be wide or slim leg</li>
+                        <li>Various colors available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Office and professional settings</li>
+                        <li>Formal events</li>
+                        <li>Creating polished, put-together looks</li>
+                        <li>Most body types with proper tailoring</li>
+                        <li>Creating sophisticated silhouettes</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Office wear</li>
+                        <li>Job interviews</li>
+                        <li>Business meetings</li>
+                        <li>Formal events</li>
+                        <li>Professional settings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tailored/Slim-Fit Trousers -->
+            <div class="trouser-card">
+                <h4>2. Tailored/Slim-Fit Trousers</h4>
+                <div class="definition-box">
+                    <p>Close-fitting, tailored trousers that follow the leg contours. Creates a modern, sleek silhouette.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted through the hip and thigh</li>
+                        <li>Narrow leg opening</li>
+                        <li>Can have high or mid-rise waist</li>
+                        <li>Creates sleek appearance</li>
+                        <li>Requires well-toned legs</li>
+                        <li>Various materials available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Slim, toned leg shapes</li>
+                        <li>Professional and contemporary styling</li>
+                        <li>Creating elongated silhouettes</li>
+                        <li>Modern, fashion-forward looks</li>
+                        <li>Pairing with fitted tops</li>
+                    </ul>
+                </div>
+                <div class="avoid-box">
+                    <strong>✗ Avoid If:</strong>
+                    <ul>
+                        <li>Self-conscious about leg shape</li>
+                        <li>Have fuller or heavier legs</li>
+                        <li>Prefer comfortable, relaxed fit</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Wide-Leg Trousers -->
+            <div class="trouser-card">
+                <h4>3. Wide-Leg Trousers</h4>
+                <div class="definition-box">
+                    <p>Trousers with a generous, flowing leg that extends straight from hip to hem. Elegant and sophisticated.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Wide, loose leg opening</li>
+                        <li>Flows straight down from hip</li>
+                        <li>Can have high waist</li>
+                        <li>Creates elongated silhouette</li>
+                        <li>Comfortable and elegant</li>
+                        <li>Can be dressy or casual</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Fuller leg or hip areas</li>
+                        <li>Creating elegant, sophisticated looks</li>
+                        <li>High-waisted styling</li>
+                        <li>Longer torsos</li>
+                        <li>Both casual and professional wear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Straight-Leg Trousers -->
+            <div class="trouser-card">
+                <h4>4. Straight-Leg Trousers</h4>
+                <div class="definition-box">
+                    <p>Classic trousers with a consistent width from hip to ankle. Versatile and flattering for most body types.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Consistent width throughout leg</li>
+                        <li>Neither fitted nor loose</li>
+                        <li>Classic, timeless style</li>
+                        <li>Various rise options available</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Universally flattering</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Most body types</li>
+                        <li>Professional and casual wear</li>
+                        <li>Creating balanced proportions</li>
+                        <li>Pairing with various tops</li>
+                        <li>Timeless, classic styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cigarette Pants -->
+            <div class="trouser-card">
+                <h4>5. Cigarette Pants</h4>
+                <div class="definition-box">
+                    <p>Slim, tailored pants that fit closely through the hip and thigh, then narrow further at the ankle.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted through hip and thigh</li>
+                        <li>Narrower at ankle than knee</li>
+                        <li>Creates sleek silhouette</li>
+                        <li>Sophisticated appearance</li>
+                        <li>Requires well-proportioned legs</li>
+                        <li>Can be high or mid-rise</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Slim legs and hips</li>
+                        <li>Creating sophisticated looks</li>
+                        <li>Professional settings</li>
+                        <li>Pairing with elegant tops</li>
+                        <li>Modern styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bootcut Trousers -->
+            <div class="trouser-card">
+                <h4>6. Bootcut Trousers</h4>
+                <div class="definition-box">
+                    <p>Fitted through the hip and thigh, with a slight flare at the calf to accommodate boots. Classic and versatile.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted hip and thigh</li>
+                        <li>Slight flare from knee to ankle</li>
+                        <li>Perfect for wearing with boots</li>
+                        <li>Balances leg proportions</li>
+                        <li>Various rise options</li>
+                        <li>Can be dressy or casual</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Pairing with boots</li>
+                        <li>Balancing fuller legs</li>
+                        <li>Both professional and casual wear</li>
+                        <li>Creating flattering proportions</li>
+                        <li>Most body types</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Flared/Bell-Bottom Trousers -->
+            <div class="trouser-card">
+                <h4>7. Flared/Bell-Bottom Trousers</h4>
+                <div class="definition-box">
+                    <p>Trousers fitted at the hip and gradually widening from the knee to the hem, creating a dramatic flare.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted at hip and thigh</li>
+                        <li>Dramatic flare from knee down</li>
+                        <li>Can be subtle or dramatic</li>
+                        <li>Creates visual width</li>
+                        <li>Can have high or mid-rise</li>
+                        <li>Retro and vintage appeal</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Balancing wider hip and thigh areas</li>
+                        <li>Fashion-forward styling</li>
+                        <li>Creating retro looks</li>
+                        <li>Shorter individuals (adds height)</li>
+                        <li>Pairing with fitted tops</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Palazzo Pants -->
+            <div class="trouser-card">
+                <h4>8. Palazzo Pants</h4>
+                <div class="definition-box">
+                    <p>Very wide-legged, loose-fitting pants that extend to the floor. Elegant, flowing, and sophisticated.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Very wide leg opening</li>
+                        <li>Flows straight from hip to hem</li>
+                        <li>Luxurious, elegant appearance</li>
+                        <li>Often high-waisted</li>
+                        <li>Floor-length or slightly longer</li>
+                        <li>Can be dressy or casual</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Creating elegant, sophisticated looks</li>
+                        <li>Special occasions</li>
+                        <li>Fuller figures (creates balance)</li>
+                        <li>High-waisted styling</li>
+                        <li>Dramatic, statement-making looks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casual Trousers -->
+        <div class="trouser-category">
+            <h3>Casual Trousers</h3>
+            <p>Relaxed, comfortable trousers for everyday wear and casual occasions.</p>
+
+            <!-- Chinos -->
+            <div class="trouser-card">
+                <h4>9. Chinos</h4>
+                <div class="definition-box">
+                    <p>Casual cotton twill pants with a relaxed fit. Perfect for smart casual styling and everyday wear.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Cotton twill fabric</li>
+                        <li>Relaxed, comfortable fit</li>
+                        <li>Can be slim, straight, or tapered</li>
+                        <li>Various colors available</li>
+                        <li>Can be cuffed or uncuffed</li>
+                        <li>Versatile for many occasions</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Smart casual occasions</li>
+                        <li>Comfortable everyday wear</li>
+                        <li>Both casual and professional styling</li>
+                        <li>Most body types</li>
+                        <li>Year-round versatility</li>
+                    </ul>
+                </div>
+                <div class="occasion-box">
+                    <strong>◆ Occasions:</strong>
+                    <ul>
+                        <li>Casual dates</li>
+                        <li>Weekend errands</li>
+                        <li>Smart casual events</li>
+                        <li>Office casual days</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Khaki Pants -->
+            <div class="trouser-card">
+                <h4>10. Khaki Pants</h4>
+                <div class="definition-box">
+                    <p>Light-colored (usually tan or beige) casual pants, typically made from cotton. A wardrobe staple for casual styling.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Neutral tan or beige color</li>
+                        <li>Cotton or cotton blend fabric</li>
+                        <li>Relaxed, comfortable fit</li>
+                        <li>Can be various cuts (slim, straight, wide)</li>
+                        <li>Versatile and easy to style</li>
+                        <li>Casual appearance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Pairing with any top color</li>
+                        <li>Smart casual occasions</li>
+                        <li>Most body types</li>
+                        <li>Versatile styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Jeans (Standard) -->
+            <div class="trouser-card">
+                <h4>11. Standard Jeans</h4>
+                <div class="definition-box">
+                    <p>Classic denim pants with a 5-pocket construction. The most versatile and popular casual bottoms.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Durable denim fabric</li>
+                        <li>5-pocket construction</li>
+                        <li>Various washes and colors</li>
+                        <li>Can be various fits (slim, straight, flared)</li>
+                        <li>Can be cuffed or uncuffed</li>
+                        <li>Button or zip fly</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual everyday wear</li>
+                        <li>Most occasions (depending on wash/style)</li>
+                        <li>Most body types with proper fit</li>
+                        <li>Year-round versatility</li>
+                        <li>Smart casual to casual styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slim-Fit Jeans -->
+            <div class="trouser-card">
+                <h4>12. Slim-Fit Jeans</h4>
+                <div class="definition-box">
+                    <p>Close-fitting jeans that follow the leg contours from hip to ankle. Modern and flattering when properly fitted.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted through hip and thigh</li>
+                        <li>Narrow leg opening</li>
+                        <li>Various washes available</li>
+                        <li>Creates sleek appearance</li>
+                        <li>Requires well-proportioned legs</li>
+                        <li>Can be distressed or plain</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Slim, toned leg shapes</li>
+                        <li>Modern, contemporary styling</li>
+                        <li>Creating elongated silhouettes</li>
+                        <li>Pairing with fitted tops</li>
+                        <li>Fashion-forward looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Straight-Fit Jeans -->
+            <div class="trouser-card">
+                <h4>13. Straight-Fit Jeans</h4>
+                <div class="definition-box">
+                    <p>Classic jeans with a consistent width from hip to ankle. Universally flattering and timeless.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Consistent width throughout</li>
+                        <li>Neither fitted nor loose</li>
+                        <li>Classic, timeless style</li>
+                        <li>Various washes available</li>
+                        <li>Can be cuffed or uncuffed</li>
+                        <li>Most versatile jean fit</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Most body types</li>
+                        <li>Both casual and smart casual wear</li>
+                        <li>Creating balanced proportions</li>
+                        <li>Pairing with various tops</li>
+                        <li>Timeless, classic styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Wide-Leg Jeans -->
+            <div class="trouser-card">
+                <h4>14. Wide-Leg Jeans</h4>
+                <div class="definition-box">
+                    <p>Jeans with a generous, flowing leg that extends straight from hip to hem. Comfortable and trendy.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Wide, loose leg opening</li>
+                        <li>Flows straight from hip</li>
+                        <li>Can have high waist</li>
+                        <li>Various washes available</li>
+                        <li>Comfortable and relaxed</li>
+                        <li>Can be dressy or casual</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Fuller hip and thigh areas</li>
+                        <li>Creating relaxed, comfortable looks</li>
+                        <li>Longer torsos</li>
+                        <li>High-waisted styling</li>
+                        <li>Fashion-forward casual looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Flared Jeans -->
+            <div class="trouser-card">
+                <h4>15. Flared Jeans</h4>
+                <div class="definition-box">
+                    <p>Jeans fitted at the hip and gradually widening from the knee to the hem. Classic 70s style with modern appeal.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Fitted at hip and thigh</li>
+                        <li>Dramatic flare from knee down</li>
+                        <li>Can be subtle or dramatic</li>
+                        <li>Various washes available</li>
+                        <li>Can have high or mid-rise</li>
+                        <li>Retro and vintage appeal</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Balancing wider hips</li>
+                        <li>Shorter individuals (adds height)</li>
+                        <li>Fashion-forward styling</li>
+                        <li>Retro-inspired looks</li>
+                        <li>Pairing with fitted tops</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Distressed/Ripped Jeans -->
+            <div class="trouser-card">
+                <h4>16. Distressed/Ripped Jeans</h4>
+                <div class="definition-box">
+                    <p>Jeans with intentional tears, rips, or distressing for a casual, edgy aesthetic.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Intentional tears and rips</li>
+                        <li>Can have various distress levels</li>
+                        <li>Edgy, casual appearance</li>
+                        <li>Can be styled casually or elevated</li>
+                        <li>Various cuts available</li>
+                        <li>Fashion-forward aesthetic</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual, edgy styling</li>
+                        <li>Fashion-forward looks</li>
+                        <li>Younger, trendier occasions</li>
+                        <li>Adding attitude to outfits</li>
+                        <li>Pairing with elegant pieces for contrast</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Capri Pants -->
+            <div class="trouser-card">
+                <h4>17. Capri Pants</h4>
+                <div class="definition-box">
+                    <p>Casual pants that end above the ankle, typically at mid-calf. Perfect for warm weather and casual occasions.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Ends above ankle (mid-calf)</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Various colors and patterns</li>
+                        <li>Can have cuff at hem</li>
+                        <li>Comfortable and casual</li>
+                        <li>Perfect for warm weather</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Warm weather wear</li>
+                        <li>Casual summer occasions</li>
+                        <li>Shorter torsos (adds proportion)</li>
+                        <li>Comfortable, relaxed styling</li>
+                        <li>Showing off footwear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Joggers -->
+            <div class="trouser-card">
+                <h4>18. Joggers</h4>
+                <div class="definition-box">
+                    <p>Casual athletic-inspired pants with an elastic waistband and tapered ankles. Perfect for comfort and casual styling.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Elastic waistband</li>
+                        <li>Tapered ankles</li>
+                        <li>Drawstring closure</li>
+                        <li>Various materials (cotton, fleece)</li>
+                        <li>Comfortable and casual</li>
+                        <li>Can have pockets</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual, comfortable wear</li>
+                        <li>Athletic and sporty styling</li>
+                        <li>Relaxed home wear</li>
+                        <li>Smart casual with styled tops</li>
+                        <li>All-day comfort</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cargo Pants -->
+            <div class="trouser-card">
+                <h4>19. Cargo Pants</h4>
+                <div class="definition-box">
+                    <p>Casual pants with large pockets on the sides of the legs. Originally designed for utility, now a fashion statement.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Distinctive side pockets</li>
+                        <li>Various cuts available</li>
+                        <li>Durable, practical fabric</li>
+                        <li>Can be fitted or loose</li>
+                        <li>Various colors available</li>
+                        <li>Utility and fashion combined</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual, edgy styling</li>
+                        <li>Fashion-forward looks</li>
+                        <li>Outdoor and adventure wear</li>
+                        <li>Pairing with fitted tops</li>
+                        <li>Adding personality to outfits</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Linen Pants -->
+            <div class="trouser-card">
+                <h4>20. Linen Pants</h4>
+                <div class="definition-box">
+                    <p>Lightweight pants made from linen fabric. Perfect for warm weather and casual summer occasions.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Lightweight linen fabric</li>
+                        <li>Breathable and comfortable</li>
+                        <li>Can wrinkle easily</li>
+                        <li>Perfect for warm weather</li>
+                        <li>Various cuts available</li>
+                        <li>Relaxed, casual elegance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Summer wear</li>
+                        <li>Warm weather occasions</li>
+                        <li>Beach vacation styling</li>
+                        <li>Elevated casual looks</li>
+                        <li>Resort wear</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leggings & Athletic -->
+        <div class="trouser-category">
+            <h3>Leggings & Athletic Bottoms</h3>
+            <p>Form-fitting and stretchy bottoms designed for comfort and athletic activities.</p>
+
+            <!-- Leggings -->
+            <div class="trouser-card">
+                <h4>21. Leggings</h4>
+                <div class="definition-box">
+                    <p>Form-fitting, stretchy pants that extend to the ankle. Comfortable for casual wear and athletic activities.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Form-fitting throughout</li>
+                        <li>Stretchy, flexible fabric</li>
+                        <li>Can have high or mid-rise waist</li>
+                        <li>Various materials (cotton, spandex blend)</li>
+                        <li>Can be plain or patterned</li>
+                        <li>Various lengths available</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Casual, comfortable wear</li>
+                        <li>Athletic activities</li>
+                        <li>Pairing with long tops or tunics</li>
+                        <li>Relaxed home wear</li>
+                        <li>Busy, active lifestyles</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- High-Waist Leggings -->
+            <div class="trouser-card">
+                <h4>22. High-Waist Leggings</h4>
+                <div class="definition-box">
+                    <p>Leggings with a high waistband that provides extra support and a flattering silhouette.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>High waistband</li>
+                        <li>Form-fitting throughout</li>
+                        <li>Provides tummy support</li>
+                        <li>Creates lifted appearance</li>
+                        <li>Various materials available</li>
+                        <li>Can be worn with shorter tops</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Comfortable, flattering support</li>
+                        <li>Athletic and casual wear</li>
+                        <li>Creating lifted silhouettes</li>
+                        <li>Wearing with crop tops</li>
+                        <li>All-day comfort</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Yoga Pants -->
+            <div class="trouser-card">
+                <h4>23. Yoga Pants</h4>
+                <div class="definition-box">
+                    <p>Form-fitting stretch pants designed for yoga and athletic activities. Comfortable and stylish.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Form-fitting, stretchy fabric</li>
+                        <li>High waist option common</li>
+                        <li>Can have pockets</li>
+                        <li>Various materials (nylon, spandex blends)</li>
+                        <li>Perfect for movement</li>
+                        <li>Can transition to casual wear</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Yoga and fitness activities</li>
+                        <li>Casual, comfortable wear</li>
+                        <li>Pairing with athletic tops</li>
+                        <li>Running errands</li>
+                        <li>All-day comfort</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bike Shorts -->
+            <div class="trouser-card">
+                <h4>24. Bike Shorts</h4>
+                <div class="definition-box">
+                    <p>Short, form-fitting athletic bottoms that end above the knee. Perfect for workouts and casual styling.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Form-fitting throughout</li>
+                        <li>Ends above knee</li>
+                        <li>Stretchy, athletic fabric</li>
+                        <li>Can have pockets</li>
+                        <li>High waist options available</li>
+                        <li>Perfect for movement</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Athletic and fitness wear</li>
+                        <li>Casual summer wear</li>
+                        <li>Pairing with oversized tops</li>
+                        <li>Warm weather activities</li>
+                        <li>Fashion-forward casual looks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special & Trendy Trousers -->
+        <div class="trouser-category">
+            <h3>Special & Trendy Trousers</h3>
+            <p>Fashion-forward and unique trouser styles that make statements.</p>
+
+            <!-- Leather Pants -->
+            <div class="trouser-card">
+                <h4>25. Leather Pants</h4>
+                <div class="definition-box">
+                    <p>Form-fitting pants made from genuine or faux leather. Edgy, bold, and sophisticated.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Genuine or faux leather</li>
+                        <li>Form-fitting or straight cut</li>
+                        <li>Can have zipper details</li>
+                        <li>Glossy or matte finish</li>
+                        <li>Statement-making piece</li>
+                        <li>Requires care and maintenance</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Edgy, alternative styling</li>
+                        <li>Fashion-forward looks</li>
+                        <li>Night out occasions</li>
+                        <li>Adding attitude to outfits</li>
+                        <li>Pairing with elegant tops</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Velvet Pants -->
+            <div class="trouser-card">
+                <h4>26. Velvet Pants</h4>
+                <div class="definition-box">
+                    <p>Luxurious pants made from soft velvet fabric. Sophisticated and elegant for special occasions.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Soft velvet fabric</li>
+                        <li>Luxurious appearance</li>
+                        <li>Can be various cuts</li>
+                        <li>Various colors available</li>
+                        <li>Requires careful care</li>
+                        <li>Elevated, sophisticated feel</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Formal and evening events</li>
+                        <li>Creating sophisticated looks</li>
+                        <li>Special occasions</li>
+                        <li>Adding texture and luxury</li>
+                        <li>Elevated styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Printed/Patterned Pants -->
+            <div class="trouser-card">
+                <h4>27. Printed/Patterned Pants</h4>
+                <div class="definition-box">
+                    <p>Pants with bold prints, patterns, or colors. Statement-making bottoms that add personality.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Bold prints or patterns</li>
+                        <li>Various color combinations</li>
+                        <li>Can be various fits</li>
+                        <li>Eye-catching appearance</li>
+                        <li>Fashion-forward style</li>
+                        <li>Requires careful top pairing</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Fashion-forward styling</li>
+                        <li>Adding visual interest</li>
+                        <li>Pairing with neutral tops</li>
+                        <li>Special occasions</li>
+                        <li>Expressing personality</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Paperbag Pants -->
+            <div class="trouser-card">
+                <h4>28. Paperbag Pants</h4>
+                <div class="definition-box">
+                    <p>High-waisted pants with gathered fabric at the waist, creating a cinched effect. Trendy and flattering.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>High waistband</li>
+                        <li>Gathered fabric at waist</li>
+                        <li>Cinched appearance</li>
+                        <li>Wide or straight leg</li>
+                        <li>Flattering silhouette</li>
+                        <li>Can be dressy or casual</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Defining waistline</li>
+                        <li>Fuller midsection coverage</li>
+                        <li>Creating flattering proportions</li>
+                        <li>Both casual and professional wear</li>
+                        <li>Trendy, fashionable styling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Harem Pants -->
+            <div class="trouser-card">
+                <h4>29. Harem Pants</h4>
+                <div class="definition-box">
+                    <p>Loose, draped pants that are gathered at the ankle. Comfortable, bohemian style.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Loose, flowing fit</li>
+                        <li>Gathered at ankle</li>
+                        <li>Can have various rises</li>
+                        <li>Comfortable and relaxed</li>
+                        <li>Various materials available</li>
+                        <li>Bohemian aesthetic</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Bohemian styling</li>
+                        <li>Comfortable, relaxed wear</li>
+                        <li>Pairing with fitted tops</li>
+                        <li>Creating relaxed silhouettes</li>
+                        <li>Fashion-forward casual looks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Trouser Shorts -->
+            <div class="trouser-card">
+                <h4>30. Trouser Shorts</h4>
+                <div class="definition-box">
+                    <p>Tailored shorts in a trouser style. Perfect for warm weather while maintaining a polished appearance.</p>
+                </div>
+                <div class="characteristics-box">
+                    <strong>Characteristics:</strong>
+                    <ul class="content-list">
+                        <li>Tailored construction</li>
+                        <li>Ends above knee (mid-thigh to knee)</li>
+                        <li>Can be various cuts</li>
+                        <li>Can be dressy or casual</li>
+                        <li>Maintains trouser aesthetic</li>
+                        <li>Perfect for warm weather</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ Best For:</strong>
+                    <ul>
+                        <li>Warm weather professional wear</li>
+                        <li>Smart casual occasions</li>
+                        <li>Maintaining polished appearance</li>
+                        <li>Showing off legs</li>
+                        <li>Summer formal events</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trouser Selection & Styling Tips -->
+        <div class="section">
+            <h2>Trouser Selection & Styling Guidelines</h2>
+            
+            <h3>Key Principles for Choosing Trousers:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Proper Fit:</span> Well-fitting trousers should sit comfortably at the waist, without gapping or pulling</li>
+                <li><span class="highlight">Correct Length:</span> Trouser length should end at the top of your shoe with a slight break in the fabric</li>
+                <li><span class="highlight">Body Type Consideration:</span> Choose cuts that flatter your body shape and proportions</li>
+                <li><span class="highlight">Occasion Appropriateness:</span> Match trouser style and formality to the setting</li>
+                <li><span class="highlight">Color Coordination:</span> Choose colors that complement your skin tone and overall aesthetic</li>
+                <li><span class="highlight">Fabric Quality:</span> Invest in quality fabrics that hold their shape and last longer</li>
+                <li><span class="highlight">Personal Comfort:</span> Choose styles that make you feel confident and comfortable</li>
+            </ul>
+
+            <h3 style="margin-top:30px;">Trousers by Body Type:</h3>
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ For Apple Shape:</strong>
+                    <ul>
+                        <li>High-waisted trousers</li>
+                        <li>Wide or straight leg</li>
+                        <li>Dark colors hide midsection</li>
+                        <li>Avoid tight, clingy fits</li>
+                        <li>Palazzo or wide-leg for comfort</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ For Pear Shape:</strong>
+                    <ul>
+                        <li>Dark-colored bottoms</li>
+                        <li>Wide or flared legs balance hips</li>
+                        <li>Avoid tight, fitted styles</li>
+                        <li>High waist creates balance</li>
+                        <li>Palazzo pants flattering</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="recommended-box">
+                    <strong>✓ For Hourglass Shape:</strong>
+                    <ul>
+                        <li>Fitted trousers define waist</li>
+                        <li>High-waisted options flattering</li>
+                        <li>Straight-leg or slim-fit work</li>
+                        <li>Emphasize curves with fit</li>
+                        <li>Avoid oversized styles</li>
+                    </ul>
+                </div>
+                <div class="recommended-box">
+                    <strong>✓ For Rectangle Shape:</strong>
+                    <ul>
+                        <li>Patterned or bright colors</li>
+                        <li>High-waisted styles create curves</li>
+                        <li>Wide-leg or flared add width</li>
+                        <li>Avoid plain, straight cuts</li>
+                        <li>Cinched waist defines shape</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px;">Proper Trouser Fit Guidelines:</h3>
+            <ul class="content-list">
+                <li><span class="highlight">Waist:</span> Should sit comfortably at natural waist without gapping or pulling. Allow for one finger between waist and fabric</li>
+                <li><span class="highlight">Hip & Thigh:</span> Should fit smoothly without pulling or excess fabric. Consider body shape when selecting fit</li>
+                <li><span class="highlight">Inseam:</span> Should reach top of shoe with a slight break. Avoid bunching or dragging on floor</li>
+                <li><span class="highlight">Rise:</span> Choose rise height that feels comfortable. Options include low, mid, and high-rise</li>
+                <li><span class="highlight">Leg Opening:</span> Should be proportional to your height and body type. Consider shoe style you'll wear</li>
+                <li><span class="highlight">Overall Silhouette:</span> Should create balanced proportions and flatter your body shape</li>
+            </ul>
+
+            <h3 style="margin-top:30px;">Trouser Care & Maintenance:</h3>
+            <ul class="content-list">
+                <li>Hang or fold trousers properly to maintain shape and avoid wrinkles</li>
+                <li>Use trouser clips or hangers to prevent crease loss</li>
+                <li>Spot clean stains promptly before washing</li>
+                <li>Fold along the original crease when storing</li>
+                <li>Use a steamer or iron on low heat to refresh</li>
+                <li>Store in a cool, dry place away from direct sunlight</li>
+                <li>Have professional tailoring for proper hemming and fit adjustments</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong>
+                <p>Invest in well-fitting basics in neutral colors (black, navy, gray, khaki) that you can mix and match with various tops. These foundational pieces will anchor your wardrobe and work for multiple occasions.</p>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <h2>Summary</h2>
+            <p>
+                Trousers are the foundation of most outfits and require careful selection for proper fit and style. From professional dress trousers to casual jeans to athletic leggings, understanding different trouser types and their appropriate uses ensures a versatile, well-coordinated wardrobe. Key takeaways:
+            </p>
+            <ul class="content-list">
+                <li>Different trouser fits suit different body types and occasions</li>
+                <li>Proper fit and length are crucial for a polished, professional appearance</li>
+                <li>Color and style of trousers should complement your overall aesthetic</li>
+                <li>Invest in quality, well-fitting basics that work for multiple occasions</li>
+                <li>Consider body shape when selecting trouser cuts and styles</li>
+                <li>Proper maintenance extends the life of your trousers</li>
+                <li>Personal comfort and confidence should guide your trouser selections</li>
+            </ul>
+            <p style="margin-top:20px;">
+                Whether you need professional dress trousers for the office, casual jeans for everyday wear, comfortable leggings for active days, or trendy statement pants for special occasions, understanding trouser types and selection principles ensures you're always wearing the perfect bottoms for any situation. The right trousers form the foundation of a confident, well-coordinated outfit!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Understanding Fashion Library (FDO-355) | All rights reserved</p>
+        <p>Created by: Subhayu</p>
+    </footer>
+
+    <script>
+        function previousChapter(){
+            window.location.href = 'chapter4.html';
+        }
+        function nextChapter(){
+            window.location.href = 'chapter6.html';
+        }
+    </script>
+</body>
+</html>

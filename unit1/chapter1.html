@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: Fashion Terminologies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .intro {
+            background: #f8f9ff;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .intro p {
+            font-size: 1.05em;
+            color: #555;
+        }
+
+        .terminology {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .terminology:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .terminology h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .terminology h2::before {
+            content: "✦";
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .definition {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 500;
+            border-left: 4px solid #764ba2;
+        }
+
+        .example {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .example strong {
+            color: #e65100;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .analogy {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #4caf50;
+            font-style: italic;
+        }
+
+        .analogy strong {
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 8px;
+            font-style: normal;
+        }
+
+        .practice-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            margin-top: 40px;
+        }
+
+        .practice-section h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .quiz-container {
+            background: white;
+            color: #333;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .question {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            background: #f5f5f5;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            background: #ede7f6;
+            border-color: #667eea;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        .answer-section {
+            display: none;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .answer-section.show {
+            display: block;
+        }
+
+        .answer-section strong {
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .reasoning {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-check {
+            background: #667eea;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-check:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-reset {
+            background: #f5f5f5;
+            color: #333;
+            flex: 1;
+        }
+
+        .btn-reset:hover {
+            background: #e0e0e0;
+        }
+
+        .score-display {
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .score-display.show {
+            display: block;
+        }
+
+        .score-display h3 {
+            color: #2e7d32;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #f5f5f5;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .key-highlights {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ff6f00;
+        }
+
+        .key-highlights strong {
+            color: #e65100;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .key-highlights ul {
+            margin-left: 20px;
+        }
+
+        .key-highlights li {
+            margin: 8px 0;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .content, .practice-section {
+                padding: 20px 15px;
+            }
+
+            .terminology {
+                padding: 15px;
+            }
+        }
+
+        .toggle-answer {
+            color: #667eea;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .toggle-answer:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Chapter 1: Fashion Terminologies</h1>
+            <p>Master the Essential Language of Fashion</p>
+        </header>
+
+        <div class="content">
+            <div class="intro">
+                <p>
+                    Welcome to the wonderful world of fashion! Before we dive deeper into fashion design, styling, and trends, 
+                    it's crucial to understand the fundamental terminology used in the fashion industry. These terms form the 
+                    foundation of fashion communication, helping designers, stylists, and enthusiasts speak the same language. 
+                    Let's explore these essential concepts through real-life examples and simple analogies.
+                </p>
+            </div>
+
+            <!-- Fashion -->
+            <div class="terminology">
+                <h2>Fashion</h2>
+                <div class="definition">
+                    <strong>Definition:</strong> Fashion is a general term for a style of clothing and personal appearance 
+                    that is widely adopted and followed during a particular time period by a large number of people.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    In 2023-2024, oversized blazers became fashionable. You saw them everywhere—on runways, in street style, 
+                    at offices, and in casual wear. Everyone was embracing this look as the "in" thing to wear.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Think of fashion like a "democratic vote" in clothing. When millions of people choose to wear something 
+                    similar at the same time, it becomes fashionable. It's what the majority agrees looks good right now.
+                </div>
+                <div class="key-highlights">
+                    <strong>Key Points to Remember:</strong>
+                    <ul>
+                        <li>Fashion is <strong>collective</strong> and <strong>widespread</strong></li>
+                        <li>It changes seasonally and annually</li>
+                        <li>Fashion is influenced by culture, society, and celebrities</li>
+                        <li>It encompasses clothing, accessories, hairstyles, and makeup</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Style -->
+            <div class="terminology">
+                <h2>Style</h2>
+                <div class="definition">
+                    <strong>Definition:</strong> Style is a personal and distinctive way of expressing oneself through clothing, 
+                    accessories, and overall appearance. It's an individual's unique choice in fashion.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    Zendaya has a distinctive style—she's known for bold, artistic, and experimental fashion choices. Even if 
+                    something isn't widely fashionable, Zendaya wears it with confidence and makes it her own. That's her personal style.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    If fashion is a "language," then style is your "accent." Two people can speak the same language but with 
+                    different accents. Similarly, two people can follow fashion but express it in completely different personal ways.
+                </div>
+                <div class="key-highlights">
+                    <strong>Key Points to Remember:</strong>
+                    <ul>
+                        <li>Style is <strong>individual</strong> and <strong>personal</strong></li>
+                        <li>It reflects personality, preferences, and values</li>
+                        <li>Style remains relatively consistent over time</li>
+                        <li>You can have style without following fashion</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Fad -->
+            <div class="terminology">
+                <h2>Fad</h2>
+                <div class="definition">
+                    <strong>Definition:</strong> A fad is a temporary trend or craze that becomes popular very quickly but also 
+                    disappears just as fast. It's short-lived and often extreme in nature.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    Remember when everyone wore low-rise jeans in the early 2000s? Or when "dad hats" suddenly became trendy? 
+                    These were fads—they were everywhere one season, but by the next season, they had faded away (pun intended!).
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    A fad is like a "viral video" in fashion. It spreads super fast, everyone's doing it, and everyone's talking 
+                    about it. But then, just as quickly, it's replaced by the next viral trend. It's temporary excitement.
+                </div>
+                <div class="key-highlights">
+                    <strong>Key Points to Remember:</strong>
+                    <ul>
+                        <li>Fads are <strong>short-lived</strong> (usually 6 months to 2 years)</li>
+                        <li>They become popular very quickly and intensely</li>
+                        <li>They often target younger audiences</li>
+                        <li>Not all fads become lasting fashion trends</li>
+                        <li>Examples: Neon colors, bucket hats, cargo pants, low-rise jeans</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Design -->
+            <div class="terminology">
+                <h2>Design</h2>
+                <div class="definition">
+                    <strong>Definition:</strong> Design in fashion refers to the creative process of planning and creating clothing 
+                    and accessories. It involves conceptualizing ideas, sketching, selecting materials, and creating patterns.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    When Virgil Abloh designed a collection for Louis Vuitton, he didn't just pick existing clothes. He sketched 
+                    new silhouettes, chose premium fabrics, decided on color palettes, and created unique construction techniques. 
+                    That entire creative process is "design."
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    If a dress is a "building," then design is the "blueprint." A designer is like an architect who decides: 
+                    How tall should it be? What materials should we use? What shape should it have? These decisions are made before 
+                    actual construction begins.
+                </div>
+                <div class="key-highlights">
+                    <strong>Key Points to Remember:</strong>
+                    <ul>
+                        <li>Design is the <strong>creative and planning phase</strong></li>
+                        <li>It involves research, sketching, and sampling</li>
+                        <li>Designers consider aesthetics, functionality, and market trends</li>
+                        <li>Design is both art and business</li>
+                        <li>Requires knowledge of fabrics, construction, and proportions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pattern -->
+            <div class="terminology">
+                <h2>Pattern</h2>
+                <div class="definition">
+                    <strong>Definition:</strong> A pattern in fashion refers to two things: (1) the decorative motif or print on fabric 
+                    (like stripes, florals, polka dots), and (2) the template used to cut fabric pieces for garment construction.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    A floral pattern is what you see on a dress—the visual design. But there's also a pattern used by tailors to 
+                    cut the front panel, back panel, sleeves, etc. When you buy a DIY sewing kit, you get both: the patterned fabric 
+                    AND the paper templates to cut it.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Think of a dress pattern like a "cookie cutter." The cookie cutter is the template that determines the shape 
+                    (the sewing pattern), and the design on the cookie is the visual pattern. Both are essential to the final product!
+                </div>
+                <div class="key-highlights">
+                    <strong>Key Points to Remember:</strong>
+                    <ul>
+                        <li><strong>Visual Pattern:</strong> Stripes, florals, checks, geometrics, abstract designs</li>
+                        <li><strong>Sewing Pattern:</strong> The templates for cutting fabric pieces</li>
+                        <li>Patterns can be unique selling points of designs</li>
+                        <li>Pattern-making is a specialized skill in fashion</li>
+                        <li>Both types of patterns require precision and planning</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Couture -->
+            <div class="terminology">
+                <h2>Couture</h2>
+                <div class="definition">
+                    <strong>Definition:</strong> Couture comes from the French word "couturière" (seamstress). It refers to high-fashion, 
+                    custom-made clothing created by exclusive designers. Garments are hand-crafted with meticulous attention to detail 
+                    and made specifically for an individual client.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    When a Bollywood actress wears a custom-designed gown made exclusively for the Met Gala, that's couture. 
+                    The dress is made just for her, by hand, taking weeks of work, using the finest fabrics, and costing thousands 
+                    to hundreds of thousands of rupees. It will never be sold to anyone else.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    If ready-to-wear is like "eating at a restaurant," then couture is like "hiring a private chef to cook a meal 
+                    exclusively for you." Everything is customized, premium, and made specifically for one person. It's the ultimate 
+                    personalized experience.
+                </div>
+                <div class="key-highlights">
+                    <strong>Key Points to Remember:</strong>
+                    <ul>
+                        <li><strong>Extremely expensive</strong> (₹5-50+ lakhs per piece)</li>
+                        <li>Made to order and <strong>customized</strong> for specific clients</li>
+                        <li>Requires months of work and hand-stitching</li>
+                        <li>Uses premium materials and exceptional craftsmanship</li>
+                        <li>Famous couture houses: Chanel, Dior, Valentino, Givenchy</li>
+                        <li>Limited to elite clients (celebrities, royalty, wealthy individuals)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ready-to-Wear -->
+            <div class="terminology">
+                <h2>Ready-to-Wear (Prêt-à-Porter)</h2>
+                <div class="definition">
+                    <strong>Definition:</strong> Ready-to-wear refers to fashionable clothing that is mass-produced in various sizes 
+                    and sold off-the-rack. These garments are made in advance in standard sizes, not customized for individual customers.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    When you walk into Zara, H&M, or any high-street fashion store and buy a dress in size M that's already made 
+                    and hanging on the rack, that's ready-to-wear. You pick it up, pay, and wear it home the same day. Thousands of 
+                    identical pieces might be produced.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    If couture is a "custom-built luxury car," then ready-to-wear is a "mass-produced car with standard features." 
+                    It's affordable, accessible, standardized, and available immediately. Everyone can have similar models.
+                </div>
+                <div class="key-highlights">
+                    <strong>Key Points to Remember:</strong>
+                    <ul>
+                        <li><strong>Mass-produced</strong> in large quantities</li>
+                        <li>Available in <strong>multiple standard sizes</strong></li>
+                        <li>Much more <strong>affordable</strong> than couture</li>
+                        <li>Manufactured in factories using consistent methods</li>
+                        <li>Quick to produce and distribute</li>
+                        <li>Accessible to the general public</li>
+                        <li>Famous ready-to-wear brands: Zara, H&M, Uniqlo, Gap, Mango</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bespoke -->
+            <div class="terminology">
+                <h2>Bespoke</h2>
+                <div class="definition">
+                    <strong>Definition:</strong> Bespoke refers to custom-made or made-to-order items, particularly tailored clothing. 
+                    It's similar to couture but often refers to menswear, especially tailored suits. The term originates from the 
+                    British tailoring tradition where the fabric is "bespoken for" (reserved for) one specific person.
+                </div>
+                <div class="example">
+                    <strong>🎯 Real-Life Example:</strong>
+                    A businessman visits a tailor in Saville Row, London (famous for bespoke tailoring). He specifies every detail: 
+                    the color, the cut, the lapel style, the button placement, the lining. The tailor creates a unique suit from 
+                    scratch, making multiple fittings to ensure perfect fit. That's bespoke tailoring.
+                </div>
+                <div class="analogy">
+                    <strong>💡 Simple Analogy:</strong>
+                    Bespoke is like "ordering a pizza with your exact toppings and preferences" rather than getting a standard 
+                    pizza. It's customized to your specifications, made just for you, and nobody else will have exactly the same thing.
+                </div>
+                <div class="key-highlights">
+                    <strong>Key Points to Remember:</strong>
+                    <ul>
+                        <li>Similar to couture but often used for <strong>menswear</strong></li>
+                        <li>Requires direct <strong>client collaboration</strong></li>
+                        <li>Expensive but typically <strong>less than couture</strong></li>
+                        <li>Made from scratch based on client specifications</li>
+                        <li>Requires multiple fittings and adjustments</li>
+                        <li>Time-consuming process (weeks to months)</li>
+                        <li>Famous for bespoke tailoring: Savile Row London, Hedi Slimane's tailoring</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="terminology">
+                <h2>Quick Comparison Guide</h2>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                    <thead>
+                        <tr style="background: #667eea; color: white;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Aspect</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Couture</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Bespoke</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Ready-to-Wear</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f9f9f9;">
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Price</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Very High (₹10+ lakhs)</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">High (₹1-10 lakhs)</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Affordable (₹1-20k)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Production</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Hand-made, by hand</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Hand-tailored</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Factory-made</td>
+                        </tr>
+                        <tr style="background: #f9f9f9;">
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Customization</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">100% custom</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">100% custom</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">None (standard)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Time</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Months</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Weeks</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Immediate</td>
+                        </tr>
+                        <tr style="background: #f9f9f9;">
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Availability</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Elite clientele</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Specific clients</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">General public</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Practice Section -->
+        <div class="practice-section">
+            <h2>🎓 Practice Corner: Test Your Knowledge</h2>
+            
+            <!-- Quiz 1 -->
+            <div class="quiz-container">
+                <div class="question">1. Which of the following best describes the relationship between Fashion and Style?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        <label for="a">Fashion and Style are exactly the same thing</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        <label for="b">Fashion is what society wears; Style is how an individual expresses themselves within that framework</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        <label for="c">Style is more important than Fashion</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        <label for="d">Fashion can only be followed, never created</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(1, 'b')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(1)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer1">
+                    <strong>✓ Correct Answer: B</strong>
+                    <div class="reasoning">
+                        Fashion is the collective trend that many people follow at a particular time. Style is the personal, 
+                        individual way someone expresses themselves through clothing. You can follow fashion while maintaining 
+                        your unique style. For example, if oversized blazers are fashionable but you wear them in a minimalist, 
+                        monochrome way while your friend pairs them with bold prints—you both follow the fashion trend but express 
+                        different styles.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 2 -->
+            <div class="quiz-container">
+                <div class="question">2. A craze for holographic clothing emerges and spreads like wildfire across social media. 
+                Within six months, the trend fades away and nobody wears holographic clothing anymore. This is an example of a:</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        <label for="a">Fashion trend</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        <label for="b">Fad</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        <label for="c">Personal style</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="d">
+                        <label for="d">Couture collection</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(2, 'b')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(2)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer2">
+                    <strong>✓ Correct Answer: B</strong>
+                    <div class="reasoning">
+                        A fad is defined by its short-lived nature—it becomes popular very quickly and disappears just as fast 
+                        (usually within 6 months to 2 years). The holographic clothing example perfectly fits this definition. 
+                        It spread rapidly like wildfire but disappeared completely within months. Fashion trends, in contrast, 
+                        typically last longer (several seasons) and have more lasting impact. Personal style is about individual 
+                        expression, not temporary trends. Couture refers to high-fashion custom-made clothing, not trends.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 3 -->
+            <div class="quiz-container">
+                <div class="question">3. What is the primary difference between Design and Pattern in fashion?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="a">
+                        <label for="a">Design is about colors; Pattern is about shapes</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="b">
+                        <label for="b">Design is the overall creative process of creating clothing; Pattern includes both visual motifs and sewing templates</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="c">
+                        <label for="c">They are the exact same thing</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="d">
+                        <label for="d">Design is cheaper than Pattern</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(3, 'b')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(3)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer3">
+                    <strong>✓ Correct Answer: B</strong>
+                    <div class="reasoning">
+                        Design encompasses the entire creative process—conceptualizing ideas, sketching, selecting materials, 
+                        deciding silhouettes, colors, and construction methods. Pattern has two meanings: (1) the visual print 
+                        or motif on fabric (like stripes or florals), and (2) the template used to cut fabric pieces. So Design 
+                        is broader (the whole creative vision) while Pattern is a component that contributes to design (both as 
+                        visual decoration and as construction templates).
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 4 -->
+            <div class="quiz-container">
+                <div class="question">4. A client visits a Savile Row tailor and specifies every detail of a custom suit, 
+                including fabric, buttons, lapel style, and lining. What is this called?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        <label for="a">Ready-to-wear tailoring</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        <label for="b">Couture</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        <label for="c">Bespoke tailoring</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        <label for="d">Mass-produced fashion</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(4, 'c')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(4)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer4">
+                    <strong>✓ Correct Answer: C</strong>
+                    <div class="reasoning">
+                        Bespoke refers to custom-made or made-to-order items, particularly tailored clothing. While bespoke 
+                        is similar to couture in terms of customization, the term is traditionally used for menswear and tailored 
+                        clothing rather than women's fashion. The client's specifications and the multiple fittings for a perfect 
+                        fit are hallmarks of bespoke tailoring. Savile Row in London is world-famous for bespoke suit making.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 5 -->
+            <div class="quiz-container">
+                <div class="question">5. Which of the following statements about Couture is correct?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        <label for="a">Couture is mass-produced and readily available to everyone</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        <label for="b">Couture is hand-crafted, custom-made clothing created exclusively for specific clients</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        <label for="c">Couture is the same as ready-to-wear</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="d">
+                        <label for="d">Couture is only made for men</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(5, 'b')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(5)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer5">
+                    <strong>✓ Correct Answer: B</strong>
+                    <div class="reasoning">
+                        Couture (from French "couturière") is the pinnacle of custom fashion. Each piece is hand-crafted with 
+                        meticulous attention to detail, made specifically for an individual client using premium materials. It's 
+                        extremely expensive (₹10+ lakhs per piece) and limited to elite clientele. The opposite of ready-to-wear, 
+                        which is mass-produced. Famous couture houses include Chanel, Dior, Valentino, and Givenchy.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 6 -->
+            <div class="quiz-container">
+                <div class="question">6. You walk into Zara and find a dress in size M hanging on the rack. You buy it immediately 
+                and wear it the same day. This is an example of:</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="a">
+                        <label for="a">Couture</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="b">
+                        <label for="b">Bespoke clothing</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="c">
+                        <label for="c">Ready-to-wear</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="d">
+                        <label for="d">Custom tailoring</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(6, 'c')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(6)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer6">
+                    <strong>✓ Correct Answer: C</strong>
+                    <div class="reasoning">
+                        Ready-to-wear (prêt-à-porter) refers to mass-produced clothing available in standard sizes that can be 
+                        purchased immediately off-the-rack. It's affordable, accessible to the general public, and you don't have 
+                        to wait for it to be made. This is the opposite of couture or bespoke, which are made-to-order and require 
+                        weeks or months. Stores like Zara, H&M, and Uniqlo specialize in ready-to-wear clothing.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 7 -->
+            <div class="quiz-container">
+                <div class="question">7. Consider this scenario: A designer sketches a new silhouette, selects premium Italian fabrics, 
+                decides on a specific color palette, creates samples, and plans the construction methods. Which fashion terminology 
+                best describes all of these activities?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="a">
+                        <label for="a">Pattern</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="b">
+                        <label for="b">Fashion</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="c">
+                        <label for="c">Design</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="d">
+                        <label for="d">Style</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(7, 'c')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(7)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer7">
+                    <strong>✓ Correct Answer: C</strong>
+                    <div class="reasoning">
+                        Design in fashion is the creative process that includes conceptualizing ideas, sketching, selecting 
+                        materials, deciding on silhouettes and color palettes, and planning construction methods. It's the 
+                        blueprint stage before actual garment production. Pattern is about visual motifs or sewing templates. 
+                        Fashion is what society collectively wears. Style is personal expression. Design encompasses all the 
+                        planning and creative decisions described in the scenario.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 8 -->
+            <div class="quiz-container">
+                <div class="question">8. What is the main factor that distinguishes Couture and Bespoke from Ready-to-Wear?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="a">
+                        <label for="a">The country of origin</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="b">
+                        <label for="b">Customization: Couture and Bespoke are made-to-order for individual clients, while Ready-to-Wear is mass-produced in standard sizes</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="c">
+                        <label for="c">The color options available</label>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="d">
+                        <label for="d">Only celebrities can wear Couture and Bespoke</label>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-check" onclick="checkAnswer(8, 'b')">Check Answer</button>
+                    <button class="btn btn-reset" onclick="resetQuestion(8)">Reset</button>
+                </div>
+                <div class="answer-section" id="answer8">
+                    <strong>✓ Correct Answer: B</strong>
+                    <div class="reasoning">
+                        The fundamental distinction between these three categories is customization. Couture and Bespoke are 
+                        made-to-order, fully customized for specific clients, hand-crafted, and expensive. Ready-to-wear is 
+                        mass-produced in advance in standard sizes, is immediately available, and is affordable. This difference 
+                        in approach leads to differences in price, production method, time, and accessibility.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Score Display -->
+            <div class="score-display" id="scoreDisplay">
+                <h3 id="scoreMessage"></h3>
+                <p id="scorePercentage"></p>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-check" onclick="submitAllAnswers()" style="max-width: 300px;">Submit All Answers</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>📚 Chapter 1: Fashion Terminologies | A Comprehensive Learning Module</p>
+            <p>Master these fundamental concepts to excel in your fashion journey!</p>
+        </footer>
+    </div>
+
+    <script>
+        let answeredQuestions = {};
+
+        function checkAnswer(questionNum, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            
+            if (!selectedAnswer) {
+                alert('Please select an answer!');
+                return;
+            }
+
+            answeredQuestions[questionNum] = selectedAnswer.value === correctAnswer;
+            const answerSection = document.getElementById(`answer${questionNum}`);
+            answerSection.classList.add('show');
+
+            // Update button state
+            const buttons = event.target.parentElement.querySelectorAll('.btn');
+            buttons[0].disabled = true;
+            buttons[0].style.opacity = '0.6';
+            buttons[0].style.cursor = 'not-allowed';
+        }
+
+        function resetQuestion(questionNum) {
+            document.querySelector(`input[name="q${questionNum}"]:checked`)?.click();
+            document.querySelectorAll(`input[name="q${questionNum}"]`).forEach(input => input.checked = false);
+            document.getElementById(`answer${questionNum}`).classList.remove('show');
+            delete answeredQuestions[questionNum];
+        }
+
+        function submitAllAnswers() {
+            let answered = 0;
+            let correct = 0;
+
+            for (let i = 1; i <= 8; i++) {
+                if (answeredQuestions[i] === true) {
+                    correct++;
+                }
+                if (answeredQuestions[i] !== undefined) {
+                    answered++;
+                }
+            }
+
+            if (answered === 0) {
+                alert('Please answer at least one question before submitting!');
+                return;
+            }
+
+            const percentage = Math.round((correct / answered) * 100);
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const scoreMessage = document.getElementById('scoreMessage');
+            const scorePercentage = document.getElementById('scorePercentage');
+
+            scoreMessage.textContent = `Your Score: ${correct}/${answered}`;
+            scorePercentage.textContent = `You got ${percentage}% correct!`;
+
+            if (percentage === 100) {
+                scoreDisplay.style.borderLeftColor = '#4caf50';
+                scoreDisplay.style.background = '#c8e6c9';
+                scoreMessage.textContent = '🎉 Perfect Score! ' + scoreMessage.textContent;
+            } else if (percentage >= 75) {
+                scoreDisplay.style.borderLeftColor = '#66bb6a';
+                scoreDisplay.style.background = '#c8e6c9';
+                scoreMessage.textContent = '✅ Excellent! ' + scoreMessage.textContent;
+            } else if (percentage >= 50) {
+                scoreDisplay.style.borderLeftColor = '#ffa726';
+                scoreDisplay.style.background = '#ffe0b2';
+                scoreMessage.textContent = '⭐ Good! ' + scoreMessage.textContent;
+            } else {
+                scoreDisplay.style.borderLeftColor = '#ef5350';
+                scoreDisplay.style.background = '#ffcdd2';
+                scoreMessage.textContent = '📖 Keep Learning! ' + scoreMessage.textContent;
+            }
+
+            scoreDisplay.classList.add('show');
+            scoreDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
