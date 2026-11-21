@@ -65,9 +65,6 @@
         <h2>Final Examination Sample Questionnaire</h2>
     </div>
 
-    <!-- Admin Button (still works) -->
-    <button class="admin-btn" onclick="showAdminPanel()">Admin</button>
-
     <div class="container">
         <div class="doc-container">
             <iframe 
@@ -77,28 +74,5 @@
         </div>
     </div>
 
-    <!-- Admin Panel (kept for future use) -->
-    <div class="admin-panel" id="adminPanel" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); justify-content:center; align-items:center; z-index:2000;">
-        <div style="background:white; padding:30px; border-radius:16px; max-width:400px; text-align:center;">
-            <h3>Admin Panel</h3>
-            <p style="margin:15px 0;">This section is currently disabled as we are using the Google Docs version.</p>
-            <button onclick="closeAdminPanel()" style="padding:10px 25px; border-radius:10px; border:none; background:#7c3aed; color:white; cursor:pointer;">Close</button>
-        </div>
-    </div>
-
-    <script>
-        function showAdminPanel() {
-            const pass = prompt("Enter Admin Password:");
-            if (pass === "18022005") {
-                document.getElementById('adminPanel').style.display = "flex";
-            } else {
-                alert("Incorrect password!");
-            }
-        }
-
-        function closeAdminPanel() {
-            document.getElementById('adminPanel').style.display = "none";
-        }
-    </script>
 </body>
 </html>
