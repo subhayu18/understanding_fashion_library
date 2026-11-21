@@ -4,153 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Understanding Fashion Library (FDO-355)</title>
-    <link rel="icon" type="image/png" href="favicon.png?v=1">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Poppins',sans-serif;
-            scroll-behavior:smooth;
-        }
-        body{
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; scroll-behavior:smooth; }
+        body {
             min-height:100vh;
             color:black;
-            overflow-x:hidden;
-        }
-        /* Animated Gradient */
-        body{
             background:linear-gradient(-45deg,#c6e7ff,#d8b4fe,#fde68a,#bbf7d0,#fbcfe8);
             background-size:400% 400%;
             animation:gradient 15s ease infinite;
+            overflow-x:hidden;
         }
-        @keyframes gradient{
+        @keyframes gradient {
             0%{background-position:0% 50%;}
             50%{background-position:100% 50%;}
             100%{background-position:0% 50%;}
         }
-        header{
-            text-align:center;
-            padding:70px 20px 40px;
-        }
-        header h1{
-            font-size:3rem;
-            font-weight:700;
-        }
-        header h2{
-            font-size:1.3rem;
-            font-weight:400;
-            margin-top:5px;
-        }
-        header p{
-            margin-top:12px;
-            font-size:.95rem;
-            opacity:.9;
-        }
-        /* Unit Cards */
-        .units{
+        header { text-align:center; padding:70px 20px 40px; }
+        header h1 { font-size:3rem; font-weight:700; }
+        header h2 { font-size:1.3rem; font-weight:400; margin-top:5px; }
+        header p { margin-top:12px; font-size:.95rem; opacity:.9; }
+
+        .units {
             display:flex;
             justify-content:center;
             gap:45px;
             flex-wrap:wrap;
-            margin:40px auto 120px;
+            margin:40px auto 30px;
         }
-        .unit{
-            width:320px;
-            height:220px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            cursor:pointer;
-            border-radius:28px;
+        .unit {
+            width:320px; height:220px;
+            display:flex; justify-content:center; align-items:center; text-align:center;
+            cursor:pointer; border-radius:28px;
             background:rgba(255,255,255,.18);
             backdrop-filter:blur(18px);
             border:1px solid rgba(255,255,255,.35);
             box-shadow:0 8px 30px rgba(0,0,0,.15);
             transition:.35s;
         }
-        .unit:hover{
-            transform:translateY(-8px) scale(1.03);
-            background:rgba(255,255,255,.28);
-        }
-        .unit.active{
-            border:2px solid white;
-            box-shadow:0 0 30px rgba(255,255,255,.45);
-        }
-        .unit h3{
-            font-size:1.5rem;
-            padding:20px;
-        }
-        /* Chapters Section */
-        #chapters{
-            width:90%;
-            max-width:900px;
-            margin:auto;
-            padding-bottom:80px;
-        }
-        #unitTitle{
+        .unit:hover { transform:translateY(-8px) scale(1.03); background:rgba(255,255,255,.28); }
+        .unit.active { border:2px solid white; box-shadow:0 0 30px rgba(255,255,255,.45); }
+        .unit h3 { font-size:1.5rem; padding:20px; }
+
+        /* NEW: Full-width Practice Questions Button */
+        .qp-button {
+            display:block;
+            width:100%;
+            max-width:1100px;
+            margin:20px auto 80px;
+            padding:18px 30px;
             text-align:center;
-            font-size:2rem;
-            margin-bottom:35px;
-        }
-        .grid{
-            display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:25px;
-        }
-        .chapter{
-            height:80px;
-            border:none;
+            font-size:1.25rem;
+            font-weight:600;
+            color:#111;
+            background:rgba(255,255,255,.22);
+            backdrop-filter:blur(18px);
+            border:2px solid rgba(255,255,255,.5);
             border-radius:20px;
-            cursor:pointer;
-            color:black;
-            font-size:1.05rem;
+            text-decoration:none;
+            transition:.3s;
+        }
+        .qp-button:hover {
+            background:rgba(255,255,255,.35);
+            transform:scale(1.02);
+        }
+
+        #chapters { width:90%; max-width:900px; margin:auto; padding-bottom:80px; }
+        #unitTitle { text-align:center; font-size:2rem; margin-bottom:35px; }
+        .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:25px; }
+        .chapter {
+            height:80px; border:none; border-radius:20px; cursor:pointer;
+            color:black; font-size:1.05rem;
             background:rgba(255,255,255,.18);
             backdrop-filter:blur(18px);
             border:1px solid rgba(255,255,255,.35);
             transition:.3s;
         }
-        .chapter:hover{
-            transform:scale(1.04);
-            background:rgba(255,255,255,.28);
+        .chapter:hover { transform:scale(1.04); background:rgba(255,255,255,.28); }
+
+        .popup {
+            position:fixed; inset:0; background:rgba(0,0,0,.45);
+            display:none; justify-content:center; align-items:center;
         }
-        /* Popup */
-        .popup{
-            position:fixed;
-            inset:0;
-            background:rgba(0,0,0,.45);
-            display:none;
-            justify-content:center;
-            align-items:center;
+        .popup-content {
+            width:320px; padding:35px; text-align:center;
+            border-radius:22px; background:rgba(255,255,255,.18);
+            backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,.4);
         }
-        .popup-content{
-            width:320px;
-            padding:35px;
-            text-align:center;
-            border-radius:22px;
-            background:rgba(255,255,255,.18);
-            backdrop-filter:blur(18px);
-            border:1px solid rgba(255,255,255,.4);
+        .popup button {
+            margin-top:22px; border:none; padding:10px 28px;
+            border-radius:12px; cursor:pointer;
         }
-        .popup button{
-            margin-top:22px;
-            border:none;
-            padding:10px 28px;
-            border-radius:12px;
-            cursor:pointer;
-        }
+
         @media(max-width:700px){
-            .grid{
-                grid-template-columns:1fr;
-            }
-            .unit{
-                width:90%;
-            }
-            header h1{
-                font-size:2.2rem;
-            }
+            .grid{grid-template-columns:1fr;}
+            .unit{width:90%;}
+            header h1{font-size:2.2rem;}
         }
     </style>
 </head>
@@ -161,6 +110,7 @@
         <p>Open Elective Course</p>
     </header>
 
+    <!-- Unit Cards -->
     <section class="units">
         <div class="unit" onclick="showChapters('unit1',this)">
             <h3>Unit - 1<br>Introduction of Fashion</h3>
@@ -172,6 +122,11 @@
             <h3>Unit - 3<br>Fashion Industry</h3>
         </div>
     </section>
+
+    <!-- NEW: Practice Questions Button -->
+    <a href="qp/qp.html" class="qp-button">
+        Practice Questions for Final Examination
+    </a>
 
     <section id="chapters">
         <h2 id="unitTitle"></h2>
@@ -187,52 +142,50 @@
     </div>
 
     <script>
-        const available={
-            unit1:[1,2,3,4],
-            unit2:[1,2,3,4,5,6,7,8],
-            unit3:[1,2,3,4,5]
+        const available = {
+            unit1: [1,2,3,4],
+            unit2: [1,2,3,4,5,6,7,8],
+            unit3: [1,2,3,4,5]
         };
 
-        const chapterTitles={
-            unit1:['Fashion Terminologies','Elements and Principles','Silhouette','Body Types'],
-            unit2:['Collars','Sleeves','Jacket','Footwears','Trousers','Skirts and Dresses','Bags','Accessories'],
-            unit3:['Fashion Theories','Fashion Cycle','Fashion Forecasting','Fashion Brands','Fashion designer']
+        const chapterTitles = {
+            unit1: ['Fashion Terminologies','Elements and Principles','Silhouette','Body Types'],
+            unit2: ['Collars','Sleeves','Jacket','Footwears','Trousers','Skirts and Dresses','Bags','Accessories'],
+            unit3: ['Fashion Theories','Fashion Cycle','Fashion Forecasting','Fashion Brands','Fashion designer']
         };
 
-        function showChapters(unit,card){
-            document.querySelectorAll(".unit").forEach(c=>c.classList.remove("active"));
+        function showChapters(unit, card) {
+            document.querySelectorAll(".unit").forEach(c => c.classList.remove("active"));
             card.classList.add("active");
-            
-            const unitNames={
-                unit1:'Unit - 1: Introduction of Fashion',
-                unit2:'Unit - 2: Fashion Library',
-                unit3:'Unit - 3: Fashion Industry'
+
+            const unitNames = {
+                unit1: 'Unit - 1: Introduction of Fashion',
+                unit2: 'Unit - 2: Fashion Library',
+                unit3: 'Unit - 3: Fashion Industry'
             };
-            
-            document.getElementById("unitTitle").innerHTML=unitNames[unit];
-            const grid=document.getElementById("grid");
-            grid.innerHTML="";
-            
-            for(let i=1;i<=available[unit].length;i++){
-                let btn=document.createElement("button");
-                btn.className="chapter";
-                btn.innerHTML=chapterTitles[unit][i-1];
-                btn.onclick=function(){
-                    if(available[unit].includes(i)){
-                        window.location.href=`${unit}/chapter${i}.html`;
-                    } else{
-                        document.getElementById("popup").style.display="flex";
+
+            document.getElementById("unitTitle").innerHTML = unitNames[unit];
+            const grid = document.getElementById("grid");
+            grid.innerHTML = "";
+
+            for (let i = 1; i <= available[unit].length; i++) {
+                let btn = document.createElement("button");
+                btn.className = "chapter";
+                btn.innerHTML = chapterTitles[unit][i-1];
+                btn.onclick = function() {
+                    if (available[unit].includes(i)) {
+                        window.location.href = `${unit}/chapter${i}.html`;
+                    } else {
+                        document.getElementById("popup").style.display = "flex";
                     }
                 };
                 grid.appendChild(btn);
             }
-            document.getElementById("chapters").scrollIntoView({
-                behavior:"smooth"
-            });
+            document.getElementById("chapters").scrollIntoView({ behavior: "smooth" });
         }
 
-        function closePopup(){
-            document.getElementById("popup").style.display="none";
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
         }
     </script>
 </body>
